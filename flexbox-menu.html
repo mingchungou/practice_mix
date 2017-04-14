@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Flexbox Menu</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <style>
+            body {
+                background-color: #b22a2a;
+            }
+
+            nav {
+                margin: 0 auto;
+                max-width: 800px;
+                background-color: #191818;
+            }
+
+            nav ul {
+                display: flex;
+                justify-content: space-around;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            nav ul a {
+                display: block;
+                padding: 1rem;
+                color: #ffffff;
+                text-decoration: none;
+            }
+
+            nav ul a:hover {
+                background-color: red;
+            }
+
+            @media (max-width: 550px) {
+                nav ul {
+                    flex-direction: column;
+                }
+
+                nav ul a {
+                    text-align: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="#">Enlace 1</a></li>
+                <li><a href="#">Enlace 2</a></li>
+                <li><a href="#">Enlace 3</a></li>
+                <li><a href="#">Enlace 4</a></li>
+                <li><a href="#">Enlace 5</a></li>
+            </ul>
+        </nav>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+.Enter to the project folder and run
+/> npm install -g grunt-cli
+
+/> ppm init
+
+/> npm install -S grunt

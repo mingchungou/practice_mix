@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Flexbox Menu</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <style>
+            body {
+                background-color: #45de47;
+            }
+
+            section {
+                display: flex;
+                align-items: center;
+                margin: 0 auto;
+                padding: 1rem;
+                max-width: 600px;
+                border: 1px solid red;
+                border-radius: 5px;
+                background-color: rgba(255, 255, 255, 0.41);
+            }
+
+            section img {
+                margin-right: 1rem;
+            }
+
+            section p {
+                margin: 0;
+            }
+
+            @media (max-width:400px) {
+                section {
+                    flex-direction: column;
+                }
+
+                section img {
+                    flex: 0 1 200px;
+                    margin-right: 0;
+                    margin-bottom: 1rem;
+                }
+
+                section p {
+                    text-align: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <img src="images/agency.svg" alt="agency">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint quasi voluptates perspiciatis maxime accusamus veritatis architecto deserunt sapiente, cumque incidunt, sunt maiores consectetur eius unde necessitatibus harum dolorem. Nihil, saepe!</p>
+        </section>
+    </body>
+</html>
