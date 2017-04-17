@@ -1,125 +1,133 @@
 — Git
 
-· add user name
+* add user name
 /> git config --global user.name “{user-name}”
 
-· show user name 
+* show user name
 /> git config user.name
 
-· user email
+* user email
 /> git config --global user.email “{user-email}”
 
-· show user email 
+* show user email
 /> git config user.email
 
-· user password
+* user password
 /> git config --global user.password {user-password}
 
-· show user password 
+* show user password
 /> git config user.password
 
-· check version
+* check version
 /> git —-version
 
-. Add color to different results
+* Add color to different results
 /> git config --global color.ui true
 
-. Ver nuestras configuraciones
+* Look at all configurations
 /> git config --global --list
 
-.Init new project
+
+
+
+
+* Start handle new project with git
 /> git init
 
-. Look at status of project
+* Look at status of project
 /> git status
 
 /> git add {url of file to commit}
 
-. Add everything
+* Add everything
 /> git add -A
 
-. One way to commit a change
+* One way to commit a change
 /> git commit -m “{message for commit}”
 
-. Another way to commit a change
+* Another way to commit a change
 /> git commit, then add a comment + esc + :wq
 
-. Show the commits done
+* Show the commits done
 /> git log
 
-. Go back to previous commit
-/> git checkout {number of previous commit}
-
-. Return to last commit done
-/> git checkout {branch name selected}
-
-. Show the branch selected
-/> git branch
-
-. Save history commits into a txt file
+* Save history commits into a txt file
 /> git log > commits.txt
 
-. Remove all changes until the commit mentioned, but the changes are kept
+* Go back to previous commit
+/> git checkout {number of previous commit}
+
+* Return to last commit done
+/> git checkout {branch name selected}
+
+* Show the branch selected
+/> git branch
+
+* Remove all changes until the commit mentioned, but the changes are kept
 /> git reset --soft {number of commit}
 
-. Remove all changes until the commit mentioned and the changes also are removed
+* Remove all changes until the commit mentioned and the changes also are removed
 /> git reset --hard {number of commit}
 
 
 
 
-
+* Associate git to github
 /> git remote add origin {root of repository to bind}
 
+* Remote the association
 /> git remote remove origin
 
+* Change the association path
 /> git remote set-url origin {root of repository to bind}
 
+* Look at the association path
 /> git remote -v
 
-. Push a branch
+* Push a branch
 /> git push -u origin {branch}  o   /> git push origin {branch}
 
 
 
 
 
-. Create a branch
+* Create a branch
 /> git branch {name of new branch}
 
-.Switch to another branch
+* Switch to another branch
 /> git checkout {branch}
 
-. Add change from a specific branch
+* Add change from a specific branch
 /> git merge {branch}
 
-. Remove a branch
+* Remove a branch
 /> git branch -D {branch}
 
-. Create a new branch and switch to new one at once
+* Create a new branch and switch to it at once
 /> git checkout -b {branch}
 
-. Change message of last commit
+* Change message of last commit
 /> git commit --amend -m “{new message}”
 
-. Add tag
+* Add tag
 /> git tag -a v{number of version} -m “{message}”
 
-. Push a tag
+* Push a tag
 /> git push origin v{number of version}   o   /> git push origin —-tags
 
-. Remove a tag
+* Remove a tag
 /> git tag -d v{number of version}
 
-. Remove a remote tag
+* Remove a remote tag
 /> git push origin :v{number of version}
 
 
 
 
-. Update the repository
+
+* Update the local repository
 /> git fetch origin
 /> git merge origin/{branch}
 
-. Push a new change
+* Push a new change to repository
 /> git push origin {branch}

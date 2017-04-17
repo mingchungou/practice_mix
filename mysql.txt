@@ -1,0 +1,294 @@
+- Create a database
+
+create database "name_database";
+
+- show all databases
+
+show databases;
+
+- Using a specific database
+
+use "name_database";
+
+- Remove a specific database
+
+drop database "name_database";
+
+- Know the database is in use
+
+select database();
+
+
+
+
+- Create a table
+
+create table "name_table" (column, column, column, etc.);
+
+Example:
+************** Unique
+create table person (
+	id varchar(255) not null,
+    firstName varchar(255) not null,
+    lastName varchar(255) not null,
+    age int not null,
+    timeAdded timestamp,
+    unique (id)
+);
+
+************** default
+create table person (
+	id varchar(255) not null,
+    firstName varchar(255) not null,
+    lastName varchar(255) not null,
+    age int not null check (age >= 12 and timeAdded != null),
+    timeAdded timestamp default current_timestamp,
+    unique (id)
+);
+
+************** Auto_increment
+create table person (
+	id int not null auto_increment,
+    firstName varchar(255) not null,
+    lastName varchar(255) not null,
+    age int not null check (age >= 12 and timeAdded != null),
+    timeAdded timestamp default current_timestamp,
+    unique (id)
+);
+
+************** Primary Key
+create table Person (
+	id varchar(40),
+    firstName varchar(100) not null,
+	middleName varchar(100),
+    lastName varchar(100) not null,
+    age int not null,
+    bornCountry varchar(100),
+    timeAdded timestamp default current_timestamp,
+    primary key (id)
+);
+
+************** Foreigh Key
+create table orders (
+	id int auto_increment,
+    personID varchar(255),
+	mount int not null,
+    primary key (id),
+    foreign key (personID) references person (id)
+);
+
+- Show all tables in specific db
+
+show tables;
+
+- show colums from a specific table
+
+select * from "name_table";
+
+- Delete a specific table
+
+drop table "name_table";
+
+- Add new column to specific table
+
+alter table "name_table" add "column" "type";
+
+- Remove an exist column to specific table
+
+alter table "name_table" drop column "column";
+
+- Modify datatype of specific column to specific table
+
+alter table "name_table" modify "column" "type";
+
+- Make a column to be "unique" value
+
+alter table "name_table" add unique ("column");
+
+- Make a column to be "primary key" value
+
+alter table "name_table" add primary key ("column");
+
+- Make a column to be "foreign key" value
+
+alter table "name_table" add foreign key ("column") references "name_parent_table" ("parent_column");
+
+
+
+
+
+- Insert a row to specific table
+
+insert into "name_table" (column, column, column, etc.) values (value, value, value, etc.);
+
+Ejemplo:
+insert into person (id, firstName, middleName, lastName, age, bornCountry) values ("801060850", "Ming", "Chung", "Ou", 25, "Taiwan");
+
+- Remove all rows to specific table
+
+truncate "name_table";
+
+- Get specific rows to specific table
+
+select * from "name_table" where "condition";
+
+- delete specific rows to specific table
+
+delete from "name_table" where "condition";
+
+- update specific row to specifc table
+
+update "name_table" set "column" = "new_value" where "condition";
+
+- get rows but order by conditions
+
+select * from "name_table" order by "column" asc|desc;
+
+Ejemplos de select:
+select * from person where middleName is null and age < 24;
+select * from person where age > 20 and age <= 25;
+select * from person where not middleName is not null;
+select * from person where firstName = "Maria" or lastName = "Ou";
+select * from person order by id asc;
+select * from person order by id desc;
+select * from person limit 3;    //Take first 3 rows
+select * from person where middleName is null limit 1;
+select * from person where age between 20 and 25;
+select id, firstName, max(age) from person where middleName is null;
+select * from person where age = (select max(age) from person);   //Get the row with highest age
+select avg(age) from person;
+select count(*) from person where middleName is null;
+select * from person where firstName like "m%";
+select * from person where bornCountry in ("Taiwan", "Costa Rica");
+select * from person where bornCountry in (select bornCountry from person where middleName is null);
+select person.firstName, person.lastName, orders.mount from person inner join orders on person.id = orders.personID;
+select count(id), bornCountry from person group by bornCountry;
+select count(id), bornCountry from person group by bornCountry having count(id) >= 3;
+
+select count(person.id), person.bornCountry, sum(orders.mount) from person
+	inner join orders on person.id = orders.personID
+		group by person.bornCountry
+			having sum(orders.mount) > 0
+				order by sum(orders.mount) asc;
+
+select * from person where exists
+	(select mount from orders where personID = person.id and mount < 5000);
+
+
+
+
+
+
+drop function if exists practica;
+delimiter //
+create function practica() returns int
+begin
+	declare resultado int default 0;
+    declare length int;
+    declare i int default 1;
+    declare orderMount int;
+    select count(id) into length from orders;
+
+    while (i <= length) do
+		select mount into orderMount from orders where id = i;
+
+        if resultado = 0 then
+			set resultado = orderMount;
+		else
+			if resultado > orderMount then
+				set resultado = orderMount;
+			end if;
+		end if;
+
+		set i = i + 1;
+    end while;
+
+    return resultado;
+end;
+
+drop function if exists practica;
+delimiter //
+create function practica() returns varchar(255)
+begin
+	declare resultado int default 0;
+	declare resultName varchar(100);
+	declare resultID varchar(40);
+    declare length int;
+    declare i int default 1;
+    declare currentMount int;
+	declare currentID varchar(40);
+    select count(id) into length from orders;
+
+    loop1: loop
+		select personID, mount into currentID, currentMount from orders where id = i;
+
+        if resultado = 0 or resultado > currentMount then
+			set resultado = currentMount;
+			set resultID = currentID;
+		end if;
+
+		set i = i + 1;
+		if i > length then
+			leave loop1;
+		else
+			iterate loop1;
+		end if;
+    end loop loop1;
+
+	select firstName into resultName from person where id = resultID;
+	return concat(resultID, ": ", resultName, " with $", resultado);
+end;
+
+drop function if exists practica;
+delimiter //
+create function practica() returns varchar(255)
+begin
+	declare resultado int default 0;
+	declare resultName varchar(100);
+	declare resultID varchar(40);
+    declare length int;
+    declare i int default 1;
+    declare currentMount int;
+	declare currentID varchar(40);
+    select count(id) into length from orders;
+
+    repeat1: repeat
+		select personID, mount into currentID, currentMount from orders where id = i;
+
+        if resultado = 0 or resultado > currentMount then
+			set resultado = currentMount;
+			set resultID = currentID;
+		end if;
+
+		set i = i + 1;
+	until i > length
+    end repeat repeat1;
+
+	select firstName into resultName from person where id = resultID;
+	return concat(resultID, ": ", resultName, " with $", resultado);
+end;
+
+
+
+
+
+drop procedure if exists practica;
+delimiter //
+create procedure practica(in xname varchar(100))
+begin
+	select count(person.id) as Count, person.bornCountry, sum(orders.mount) from person
+		inner join orders on person.id = orders.personID
+			group by person.bornCountry
+				having sum(orders.mount) > 0
+					order by sum(orders.mount) asc;
+end;
+
+
+drop procedure if exists authentication;
+delimiter //
+create procedure authentication(in xuserName varchar(255), in xuserPass varchar(12))
+begin
+	select * from person where userName = xuserName and userPass = xuserPass;
+end;
+
+call authentication("mingchungou@gmail.com", "mingchun1991");

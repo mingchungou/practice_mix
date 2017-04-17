@@ -1,0 +1,9 @@
+*Enter to the project folder and run:
+
+/> npm install -g grunt-cli
+
+/> npm init
+
+/> npm install -S grunt
+
+/> touch Gruntfile.js
