@@ -6,3 +6,4 @@ Examples:
 - mysql
 - git
 - grunt
+- angularjs 1.5

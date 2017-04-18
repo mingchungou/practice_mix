@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Angularjs 1.5</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <style>
+            .error {
+                color: red;
+            }
+
+            div section {
+                margin-bottom: 4rem;
+            }
+
+            section:last-child div {
+                width: 200px;
+                height: 200px;
+                background-color: blue;
+                transition: width 2s ease;
+            }
+            section:last-child div.hover {
+                width: 400px;
+            	background-color: green;
+            }
+        </style>
+    </head>
+    <body ng-app="myApp" ng-init="name = 'Ming Chung Ou'">
+        <h1>Hola {{name}}</h1>
+
+        <!--<section ng-controller="todoController as ctrl">-->
+        <div ng-controller="todoController">
+            <section>
+                <h2 ng-show="activities.length > 0">My Activities</h2>
+                <ul ng-cloak>
+                    <li ng-repeat="act in activities | orderBy: 'description'">
+                        {{act.description}} <strong>-</strong> {{act.date | date: 'short'}}
+                        <a href="" ng-click="removeActivity(act)">remove</a>
+                    </li>
+                </ul>
+                <form ng-submit="addActivity()">
+                    <label for="description">Description:</label>
+                    <input id="description" type="text" ng-model="todo.description" required /><br />
+                    <label for="date">Date:</label>
+                    <input id="date" type="datetime-local" ng-model="todo.date" required /><br />
+                    <input type="submit" value="Add" />
+                    <button type="button" ng-click="clearAll()">Clear All</button>
+                    <p class="error" ng-show="showError">That one is already added!</p>
+                </form>
+            </section>
+            <section>
+                <table ng-show="teams.length > 0">
+                    <caption>Tabla de Posiciones 2017</caption>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Team</th>
+                            <th>PJ</th>
+                            <th>PG</th>
+                            <th>PE</th>
+                            <th>PP</th>
+                            <th>GF</th>
+                            <th>GC</th>
+                            <th>GD</th>
+                            <th>Pts.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="team in teams | orderBy: 'position'">
+                            <th scope="row">{{team.position}}</th>
+                            <td>{{team.name}}</td>
+                            <td>{{team.gameplayed}}</td>
+                            <td>{{team.victory}}</td>
+                            <td>{{team.tie}}</td>
+                            <td>{{team.lost}}</td>
+                            <td>{{team.goals}}</td>
+                            <td>{{team.goalsreceived}}</td>
+                            <td>{{team.goaldifference}}</td>
+                            <td>{{team.points}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h2>Login</h2>
+                <form ng-submit="signin()">
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" ng-model="login.email" required /><br />
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" ng-model="login.password" required /><br />
+                    <input type="submit" value="Login" />
+                </form>
+                <p>{{login_response}}</p>
+            </section>
+            <section>
+                <h2>Dynamic Class</h2>
+                <div ng-class="{'hover': mouse}" ng-mouseover="mouse = true" ng-mouseout="mouse = false"></div>
+            </section>
+        </div>
+
+        <script src="../js/angular-1.5.min.js"></script>
+        <script src="../js/angular-local-storage.min.js"></script>
+        <script src="js/myScript.js"></script>
+        <script src="js/services.js"></script>
+        <!--<script src="js/factories.js"></script>-->
+        <script src="js/todoController.js"></script>
+    </body>
+</html>
