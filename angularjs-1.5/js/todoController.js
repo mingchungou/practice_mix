@@ -1,4 +1,5 @@
 app.controller("todoController", function($scope, TodoService, $http) {
+    var IP_SERVER = "http://192.168.1.10:8080";
     $scope.activities = TodoService.get();
     $scope.showError = false;
     $scope.teams = [];
@@ -49,7 +50,7 @@ app.controller("todoController", function($scope, TodoService, $http) {
     $scope.loadTeams = function() {
         $http({
             method: "GET",
-            url: "http://192.168.1.8:8080/data/teamsDB"
+            url: IP_SERVER + "/data/teamsDB"
         }).then(function(res) {
             $scope.teams = res.data;
         }, function(err) {
@@ -61,10 +62,11 @@ app.controller("todoController", function($scope, TodoService, $http) {
     $scope.signin = function() {
         $http({
             method: "POST",
-            url: "http://192.168.1.8:8080/login",
+            url: IP_SERVER + "/login",
             data: $scope.login
         }).then(function(res) {
             $scope.login_response = "Login success";
+            $scope.reset_login();
         }, function(err) {
             $scope.login_response = "Login failed";
         });
