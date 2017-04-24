@@ -1,1 +1,3 @@
-var app = angular.module("myApp", ["LocalStorageModule"]);
+"use strict";
+
+var app = angular.module( "myApp", [ "LocalStorageModule" ] );

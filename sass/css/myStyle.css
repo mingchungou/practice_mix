@@ -1,0 +1,10 @@
+.container {
+  margin-bottom: 1.5rem; }
+  .container p:nth-last-child(-n + 3):first-child, .container p:nth-last-child(-n + 3):first-child ~ * {
+    color: red; }
+  .container p:nth-last-child(2):first-child, .container p:nth-last-child(2):first-child ~ * {
+    color: blue; }
+  .container p:nth-last-child(n + 4):first-child, .container p:nth-last-child(n + 4):first-child ~ * {
+    color: green; }
+
+/*# sourceMappingURL=myStyle.css.map */

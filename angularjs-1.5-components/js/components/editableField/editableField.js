@@ -1,3 +1,5 @@
+"use strict";
+
 app.component("editableField", {
     templateUrl: "js/components/editableField/editableField.html",
     controller: "editableFieldController",
@@ -13,7 +15,7 @@ app.controller("editableFieldController", function() {
     this.editMode = false;
 
     this.handleModeChange = function() {
-        if (self.editMode) {
+        if ( self.editMode ) {
             self.onUpdate({value: self.fieldValue});
             self.fieldValueCopy = self.fieldValue;
         }
@@ -29,7 +31,7 @@ app.controller("editableFieldController", function() {
     this.$onInit = function() {
         self.fieldValueCopy = self.fieldValue;
 
-        if (!self.fieldType) {
+        if ( !self.fieldType ) {
             self.fieldType = "text";
         }
     };

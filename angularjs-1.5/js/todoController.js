@@ -1,4 +1,4 @@
-app.controller("todoController", function($scope, TodoService, $http) {
+app.controller("todoController", function( $scope, TodoService, $http ) {
     var IP_SERVER = "http://192.168.1.10:8080";
     $scope.activities = TodoService.get();
     $scope.showError = false;
@@ -15,7 +15,7 @@ app.controller("todoController", function($scope, TodoService, $http) {
 
         $scope.todo = {
             description: "",
-            date: new Date(year, month, day, hours, minutes)
+            date: new Date( year, month, day, hours, minutes )
         };
     };
     $scope.reset_todo();
@@ -30,8 +30,8 @@ app.controller("todoController", function($scope, TodoService, $http) {
 
     //***************************** Functions****************************
     $scope.addActivity = function() {
-        if (!TodoService.isExists(this.todo)) {
-            $scope.activities = TodoService.add(this.todo);
+        if ( !TodoService.isExists( this.todo ) ) {
+            $scope.activities = TodoService.add( this.todo );
             $scope.reset_todo();
             $scope.showError = false;
         } else {
@@ -39,8 +39,8 @@ app.controller("todoController", function($scope, TodoService, $http) {
         }
     };
 
-    $scope.removeActivity = function(activity) {
-        $scope.activities = TodoService.remove(activity);
+    $scope.removeActivity = function( activity ) {
+        $scope.activities = TodoService.remove( activity );
     };
 
     $scope.clearAll = function() {
@@ -51,10 +51,10 @@ app.controller("todoController", function($scope, TodoService, $http) {
         $http({
             method: "GET",
             url: IP_SERVER + "/data/teamsDB"
-        }).then(function(res) {
+        }).then(function( res ) {
             $scope.teams = res.data;
-        }, function(err) {
-            console.log(err);
+        }, function( err ) {
+            console.log( err );
         });
     };
     $scope.loadTeams();
@@ -64,10 +64,10 @@ app.controller("todoController", function($scope, TodoService, $http) {
             method: "POST",
             url: IP_SERVER + "/login",
             data: $scope.login
-        }).then(function(res) {
+        }).then(function( res ) {
             $scope.login_response = "Login success";
             $scope.reset_login();
-        }, function(err) {
+        }, function( err ) {
             $scope.login_response = "Login failed";
         });
     };
