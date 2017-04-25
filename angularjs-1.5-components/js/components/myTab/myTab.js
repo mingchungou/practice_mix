@@ -19,7 +19,7 @@ app.controller("myTabController", function() {
     };
 
     this.addPane = function( pane ) {
-        if (self.panes.length === 0) {
+        if ( self.panes.length === 0 ) {
             self.select( pane );
         }
 

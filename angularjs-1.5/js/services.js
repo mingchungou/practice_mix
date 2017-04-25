@@ -3,7 +3,7 @@
 app.service("TodoService", function( localStorageService ) {
     this.key = "todo-list";
 
-    if (localStorageService.get( this.key )) {
+    if ( localStorageService.get( this.key ) ) {
 		this.activities = localStorageService.get( this.key );
 	} else {
 		this.activities = [];

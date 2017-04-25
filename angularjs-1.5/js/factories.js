@@ -3,7 +3,7 @@ app.factory("TodoService", function( localStorageService ) {
         key: "todo-list"
     };
 
-    if (localStorageService.get( todoservice.key )) {
+    if ( localStorageService.get( todoservice.key ) ) {
 		todoservice.activities = localStorageService.get( todoservice.key );
 	} else {
 		todoservice.activities = [];

@@ -1,4 +1,5 @@
-@mixin quantity-query( $number, $comparison: "equal" ) {
+/******************* Get quantify of specific element ******************/
+@mixin quantity-query( $number, $comparison: "=" ) {
     $nth: "";
 
     @if index( ">", $comparison ) {
@@ -15,7 +16,7 @@
         @warn "Sorry, that's an invalid $comparison value.";
     }
 
-    &:nth-last-child(#{$nth}):first-child {
+    &:nth-last-child( #{ $nth } ):first-of-type {
         &,
         & ~ * {
             @content;
@@ -23,21 +24,193 @@
     }
 }
 
-
-.container {
-    margin-bottom: 1.5rem;
-
-    p {
-        @include quantity-query( 3, ">=" ) {
-            color: red;
+.quantify {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    h1 {
+        flex: 1 1 100%;
+    }
+    .container {
+        flex: 2 1 0px;
+        p {
+            @include quantity-query( 3, ">=" ) {
+                color: red;
+            }
+            @include quantity-query( 2, "=" ) {
+                color: blue;
+            }
+            @include quantity-query( 4, "<=" ) {
+                color: green;
+            }
         }
+    }
+}
 
-        @include quantity-query( 2, "=" ) {
-            color: blue;
+/******************* @if and @else ******************/
+@mixin add-dynamic-width( $option: 1, $width: auto ) {
+    @if $option == 1 {
+        width: $width;
+    } @else if $option == 2 {
+        width: $width * 2;
+    } @else if $option == 3 {
+        width: $width / 2;
+    } @else if $option == 4 {
+        width: $width + 10;
+    } @else if $option == 5 {
+        width: $width - 10;
+    } @else {
+        @error "The $option #{ $option } doesn't exist!";
+    }
+}
+
+.ifelse {
+    text-align: center;
+    .container {
+        @include add-dynamic-width( 4, 400px );
+        height: 60px;
+        background-color: black;
+    }
+}
+
+/******************* map-has-key and map-get ******************/
+$media-types: (
+    phone: "( max-width: 480px )",
+    tablet-portrait: "( max-width: 767px )",
+    tablet-landscape-desktop: "( min-width: 768px ) and ( max-width: 979px )",
+    large-desktop: "( min-width: 1200px )",
+    non-retina: "screen and ( -webkit-max-device-pixel-ratio: 1 )",
+    retina: "screen and ( -webkit-min-device-pixel-ratio: 2 )"
+);
+
+@mixin respond-to( $media: phone ) {
+    @if not map-has-key( $media-types, $media ) {
+        @error "#{ $media } is not known media types";
+    } @else {
+        @media #{ map-get( $media-types, $media ) } {
+            @content;
         }
+    }
+}
 
-        @include quantity-query( 4, "<=" ) {
-            color: green;
+.mapHasGet {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    @include respond-to( non-retina ) {
+        background-color: purple;
+    }
+}
+
+/******************* map-merge ******************/
+@function extend( $obj, $ext-obj ) {
+    @return map-merge( $obj, $ext-obj );
+}
+
+@mixin copy( $configuration ) {
+    @if type-of( $configuration ) != list and type-of( $configuration ) != map {
+        @error "Incorrect parameter";
+    } @else if length($configuration) == 0 {
+        @error "Empty parameter";
+    } @else {
+        @each $property, $value in $configuration {
+            #{ $property }: $value;
+        }
+    }
+}
+
+$default-object: (
+    width: 0px,
+    height: 0px,
+    background-color: null,
+    border: null
+);
+
+$object: (
+    width: 300px,
+    height: 300px,
+    background-color: green
+);
+
+$merge: extend( $default-object, $object );
+
+.mapMerge {
+    text-align: center;
+    @include copy( $merge );
+}
+
+/*@mixin addAttrDynamically( $width: 0px, $height: 0px, $background-color: null, $border: null ) {
+    width: $width;
+    height: $height;
+    background-color: $background-color;
+    border: $border;
+}
+
+.mapMerge {
+    text-align: center;
+    @include addAttrDynamically((
+        width: 300px,
+        height: 300px,
+        background-color: gray
+    )...);
+}*/
+
+/******************* type-of ******************/
+@mixin check-type-of( $value: () ) {
+    @if type-of( $value ) == string {
+        background-color: black;
+    } @else if type-of( $value ) == number {
+        background-color: red;
+    } @else if type-of( $value ) == bool {
+        background-color: green;
+    } @else if type-of( $value ) == color {
+        background-color: orange;
+    } @else if type-of( $value ) == list {
+        background-color: blue;
+    } @else if type-of( $value ) == map {
+        background-color: pink;
+    } @else {
+        @error "Can't identify type of value";
+    }
+}
+
+$data: (
+    ("item1", "item2", "item3")
+);
+
+.typeOf {
+    text-align: center;
+    .container {
+        width: 200px;
+        height: 200px;
+        @include check-type-of( $data );
+    }
+}
+
+/******************* @each ******************/
+$configuration: (
+    margin: 0,
+    padding: 0,
+    list-style: none,
+    background-color: green
+);
+
+$icons: (
+    car: "\f1b9",
+    battery-empty: "\f244",
+    bed: "\f236",
+    bicycle: "\f206"
+);
+
+.each {
+    text-align: center;
+    ul {
+        @include copy( $configuration );
+        @each $name, $icon in $icons {
+            .#{ $name }:before {
+                content: $icon;
+            }
         }
     }
 }
