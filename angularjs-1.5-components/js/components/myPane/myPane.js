@@ -16,6 +16,6 @@ app.controller("myPaneController", function() {
     var self = this;
 
     this.$onInit = function() {
-        self.tabsCtrl.addPane( self );
+        self.tabsCtrl.addPane(self);
     };
 });

@@ -21,13 +21,13 @@ app.controller("heroListController", function() {
         location: "New York"
     }];
 
-    this.updateHero = function( hero, prop, value ) {
-        hero[ prop ] = value;
+    this.updateHero = function(hero, prop, value) {
+        hero[prop] = value;
     };
 
-    this.deleteHero = function( hero ) {
-        self.list = self.list.filter(function( item ) {
-            return !angular.equals( hero, item );
+    this.deleteHero = function(hero) {
+        self.list = self.list.filter(function(item) {
+            return !angular.equals(hero, item);
         });
     };
 });

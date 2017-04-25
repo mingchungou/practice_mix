@@ -15,8 +15,8 @@ app.controller("editableFieldController", function() {
     this.editMode = false;
 
     this.handleModeChange = function() {
-        if ( self.editMode ) {
-            self.onUpdate({value: self.fieldValue});
+        if (self.editMode) {
+            self.onUpdate({ value: self.fieldValue });
             self.fieldValueCopy = self.fieldValue;
         }
 
@@ -31,7 +31,7 @@ app.controller("editableFieldController", function() {
     this.$onInit = function() {
         self.fieldValueCopy = self.fieldValue;
 
-        if ( !self.fieldType ) {
+        if (!self.fieldType) {
             self.fieldType = "text";
         }
     };
