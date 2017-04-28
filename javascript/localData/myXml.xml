@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<paises>
+	<pais>
+		<nombre>Costa Rica</nombre>
+		<color>Rojo</color>
+		<habitantes>4000000</habitantes>
+	</pais>
+	<pais>
+		<nombre>Nicaragua</nombre>
+		<color>Azul</color>
+		<habitantes>10000000</habitantes>
+	</pais>
+	<pais>
+		<nombre>Brasil</nombre>
+		<color>Verde</color>
+		<habitantes>40000000</habitantes>
+	</pais>
+</paises>
