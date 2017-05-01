@@ -1,32 +1,29 @@
-- Create a database
+/*** Note: {} is data to change ***/
 
-create database "name_database";
+/******** Create a database *********/
+create database {database_name};
 
-- show all databases
 
+/******** Show all databases *********/
 show databases;
 
-- Using a specific database
 
-use "name_database";
+/******** Select a database *********/
+use {database_name};
 
-- Remove a specific database
 
-drop database "name_database";
+/******** Remove a specific database *********/
+drop database {database_name};
 
-- Know the database is in use
 
+/******** Know the database is using *********/
 select database();
 
 
+/******** Create a table *********/
+create table {table_name} ({column type}, {column type}, {column type}, etc.);
 
-
-- Create a table
-
-create table "name_table" (column, column, column, etc.);
-
-Example:
-************** Unique
+/*** Examples - Unique ***/
 create table person (
 	id varchar(255) not null,
     firstName varchar(255) not null,
@@ -36,7 +33,7 @@ create table person (
     unique (id)
 );
 
-************** default
+/*** Examples - Set default data ***/
 create table person (
 	id varchar(255) not null,
     firstName varchar(255) not null,
@@ -46,7 +43,7 @@ create table person (
     unique (id)
 );
 
-************** Auto_increment
+/*** Examples - Auto_increment ***/
 create table person (
 	id int not null auto_increment,
     firstName varchar(255) not null,
@@ -56,7 +53,7 @@ create table person (
     unique (id)
 );
 
-************** Primary Key
+/*** Examples - Primary key ***/
 create table Person (
 	id varchar(40),
     firstName varchar(100) not null,
@@ -68,7 +65,7 @@ create table Person (
     primary key (id)
 );
 
-************** Foreigh Key
+/*** Examples - Foreign key ***/
 create table orders (
 	id int auto_increment,
     personID varchar(255),
@@ -77,86 +74,79 @@ create table orders (
     foreign key (personID) references person (id)
 );
 
-- Show all tables in specific db
 
+/******** Show all tables *********/
 show tables;
 
-- show colums from a specific table
 
-select * from "name_table";
-
-- Delete a specific table
-
-drop table "name_table";
-
-- Add new column to specific table
-
-alter table "name_table" add "column" "type";
-
-- Remove an exist column to specific table
-
-alter table "name_table" drop column "column";
-
-- Modify datatype of specific column to specific table
-
-alter table "name_table" modify "column" "type";
-
-- Make a column to be "unique" value
-
-alter table "name_table" add unique ("column");
-
-- Make a column to be "primary key" value
-
-alter table "name_table" add primary key ("column");
-
-- Make a column to be "foreign key" value
-
-alter table "name_table" add foreign key ("column") references "name_parent_table" ("parent_column");
+/******** Show all columns from a table *********/
+select * from {table_name};
 
 
+/******** Delete a table *********/
+drop table {table_name};
 
 
+/******** Add new column to table *********/
+alter table {table_name} add {column type};
 
-- Insert a row to specific table
 
-insert into "name_table" (column, column, column, etc.) values (value, value, value, etc.);
+/******** Remove a column from table *********/
+alter table {table_name} drop column {column};
 
-Ejemplo:
+
+/******** Modify a column from table *********/
+alter table {table_name} modify {column type};
+
+
+/******** Make a column to be unique type *********/
+alter table {table_name} add unique ({column});
+
+
+/******** Make a column to be primary key *********/
+alter table {table_name} add primary key ({column});
+
+
+/******** Make a column to be foreign key *********/
+alter table {table_name} add foreign key ({column}) references {parent_table_name} ({parent_column});
+
+
+/******** Insert a row *********/
+insert into {table_name} ({column}, {column}, {column}, etc.) values ({value}, {value}, {value}, etc.);
+
+/*** Example ***/
 insert into person (id, firstName, middleName, lastName, age, bornCountry) values ("801060850", "Ming", "Chung", "Ou", 25, "Taiwan");
 
-- Remove all rows to specific table
 
-truncate "name_table";
+/******** Remove all rows *********/
+truncate {table_name};
 
-- Get specific rows to specific table
 
-select * from "name_table" where "condition";
+/******** Get specific row(s) *********/
+select * from {table_name} where {condition};
 
-- delete specific rows to specific table
 
-delete from "name_table" where "condition";
+/******** Delete a row(s) *********/
+delete from {table_name} where {condition};
 
-- update specific row to specifc table
 
-update "name_table" set "column" = "new_value" where "condition";
+/******** Update a row(s) *********/
+update {table_name} set {column} = {value} where {condition};
 
-- get rows but order by conditions
 
-select * from "name_table" order by "column" asc|desc;
-
-Ejemplos de select:
+/******** Some examples of select *********/
 select * from person where middleName is null and age < 24;
 select * from person where age > 20 and age <= 25;
 select * from person where not middleName is not null;
 select * from person where firstName = "Maria" or lastName = "Ou";
-select * from person order by id asc;
-select * from person order by id desc;
-select * from person limit 3;    //Take first 3 rows
+select * from person order by id asc; /* Get all rows but ordering asc */
+select * from person order by id desc; /* Get all rows but ordering desc */
+select * from person limit 3;    /* Take first 3 rows */
 select * from person where middleName is null limit 1;
 select * from person where age between 20 and 25;
 select id, firstName, max(age) from person where middleName is null;
-select * from person where age = (select max(age) from person);   //Get the row with highest age
-select avg(age) from person;
+select * from person where age = (select max(age) from person);   /* Get the row with highest age */
+select avg(age) from person;   /* Get average value of numeric column */
 select count(*) from person where middleName is null;
 select * from person where firstName like "m%";
 select * from person where bornCountry in ("Taiwan", "Costa Rica");
@@ -171,14 +161,10 @@ select count(person.id), person.bornCountry, sum(orders.mount) from person
 			having sum(orders.mount) > 0
 				order by sum(orders.mount) asc;
 
-select * from person where exists
-	(select mount from orders where personID = person.id and mount < 5000);
+select * from person where exists (select mount from orders where personID = person.id and mount < 5000);
 
 
-
-
-
-
+/******** Some examples of functions *********/
 drop function if exists practica;
 delimiter //
 create function practica() returns int
@@ -205,6 +191,7 @@ begin
 
     return resultado;
 end;
+
 
 drop function if exists practica;
 delimiter //
@@ -239,6 +226,7 @@ begin
 	return concat(resultID, ": ", resultName, " with $", resultado);
 end;
 
+
 drop function if exists practica;
 delimiter //
 create function practica() returns varchar(255)
@@ -268,10 +256,10 @@ begin
 	return concat(resultID, ": ", resultName, " with $", resultado);
 end;
 
+select practica();
 
 
-
-
+/******** Some examples of procedure *********/
 drop procedure if exists practica;
 delimiter //
 create procedure practica(in xname varchar(100))
@@ -292,3 +280,10 @@ begin
 end;
 
 call authentication("mingchungou@gmail.com", "mingchun1991");
+
+
+/******** Configuration of connecting to mysql db from other domain *********/
+create user 'monty'@'localhost' identified by 'some_pass';
+grant all privileges on *.* to 'monty'@'localhost' with grant option;
+create user 'monty'@'%' identified by 'some_pass';
+grant all privileges on *.* TO 'monty'@'%' with grant option;
