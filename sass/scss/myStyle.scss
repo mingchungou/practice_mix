@@ -270,7 +270,7 @@ $class-collection: (
 @mixin run-for() {
     $aux: null;
 
-    @for $i from 1 through 4 {
+    @for $i from 1 through length($class-collection) {
         .#{$class-slug}-#{$i} {
             $aux: nth($class-collection, $i);
             flex: nth($aux, 1);
@@ -284,7 +284,7 @@ $class-collection: (
     $counter: 1;
     $aux: null;
 
-    @while $counter <= 4 {
+    @while $counter <= length($class-collection) {
         .#{$class-slug}-#{$counter} {
             $aux: nth($class-collection, $counter);
             flex: nth($aux, 1);
@@ -306,8 +306,8 @@ $class-collection: (
         flex: 1 1 100%;
     }
 
-    @include run-for();
-    //@include run-while();
+    //@include run-for();
+    @include run-while();
 }
 
 /******************* interesting mixin ******************/
