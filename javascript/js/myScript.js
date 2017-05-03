@@ -83,7 +83,7 @@ xArray1.unshift("Lemon"); //Add new item to first
 console.log(xArray1.toString());
 xArray1.splice(2, 0, "Banana", "Mango"); //Add item(s) from specific position
 console.log(xArray1.toString());
-xArray1.splice(0, 1);
+xArray1.splice(0, 1); //Remove item set
 console.log(xArray1.toString()); //Remove an item at specific position
 console.log(xArray1.concat(xArray2, xArray3).toString()); //Join n arrays
 console.log(xArray1.slice(1).toString());
@@ -211,6 +211,7 @@ ex = /^[^()\/\\\[\]@#$%&?¡!¿{}<>]+@[a-zA-Z0-9]+(?:\.[a-zA-Z]{2,3}){1,2}/;
 
 
 /****************** Errors *****************/
+//Used for executing several tasks but controlling the errores
 //debugger;
 /*try {
 	getDate();
@@ -244,22 +245,25 @@ myObject = new Person("Michael", "Forbes", 35, "brown");
 delete myObject.age;
 //console.log(myObject);
 
+//Add new attribute and function to constructor object
 Person.prototype.country = "";
-myObject = new Person("Maria", "Alpizar", 24, "blue");
-myObject.country = "Costa Rica";
-//console.log(myObject);
-
 Person.prototype.getName = function() {
     return this.firstName.concat(" ", this.lastName);
 };
 
+myObject = new Person("Maria", "Alpizar", 24, "blue", "Costa Rica");
+myObject.country = "Costa Rica";
+//console.log(myObject);
+
+
+/****************** Object - Heritage *****************/
 function Worker(first, last, age, eye, profession) {
-    Person.call(this, first, last, age, eye);
+    Person.call(this, first, last, age, eye); //Inherit the attributes from object Person to Worker but not the properties of object Person
     this.profession = profession;
 };
 
-Worker.prototype = Object.create(Person.prototype);
-Worker.prototype.constructor = Worker;
+Worker.prototype = Object.create(Person.prototype); //Add properties from object Person to Worker
+Worker.prototype.constructor = Worker; //But wanting to keep Worker own constructor
 
 myObject = new Worker("Ming", "Ou", 25, "black", "Engineer");
 /*console.log(myObject);
@@ -283,18 +287,24 @@ var sumAll = function() {
 //console.log(sumAll(1, 2, 3, 4, 5));
 
 
-/****************** Call/Apply *****************/
-var myCall = function(a, b) {
-	return a * b;
+/****************** Call *****************/
+//Call whatever function but tring the object passed by parameter as this
+//Special character is receiving extra parameters as usual
+var sayHello = function(name_person, greeting) {
+	console.log("Hola soy " + this.firstName + ", y saludo a " + name_person + " con " + greeting);
 }
 
-myNumber = myCall.call(myNumber, 2, 4);
-//console.log(myNumber);
-myNumber = myCall.apply(myNumber, [2, 4]);
-//console.log(myNumber);
+//sayHello.call(myObject, "Juan", "afecto");
+
+
+/****************** Apply *****************/
+//Call whatever function but tring the object passed by parameter as this
+//Special character is receiving extra parameters as an unique array
+//sayHello.apply(myObject, ["Juan", "afecto"]);
 
 
 /****************** Closure *****************/
+//Functions that handles independent variables and remembers them
 var add = (function() {
 	var counter = 0;
 	return function() {
@@ -306,7 +316,9 @@ var add = (function() {
 add();
 console.log(add());*/
 
+
 /****************** Ajax *****************/
+//Method to create interactive applications where works asynchronous
 var loadData = function() {
 	var xhttp = new XMLHttpRequest();
 
@@ -376,4 +388,44 @@ var getJSONData = function(jsonData) {
 	document.body.appendChild(table);
 };
 
-loadData();
+//loadData();
+
+
+/****************** Callback *****************/
+//Callback function is executed after current one finished
+function doSomething(callback) {
+    callback();
+};
+
+function justPrint() {
+    console.log("Printing");
+};
+
+//doSomething(justPrint);
+
+
+/****************** Promise *****************/
+//Method to do a task asynchronous, but the result could be available now, future or never.
+var tryLoadingFile = function() {
+    return new Promise(function(resolve, reject) {
+        var xhttp = new XMLHttpRequest();
+
+    	xhttp.onreadystatechange = function() {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    resolve("Loading correctly");
+                } else {
+                    reject("Error on loading");
+                }
+            }
+    	};
+    	xhttp.open("GET", "localData/myXml.xm", true);
+    	xhttp.send();
+    });
+};
+
+tryLoadingFile().then(function(res) {
+    console.log(res);
+}, function(err) {
+    console.log(err);
+});
