@@ -1,3 +1,5 @@
+//Component is similar than directive. It is block of reusable code.
+
 "use strict";
 
 app.component("editableField", {
@@ -10,29 +12,30 @@ app.component("editableField", {
     }
 });
 
-app.controller("editableFieldController", function() {
-    var self = this;
-    this.editMode = false;
+app.controller("editableFieldController", [
+    function() {
+        var self = this;
+        this.editMode = false;
 
-    this.handleModeChange = function() {
-        if (self.editMode) {
-            self.onUpdate({ value: self.fieldValue });
+        this.handleModeChange = function() {
+            if (self.editMode) {
+                self.onUpdate({ value: self.fieldValue });
+                self.fieldValueCopy = self.fieldValue;
+            }
+
+            self.editMode = !self.editMode;
+        };
+
+        this.reset = function() {
+            self.fieldValue = self.fieldValueCopy;
+            self.editMode = !self.editMode;
+        };
+
+        this.$onInit = function() {
             self.fieldValueCopy = self.fieldValue;
-        }
 
-        self.editMode = !self.editMode;
-    };
-
-    this.reset = function() {
-        self.fieldValue = self.fieldValueCopy;
-        self.editMode = !self.editMode;
-    };
-
-    this.$onInit = function() {
-        self.fieldValueCopy = self.fieldValue;
-
-        if (!self.fieldType) {
-            self.fieldType = "text";
-        }
-    };
-});
+            if (!self.fieldType) {
+                self.fieldType = "text";
+            }
+        };
+    }]);

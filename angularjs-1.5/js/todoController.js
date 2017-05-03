@@ -1,74 +1,81 @@
-app.controller("todoController", function($scope, TodoService, $http) {
-    var IP_SERVER = "http://192.168.1.10:8080";
-    $scope.activities = TodoService.get();
-    $scope.showError = false;
-    $scope.teams = [];
-    $scope.login_response = "";
+//Controllers allow us to implement the logic to block of html, like handling their events or functions
 
-    $scope.reset_todo = function() {
-        var today = new Date(),
-            year = today.getFullYear(),
-            month = today.getMonth() + 1,
-            day = today.getDate(),
-            hours = today.getHours(),
-            minutes = today.getMinutes();
+app.controller("todoController", ["$scope", "todoService", "$http",
+    function($scope, todoService, $http) {
+        var self = this,
+            IP_SERVER = "http://192.168.1.9:8080";
 
-        $scope.todo = {
-            description: "",
-            date: new Date(year, month, day, hours, minutes)
+        //Todo logic
+        this.activities = todoService.get();
+        this.showError = false;
+
+        this.reset_todo = function() {
+            var today = new Date(),
+                year = today.getFullYear(),
+                month = today.getMonth() + 1,
+                day = today.getDate(),
+                hours = today.getHours(),
+                minutes = today.getMinutes();
+
+            self.todo = {
+                description: "",
+                date: new Date(year, month, day, hours, minutes)
+            };
         };
-    };
-    $scope.reset_todo();
+        this.reset_todo();
 
-    $scope.reset_login = function() {
-        $scope.login = {
-            email: "",
-            password: ""
+        this.addActivity = function() {
+            if (!todoService.isExists(self.todo)) {
+                self.activities = todoService.add(self.todo);
+                self.reset_todo();
+                self.showError = false;
+            } else {
+                self.showError = true;
+            }
         };
-    };
-    $scope.reset_login();
 
-    //***************************** Functions****************************
-    $scope.addActivity = function() {
-        if (!TodoService.isExists(this.todo)) {
-            $scope.activities = TodoService.add(this.todo);
-            $scope.reset_todo();
-            $scope.showError = false;
-        } else {
-            $scope.showError = true;
-        }
-    };
+        this.removeActivity = function(activity) {
+            self.activities = todoService.remove(activity);
+        };
 
-    $scope.removeActivity = function(activity) {
-        $scope.activities = TodoService.remove(activity);
-    };
+        this.clearAll = function() {
+            self.activities = todoService.clearAll();
+        };
 
-    $scope.clearAll = function() {
-        $scope.activities = TodoService.clearAll();
-    };
+        //Ajax
+        this.todoList = [];
+        this.loginResponse = "";
+        this.order = "-activity";
 
-    $scope.loadTeams = function() {
-        $http({
-            method: "GET",
-            url: IP_SERVER + "/data/teamsDB"
-        }).then(function(res) {
-            $scope.teams = res.data;
-        }, function(err) {
-            console.log(err);
-        });
-    };
-    $scope.loadTeams();
+        this.reset_login = function() {
+            self.login = {
+                email: "",
+                password: ""
+            };
+        };
+        this.reset_login();
 
-    $scope.signin = function() {
-        $http({
-            method: "POST",
-            url: IP_SERVER + "/login",
-            data: $scope.login
-        }).then(function(res) {
-            $scope.login_response = "Login success";
-            $scope.reset_login();
-        }, function(err) {
-            $scope.login_response = "Login failed";
-        });
-    };
-});
+        (function() {
+            $http({
+                method: "GET",
+                url: IP_SERVER + "/data/activities/db"
+            }).then(function(res) {
+                self.todoList = res.data;
+            }, function(err) {
+                console.log(err);
+            });
+        })();
+
+        this.signin = function() {
+            $http({
+                method: "POST",
+                url: IP_SERVER + "/login",
+                data: self.login
+            }).then(function(res) {
+                self.loginResponse = "Login success";
+                self.reset_login();
+            }, function(err) {
+                self.loginResponse = "Login failed";
+            });
+        };
+    }]);

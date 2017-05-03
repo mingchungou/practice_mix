@@ -12,10 +12,11 @@ app.component("myPane", {
     }
 });
 
-app.controller("myPaneController", function() {
-    var self = this;
+app.controller("myPaneController", [
+    function() {
+        var self = this;
 
-    this.$onInit = function() {
-        self.tabsCtrl.addPane(self);
-    };
-});
+        this.$onInit = function() {
+            self.tabsCtrl.addPane(self);
+        };
+    }]);

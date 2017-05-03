@@ -429,3 +429,6 @@ tryLoadingFile().then(function(res) {
 }, function(err) {
     console.log(err);
 });
+
+
+//use strict: in other word strict mode, and it helps us to detect syntasis errors

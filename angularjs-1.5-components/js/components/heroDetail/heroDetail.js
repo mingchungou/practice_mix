@@ -10,14 +10,15 @@ app.component("heroDetail", {
     }
 });
 
-app.controller("heroDetailController", function() {
-    var self = this;
+app.controller("heroDetailController", [
+    function() {
+        var self = this;
 
-    this.update = function(prop, value) {
-        self.onUpdate({
-            hero: self.hero,
-            prop: prop,
-            value: value
-        });
-    };
-});
+        this.update = function(prop, value) {
+            self.onUpdate({
+                hero: self.hero,
+                prop: prop,
+                value: value
+            });
+        };
+    }]);

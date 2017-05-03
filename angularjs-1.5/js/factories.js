@@ -1,48 +1,56 @@
-app.factory("TodoService", function(localStorageService) {
-    var todoservice = {
-        key: "todo-list"
-    };
+//Factory is an initialization of a service.
+//A service is a Singleton object and is reusable.
+//At the end should return the object that contains the service
 
-    if (localStorageService.get(todoservice.key)) {
-		todoservice.activities = localStorageService.get(todoservice.key);
-	} else {
-		todoservice.activities = [];
-	}
+"use strict";
 
-    todoservice.add = function(activity) {
-		todoservice.activities.push(activity);
-		todoservice.updateLocalStorage();
-		return todoservice.get();
-	};
+app.factory("todoService", ["localStorageService",
+    function(localStorageService) {
+        var todoservice = {
+            key: "todo-list"
+        };
 
-    todoservice.updateLocalStorage = function() {
-		localStorageService.set(todoservice.key, todoservice.activities);
-	};
+        if (localStorageService.get(todoservice.key)) {
+    		todoservice.activities = localStorageService.get(todoservice.key);
+    	} else {
+    		todoservice.activities = [];
+    	}
 
-    todoservice.get = function() {
-		return todoservice.activities;
-	};
+        todoservice.add = function(activity) {
+    		todoservice.activities.push(activity);
+    		todoservice.updateLocalStorage();
+    		return todoservice.get();
+    	};
 
-    todoservice.isExists = function(activity) {
-        var exist = todoservice.activities.find(function(item) {
-            return angular.equals(item.description.toLowerCase(), activity.description.toLowerCase());
-        });
-        return exist ? true : false;
-    };
+        todoservice.updateLocalStorage = function() {
+    		localStorageService.set(todoservice.key, todoservice.activities);
+    	};
 
-    todoservice.remove = function(activity) {
-        todoservice.activities = todoservice.activities.filter(function(item) {
-			return !angular.equals(activity, item);
-		});
-		todoservice.updateLocalStorage();
-		return todoservice.get();
-    };
+        todoservice.get = function() {
+    		return todoservice.activities;
+    	};
 
-    todoservice.clearAll = function() {
-		todoservice.activities = [];
-		todoservice.updateLocalStorage();
-		return todoservice.get();
-	};
+        todoservice.isExists = function(activity) {
+            var exist = todoservice.activities.find(function(item) {
+                return angular.equals(item.description.toLowerCase(), activity.description.toLowerCase());
+            });
+            return exist ? true : false;
+        };
 
-    return todoservice;
-});
+        todoservice.remove = function(activity) {
+            todoservice.activities = todoservice.activities.filter(function(item) {
+    			return !angular.equals(activity, item);
+    		});
+    		todoservice.updateLocalStorage();
+    		return todoservice.get();
+        };
+
+        todoservice.clearAll = function() {
+    		todoservice.activities = [];
+    		todoservice.updateLocalStorage();
+    		return todoservice.get();
+    	};
+
+        return todoservice;
+    }]);
+    
