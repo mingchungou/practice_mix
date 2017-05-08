@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"? standalone="no">
+<!-- version indicates the version of XML used -->
+<!-- standalone indicates if datas inside are based on external source -->
+
+<!DOCTYPE bookstore [
+   <!ELEMENT bookstore (book)>
+   <!ELEMENT book (title,author,year,price)>
+   <!ELEMENT title (#PCDATA)>
+   <!ELEMENT author (#PCDATA)>
+   <!ELEMENT year (#PCDATA)>
+   <!ELEMENT price (#PCDATA)>
+   <!ATTLIST book category CDATA #REQUIRED>
+]>
+
+<bookstore>
+    <book category="cooking">
+        <title lang="en">Everyday Italian</title>
+        <author>Giada De Laurentiis</author>
+        <year>2005</year>
+        <price>30.00</price>
+    </book>
+    <book category="children">
+        <title lang="en">Harry Potter</title>
+        <author>J K. Rowling</author>
+        <year>2005</year>
+        <price>29.99</price>
+    </book>
+    <book category="web">
+        <title lang="en-us">XQuery Kick Start</title>
+        <author>James McGovern</author>
+        <year>2003</year>
+        <price>49.99</price>
+    </book>
+    <book category="web">
+        <title lang="en-us">Learning XML</title>
+        <author>Erik T. Ray</author>
+        <year>2003</year>
+        <price>39.95</price>
+    </book>
+</bookstore>
+
+<!-- version indicates the version of XML used -->
+<!-- standalone indicates if datas inside are based on external source -->

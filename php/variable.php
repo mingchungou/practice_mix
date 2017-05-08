@@ -50,20 +50,32 @@
     #rsort($teams); //Order the array desc
 
     /*echo "<pre>";
-    var_dump($teams); //Show details about something
+    var_dump($teams); //Show details of variables
     echo "</pre>";*/
 
     #print_r($teams); //It's almost the same as var_dump
 
-    $last = array_pop($week);
-    #echo $last;
+    /*$last = array_pop($week); //Remove last element
+    echo $last;*/
+
+    /*array_push($mixArray, "Real Madrid", "Barcelona"); //Add new element(s) at the end
+    print_r($mixArray);*/
 
     #echo join("<br />", $week);
 
     #echo join(" - ", array_reverse($week));
 
+    //Add new array items manually
+    $myArray = array();
 
-    /******************** Associative array  *****************/
+    /*$myArray[] = 1;
+    $myArray[] = 2;
+    $myArray[] = 3;
+    $myArray[] = 4;
+    echo print_r($myArray);*/
+
+
+    /******************** Associative array *****************/
     $personalInfo = array('phone number' => '12345678', 'age' => 25, 'last name' => 'Ou', 'country' => 'Costa Rica');
     $personalInfo['phone number'] = '87654321';
 
@@ -71,6 +83,10 @@
     echo 'Age: ' . $personalInfo['age'] . '<br />';
     echo 'Last name: ' . $personalInfo['last name'] . '<br />';
     echo 'Country: ' . $personalInfo['country'];*/
+
+    //Add new item manually
+    /*$personalInfo["fvColor"] = "Blue";
+    echo print_r($personalInfo);*/
 
     #asort($personalInfo); //sort associative array asc, according to value
     #arsort($personalInfo);
@@ -80,8 +96,14 @@
     /*extract($personalInfo); //convert each item of associative array in different variables
     echo ($age);*/
 
+    //Use combine to create an associative array.
+    $fname = array("Peter", "Ben", "Joe");
+    $age = array(35, 45, 28);
 
-    /******************** Multidimensional array  *****************/
+    /*$myArray = array_combine($fname, $age); //First array contains keys and the second contains values
+    print_r($myArray);*/
+
+    /******************** Multidimensional array *****************/
     $friends = [
         ['Ming', ['Saprissa', 'Hala Madrid', [1, 2, 3]]],
         ['Maria', 24],
@@ -92,7 +114,7 @@
     #echo $friends[0][1][2][0];
 
 
-    /******************** Scope  *****************/
+    /******************** Scope *****************/
     $value = 0;
     $x = 5;
     $y = 10;
@@ -113,7 +135,7 @@
     /*myGlobal();
     echo $globalX;*/
 
-    function xSum() { //Is able to access variables out of functions by using $GLOBALS array
+    function xSum() { //Is able to access to global variables by using $GLOBALS array
         $GLOBALS['y'] = $GLOBALS['x'] + $GLOBALS['y'];
     }
 
@@ -134,7 +156,7 @@
     #print $x + $y;
 
 
-    /******************** Functions  *****************/
+    /******************** Functions *****************/
     function greeting($name) {
         echo "Hello $name";
     }
@@ -149,11 +171,11 @@
 
     $specialK = "<b>Hello</b>";
 
-    #echo htmlspecialchars($specialK);
+    #echo htmlspecialchars($specialK); //Convert special characters to html entities
     #echo trim($specialK); //Remove white spaces at beginning and at the end
 
 
-    /******************** Condition  *****************/
+    /******************** Condition *****************/
     $left = $personalInfo["age"];
     $right = 18;
 
@@ -177,7 +199,7 @@
     }*/
 
 
-    /******************** Switch  *****************/
+    /******************** Switch *****************/
     /*$favColor = "green";
 
     switch($favColor) {
@@ -196,11 +218,11 @@
     }*/
 
 
-    /******************** Short condition  *****************/
+    /******************** Short condition *****************/
     #echo (isset($number)) ? "Defined" : "Undefined";
 
 
-    /******************** For  *****************/
+    /******************** For *****************/
     /*for ($i = 0; $i < 10; $i += 2) {
         echo "<p>Number is $i</p>";
     }*/
@@ -210,7 +232,7 @@
     }*/
 
 
-    /******************** While  *****************/
+    /******************** While *****************/
     /*$i = 10;
     while($i > 0) {
         echo "<p>Number is $i</p>";
@@ -218,7 +240,7 @@
     }*/
 
 
-    /******************** Do while  *****************/
+    /******************** Do while *****************/
     /*$i = 10;
     do {
         echo "<p>Number is $i</p>";
@@ -226,7 +248,7 @@
     } while($i > 0);*/
 
 
-    /******************** Break/continue  *****************/
+    /******************** Break/continue *****************/
     /*foreach ($teams as $team) {
         if ($team === "_eredia" or $team === "Hello Kitty") {
             continue;
@@ -240,7 +262,7 @@
     }*/
 
 
-    /******************** Math  *****************/
+    /******************** Math *****************/
     $decimal = 3.14141414;
 
     #echo round($decimal, 3); //Reduce decimal to number set
@@ -249,8 +271,30 @@
     #echo M_PI;
 
 
-    /******************** Die  *****************/
+    /******************** Die *****************/
     #die(); //Cut down the code below
+
+
+    /******************** Date and Time *****************/
+    date_default_timezone_set("America/Costa_Rica"); //Set timezone
+
+    #echo "Date: " . date("Y/m/d") . "<br />";
+    #echo "Date: " . date("Y.m.d") . "<br />";
+    #echo "Date: " . date("Y-m-d") . "<br />";
+    #echo "Day: " . date("d") . "<br />";
+    #echo "Month: " . date("m") . "<br />";
+    #echo "Year: " . date("Y") . "<br />";
+
+    #echo "Week day: " . date("l") . "<br />"; //Return the day of week by letters
+    #echo "Week day: " . date("L") . "<br />"; //Return the day of week by numeric
+
+    #echo "Time: " . date("h:i:sa") . "<br />";
+    #echo "Hours: " . date("h") . "<br />";
+    #echo "Minutes: " . date("i") . "<br />";
+    #echo "Seconds: " . date("sa") . "<br />";
+
+    $ownDate = mktime(11, 14, 54, 8, 12, 2014); //Set my own date
+    #echo "Date created: " . date("Y-m-d h:i:sa", $ownDate) . "<br />";
 ?>
 
 <!DOCTYPE html>

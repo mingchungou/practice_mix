@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    $_SESSION["name"] = "Ming Chung";
+    $_SESSION["name"] = "Ming Chung"; //set value within session
 ?>
 
 <!DOCTYPE html>

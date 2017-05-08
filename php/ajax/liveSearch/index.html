@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Ajax - Live Search</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <link rel="stylesheet" href="../../../css/bootstrap.min.css"  />
+        <style type="text/css">
+            .possible-list-content {
+                padding: 0;
+            }
+
+            .possible-list-content ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .possible-list-content ul li {
+                padding: 0.2rem 1rem;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+            }
+
+            .possible-list-content ul li {
+                border-top: 0;
+            }
+
+            .possible-list-content ul li:last-child {
+                border-radius: 0 0 5px 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form>
+                <div class="row">
+                    <label class="col-3" for="name">Name:</label>
+                    <input id="name" class="col-9" type="text" name="name" onkeyup="search(this.value)" placeholder="Write a name" />
+                    <div class="possible-list-content col-9 offset-3">
+                        <ul id="possible-list"></ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Names table -->
+        <!--<div id="name-table-content" class="container"></div>-->
+
+        <script src="../../../lib/jquery-3.2.0.min.js"></script>
+        <script src="../../../lib/tether.min.js"></script>
+        <script src="../../../lib/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            //Function for loading all names from xml response
+            /*(function() {
+                var xhttp = new XMLHttpRequest();
+
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200 && this.responseXML) {
+                        //Create dynamic name table
+                        var names = this.responseXML.getElementsByTagName("name"),
+                            tableElement = "<table><thead><tr><th>ID</th><th>Name</th></tr></thead><tbody>";
+
+                        for (var i = 0; i < names.length; i++) {
+                            tableElement += "<tr><td>" + (i + 1) + "</td><td>" + names[i].innerHTML + "</td>";
+                        }
+
+                        tableElement += "</tbody></table>";
+                        document.getElementById("name-table-content").innerHTML = tableElement;
+                    }
+                };
+
+                xhttp.open("GET", "liveSearch.php?option=1", true);
+                xhttp.send();
+            })();*/
+
+            //Function for bringing all possible names based on written by user
+            var search = function(str) {
+                if (!str) {
+                    emptyList();
+                } else {
+                    var xhttp = new XMLHttpRequest();
+
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status === 200) {
+                            emptyList();
+
+                            var names = JSON.parse(this.responseText);
+
+                            //Check names array is not empty
+                            if (names.length > 0) {
+                                //Injecting dynamically each name as list item
+                                var possibleList = document.getElementById("possible-list"),
+                                    element_li;
+
+                                for (var i = 0; i < names.length; i++) {
+                                    element_li = document.createElement("li");
+                                    element_li.appendChild(document.createTextNode(names[i]));
+                                    possibleList.appendChild(element_li);
+                                }
+                            }
+                        }
+                    };
+
+                    xhttp.open("GET", "liveSearch.php?option=2&name=" + str, true);
+                    xhttp.send();
+                }
+            };
+
+            //Function for clearing possible name list
+            var emptyList = function() {
+                var possibleList = document.getElementById("possible-list");
+
+                while (possibleList.hasChildNodes()) {
+                    possibleList.removeChild(possibleList.firstChild);
+                }
+            };
+        </script>
+    </body>
+</html>

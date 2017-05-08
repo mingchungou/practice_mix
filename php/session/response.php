@@ -1,8 +1,9 @@
 <?php
     session_start();
 
+    //Check session is not empty
     if ($_SESSION) {
-        $name = $_SESSION["name"];
+        $name = $_SESSION["name"]; //get value from session
         echo "<h1>Hello $name</h1>";
     } else {
         echo "<p>Session is not started</p>";

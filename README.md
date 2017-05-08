@@ -9,5 +9,7 @@ Examples:
 - angularjs 1.5
 - javascript
 - sass
+- php
+- xml
 
 https://www.youtube.com/watch?v=RsQ1tFLwldY

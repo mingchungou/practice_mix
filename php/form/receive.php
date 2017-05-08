@@ -1,4 +1,5 @@
  <?php
+    /******************* Parse post request ********************/
     /*if (!$_POST) {
         header("location: http://localhost:80/php/form/index.php");
     }
@@ -10,6 +11,8 @@
 
     echo "Hi " . $name . ", you're " . $gender;*/
 
+
+    /******************* Parse get request ********************/
     if (!$_GET) {
         header("location: http://localhost:80/php/form/index.php");
     }

@@ -1,4 +1,5 @@
 <?php
+    //Check cookie
     if (isset($_COOKIE["font-size"])) {
         $size = htmlspecialchars($_COOKIE["font-size"]);
     } else {

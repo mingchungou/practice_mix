@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Ajax - todo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <style type="text/css">
+            iframe {
+                width: 100%;
+                height: 100vh;
+                background-color: #ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Show all todos -->
+        <!--<iframe src="todo.php">
+            <section id="todo-content"></section>
+        </iframe>-->
+
+        <!--<section id="todo-content"></section>-->
+
+
+        <!-- Show specific todo -->
+        <section>
+            <select name="todo" onchange="showTodo(this.value)">
+                <option value="">Select an activity</option>
+                <option value="1">Study</option>
+                <option value="2">Go running</option>
+                <option value="3">Having interview</option>
+                <option value="4">Go shopping</option>
+                <option value="6">Play guitar</option>
+            </select>
+            <br />
+            <br />
+            <div id="todo-item"></div>
+        </section>
+
+        <script type="text/javascript">
+            //Function for loading all todos
+            /*(function(str) {
+                var xhttp = new XMLHttpRequest();
+
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        document.getElementById("todo-content").innerHTML = this.responseText;
+                    }
+                };
+
+                xhttp.open("GET", "todo.php", true);
+                xhttp.send();
+            })();*/
+
+            //Function for requesting the specific todo by id
+            function showTodo(option) {
+                if (option) {
+                    var xhttp = new XMLHttpRequest();
+
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status === 200) {
+                            document.getElementById("todo-item").innerHTML = this.responseText;
+                        }
+                    };
+
+                    xhttp.open("GET", "getTodo.php?option=" + option, true);
+                    xhttp.send();
+                } else {
+                    document.getElementById("todo-item").childNodes[0].remove();
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Ajax - Hint</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    </head>
+    <body>
+        <form>
+            <label for="name">First Name:</label>
+            <input id="name" type="text" name="name" onkeyup="showHint(this.value)" />
+        </form>
+        <p>Suggestions: <span id="txtHint"></span></p>
+
+        <script type="text/javascript">
+            var showHint = function(str) {
+                if (!str) {
+                    document.getElementById("txtHint").innerHTML = "";
+                } else {
+                    var xhttp = new XMLHttpRequest();
+
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status === 200) {
+                            document.getElementById("txtHint").innerHTML = this.responseText;
+                        }
+                    };
+
+                    xhttp.open("GET", "getHint.php?value=" + str, true);
+                    xhttp.send();
+                }
+            };
+        </script>
+    </body>
+</html>

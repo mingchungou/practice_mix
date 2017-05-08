@@ -1,5 +1,6 @@
 <?php
-    setcookie("font-size", "6px"/*, time() - 60 * 60 * 24 * 30*/);
+    setcookie("font-size", "6px", time() + 60 * 60 * 24 * 30, "/"); //Set cookie
+    #setcookie("font-size", "", time() - 60 * 60 * 24 * 30); //Remove cookie
 ?>
 
 <!DOCTYPE html>
