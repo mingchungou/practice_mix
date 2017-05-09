@@ -342,9 +342,9 @@ var getXMLData = function(xmlData) {
 		table = "<table><thead><tr><th>Nombre</th><th>Color</th><th>Habitantes</th></tr></thead><tbody>";
 	for (x = 0; x < pais.length; x++) {
 		table += "<tr>";
-		table += "<td>" + pais[x].getElementsByTagName("nombre")[0].innerHTML + "</td>";
-		table += "<td>" + pais[x].getElementsByTagName("color")[0].innerHTML + "</td>";
-		table += "<td>" + pais[x].getElementsByTagName("habitantes")[0].innerHTML + "</td>";
+		table += "<td>" + pais[x].getElementsByTagName("nombre")[0].childNodes[0].nodeValue + "</td>";
+		table += "<td>" + pais[x].getElementsByTagName("color")[0].childNodes[0].nodeValue + "</td>";
+		table += "<td>" + pais[x].getElementsByTagName("habitantes")[0].childNodes[0].nodeValue + "</td>";
 		table += "</tr>";
 	}
 
@@ -424,11 +424,11 @@ var tryLoadingFile = function() {
     });
 };
 
-tryLoadingFile().then(function(res) {
+/*tryLoadingFile().then(function(res) {
     console.log(res);
 }, function(err) {
     console.log(err);
-});
+});*/
 
 
 //use strict: in other word strict mode, and it helps us to detect syntasis errors
