@@ -1,0 +1,167 @@
+/************** General contents styles *****************/
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #111111;
+}
+
+.main-content h1 {
+    text-align: center;
+}
+
+.main-content .local-todo-content,
+.main-content .todo-table-content,
+.main-content .login-content,
+.main-content .dynamic-cube-content,
+.main-content .directive-example-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+/************** Form content styles *****************/
+.main-content .form-content {
+    padding: 1rem;
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid #009500;
+    border-radius: 5px;
+    box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1);
+}
+
+.main-content .form-content .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.main-content .form-content .btn-primary {
+    border-color: #009500;
+    background-color: #009500;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.main-content .form-content .btn-primary:hover {
+    border-color: #057705;
+    background-color: #057705;
+}
+
+.main-content .form-content .btn-primary:focus {
+    box-shadow: none;
+}
+
+/************** Local todo content styles *****************/
+.main-content .local-todo-content .todo-list-content {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.main-content .local-todo-content .todo-list-content ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-content .local-todo-content .todo-list-content ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1.4rem;
+    border-bottom: 1px solid #009500;
+}
+
+.main-content .local-todo-content .todo-list-content ul li p {
+    margin: 0;
+}
+
+.main-content .local-todo-content .todo-list-content ul li a,
+.main-content .directive-example-content .container ul li .hero-detail a {
+    color: #111111;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.main-content .local-todo-content .todo-list-content ul li a:hover,
+.main-content .directive-example-content .container ul li .hero-detail a:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/************** Todo table content styles *****************/
+.main-content .todo-table-content .container {
+    width: 100%;
+}
+
+.main-content .todo-table-content .table caption {
+    padding: 0;
+    color: #111111;
+    caption-side: top;
+    font-weight: bold;
+    font-size: 2.3rem;
+    text-align: center;
+    line-height: 1;
+}
+
+/************** Dynamic cube content styles *****************/
+.main-content .dynamic-cube-content .container .cube {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    transition: all 2s ease;
+}
+
+.main-content .dynamic-cube-content .container .cube.hover {
+    width: 400px;
+    height: 400px;
+    background-color: green;
+}
+
+/************** Directive example content styles *****************/
+.main-content .directive-example-content .container .hero-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-content .directive-example-content .container .hero-list li {
+    padding: 1rem;
+    border-bottom: 1px solid #009500;
+}
+
+.main-content .directive-example-content .container .hero-list li .hero-detail {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-content .directive-example-content .container .hero-list li .hero-detail > p {
+    flex: 1 1 100%;
+}
+
+.main-content .directive-example-content .container .hero-list li .hero-detail a {
+    color: #111111;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.main-content .directive-example-content .container .hero-list li .hero-detail a:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.main-content .directive-example-content .container .hero-list li .hero-detail .location-content,
+.main-content .directive-example-content .container .hero-list li .hero-detail .location-content .location-data {
+    flex: 1 1 auto;
+    display: flex;
+}
+
+.main-content .directive-example-content .container .hero-list li .hero-detail .location-content label {
+    margin-bottom: 0;
+}
+
+.main-content .directive-example-content .container .hero-list li .hero-detail .location-content .location-data > a {
+    margin-left: auto;
+}
+
+.main-content .directive-example-content .container .hero-list li .hero-detail .location-content .location-data p {
+    margin-bottom: 0;
+}

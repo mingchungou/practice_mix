@@ -3,3 +3,7 @@
 "use strict";
 
 var app = angular.module("myApp", ["LocalStorageModule"]);
+
+angular.element(function() {
+    angular.bootstrap(document, ["myApp"]);
+});

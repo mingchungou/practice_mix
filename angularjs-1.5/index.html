@@ -6,101 +6,156 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-        <style>
-            .error {
-                color: red;
-            }
-
-            div section {
-                margin-bottom: 4rem;
-            }
-
-            section:last-child div {
-                width: 200px;
-                height: 200px;
-                background-color: blue;
-                transition: all 2s ease;
-            }
-            section:last-child div.hover {
-                width: 400px;
-                height: 400px;
-            	background-color: green;
-            }
-        </style>
+        <link rel="stylesheet" href="../css/bootstrap.min.css"  />
+        <link rel="stylesheet" href="css/myStyle.css" />
     </head>
-    <body ng-app="myApp" ng-init="name = 'Ming Chung Ou'">
-        <h1>Hola {{name}}</h1>
+    <body ng-init="name = 'Ming Chung Ou'">
+        <section class="main-content mb-3">
+            <h1 class="my-3" ng-cloak>Hola {{name}}</h1>
 
-        <!--<section ng-controller="todoController as ctrl">-->
-        <div ng-controller="todoController as $ctrl">
-            <section>
-                <h2>My Activities</h2>
-                <ul ng-show="$ctrl.activities.length > 0">
-                    <li ng-repeat="act in $ctrl.activities | orderBy: 'description'">
-                        {{act.description}} <strong>-</strong> {{act.date | date: "short"}}
-                        <a href="" ng-click="$ctrl.removeActivity(act)">remove</a>
-                    </li>
-                </ul>
-                <form ng-submit="$ctrl.addActivity()">
-                    <label for="description">Description:</label>
-                    <input id="description" type="text" ng-model="$ctrl.todo.description" required /><br />
-                    <label for="date">Date:</label>
-                    <input id="date" type="datetime-local" ng-model="$ctrl.todo.date" required /><br />
-                    <input type="submit" value="Add" />
-                    <button type="button" ng-click="$ctrl.clearAll()">Clear All</button>
-                    <p class="error" ng-show="$ctrl.showError">That one is already added!</p>
-                </form>
+            <!-- Local todo content -->
+            <section class="local-todo-content" ng-controller="localTodoController as $ctrl" ng-cloak>
+                <div class="form-content container">
+                    <form ng-submit="$ctrl.addActivity()">
+                        <div class="form-group row" ng-class="{'has-danger': $ctrl.showError}">
+                            <label for="description" class="col-sm-3 form-control-label">Description</label>
+                            <div class="col-sm-9">
+                                <input id="description" class="form-control form-control-danger" type="text" name="description" placeholder="Write a description" ng-model="$ctrl.todo.description" required />
+                            </div>
+                            <div class="col-12 form-control-feedback" ng-if="$ctrl.showError">This one is already added!</div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="date" class="col-sm-3 form-control-label">Date</label>
+                            <div class="col-sm-9">
+                                <input id="date" class="form-control" type="datetime-local" name="date" placeholder="Select a date" ng-model="$ctrl.todo.date" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-9 offset-sm-3">
+                                <button type="submit" class="btn btn-primary">Add</button>
+                                <button type="button" class="btn btn-primary" ng-click="$ctrl.clearAll()">Clear All</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="todo-list-content container" ng-show="$ctrl.activities.length > 0">
+                    <h2 class="my-3 text-center">My Activities</h2>
+                    <ul>
+                        <li ng-repeat="act in $ctrl.activities | orderBy: 'description'">
+                            <p>{{act.description}} <strong>-</strong> {{act.date | date: "short"}}</p>
+                            <div>
+                                <a ng-click="$ctrl.editActivity(act)">edit</a>
+                                <span> | </span>
+                                <a ng-click="$ctrl.removeActivity(act)">remove</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </section>
-            <section>
-                <h2>Dynamic Table</h2>
-                <table ng-show="$ctrl.todoList.length > 0">
-                    <caption>Tabla de Posiciones 2017</caption>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Activity</th>
-                            <th>Date</th>
-                            <th>Priority</th>
-                            <th>Created</th>
-                            <th>Updated</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="todo in $ctrl.todoList | orderBy: $ctrl.order">
-                            <th scope="row">{{todo.id}}</th>
-                            <td>{{todo.activity}}</td>
-                            <td>{{todo.fromX | date: "short"}}</td>
-                            <td>{{todo.priority}}</td>
-                            <td>{{todo.created | date: "short"}}</td>
-                            <td>{{todo.updated | date: "short"}}</td>
-                            <td>{{todo.status}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-            <section>
-                <h2>Login</h2>
-                <form ng-submit="$ctrl.signin()">
-                    <label for="email">Email:</label>
-                    <input id="email" type="email" ng-model="$ctrl.login.email" required /><br />
-                    <label for="password">Password:</label>
-                    <input id="password" type="password" ng-model="$ctrl.login.password" required /><br />
-                    <input type="submit" value="Login" />
-                </form>
-                <p>{{$ctrl.loginResponse}}</p>
-            </section>
-            <section>
-                <h2>Dynamic Class</h2>
-                <div ng-class="{'hover': mouse}" ng-mouseover="mouse = true" ng-mouseout="mouse = false"></div>
-            </section>
-        </div>
 
+            <!-- Todo table content -->
+            <section class="todo-table-content mt-3" ng-controller="todoTableController as $ctrl" ng-cloak>
+                <div class="container">
+                    <table class="table table-inverse" ng-show="$ctrl.todoList.length > 0">
+                        <caption class="my-3">Todo List 2017</caption>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Activity</th>
+                                <th>Date</th>
+                                <th>Priority</th>
+                                <th>Created</th>
+                                <th>Updated</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="todo in $ctrl.todoList | orderBy: $ctrl.order">
+                                <th scope="row">{{todo.id}}</th>
+                                <td>{{todo.activity}}</td>
+                                <td>{{todo.fromX | date: "short"}}</td>
+                                <td>{{todo.priority}}</td>
+                                <td>{{todo.created | date: "short"}}</td>
+                                <td>{{todo.updated | date: "short"}}</td>
+                                <td>{{todo.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Login content -->
+            <section class="login-content mt-3" ng-controller="loginController as $ctrl" ng-cloak>
+                <div class="form-content container">
+                    <h2 class="mb-3 text-center">Sign In</h2>
+                    <form ng-submit="$ctrl.signin()">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-3 form-control-label">Username</label>
+                            <div class="col-sm-9">
+                                <input id="name" class="form-control" type="text" name="name" placeholder="Write your name" ng-model="$ctrl.login.name" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password" class="col-sm-3 form-control-label">Password</label>
+                            <div class="col-sm-9">
+                                <input id="password" class="form-control" type="password" name="password" placeholder="Write your password" ng-model="$ctrl.login.password" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-9 offset-sm-3">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <p class="text-center" ng-if="$ctrl.loginResponse">{{$ctrl.loginResponse}}</p>
+            </section>
+
+            <!-- Login content -->
+            <section class="dynamic-cube-content mt-3" ng-cloak>
+                <div class="container">
+                    <h2 class="my-3 text-center">Dynamic Class</h2>
+                    <div class="cube" ng-class="{'hover': mouse}" ng-mouseover="mouse = true" ng-mouseout="mouse = false"></div>
+                </div>
+            </section>
+
+            <!-- Directive example content -->
+            <section class="directive-example-content mt-3" ng-cloak>
+                <!--<div class="container w-100">
+                    <h2 class="my-3 text-center">Heroes</h2>
+                    <hero-list></hero-list>
+                </div>-->
+                <my-tab>
+                    <my-pane title="Superman">
+                        <p><strong>Superman</strong> is a fictional superhero appearing in American comic books published by DC Comics. The character was created by writer Jerry Siegel and artist Joe Shuster, high school students living in Cleveland, Ohio, in 1933.</p>
+                    </my-pane>
+                    <my-pane title="Batman">
+                        <p><strong>Batman</strong> is a fictional superhero appearing in American comic books published by DC Comics. The character was created by artist Bob Kane and writer Bill Finger, and first appeared in Detective Comics #27 (1939).</p>
+                        <p>How many villains he beaten? <a href ng-click="i = i + 1">{{i || 0}}</a></p>
+                    </my-pane>
+                    <my-pane title="Spider Man">
+                        <p><strong>Spider Man</strong> is a fictional superhero appearing in American comic books published by Marvel Comics. The character was created by writer-editor Stan Lee and writer-artist Steve Ditko, and first appeared in the anthology comic book Amazing Fantasy #15 (Aug. 1962) in the Silver Age of Comic Books.</p>
+                    </my-pane>
+                    <my-pane title="Hulk">
+                        <p><strong>Hulk</strong> is a fictional superhero appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in the debut issue of The Incredible Hulk (May 1962).</p>
+                    </my-pane>
+                </my-tab>
+            </section>
+        </section>
+
+        <script src="../lib/jquery-3.2.0.min.js"></script>
+        <script src="../lib/tether.min.js"></script>
+        <script src="../lib/bootstrap.min.js"></script>
         <script src="../lib/angular-1.5.min.js"></script>
         <script src="../lib/angular-local-storage.min.js"></script>
         <script src="js/myScript.js"></script>
         <script src="js/services.js"></script>
-        <!--<script src="js/factories.js"></script>-->
+        <script src="js/factories.js"></script>
+        <script src="js/directives/heroList/heroList.js"></script>
+        <script src="js/directives/heroDetail/heroDetail.js"></script>
+        <script src="js/directives/editableField/editableField.js"></script>
+        <script src="js/directives/myTab/myTab.js"></script>
+        <script src="js/directives/myPane/myPane.js"></script>
         <script src="js/todoController.js"></script>
     </body>
 </html>
