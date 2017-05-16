@@ -1,7 +1,7 @@
 /*** Note: {} is data to change ***/
 
 /******** Create a database *********/
-create database {database_name};
+create database DB_NAME;
 
 
 /******** Show all databases *********/
@@ -9,11 +9,11 @@ show databases;
 
 
 /******** Select a database *********/
-use {database_name};
+use DB_NAME;
 
 
 /******** Remove a specific database *********/
-drop database {database_name};
+drop database DB_NAME;
 
 
 /******** Know the database is using *********/
@@ -21,7 +21,7 @@ select database();
 
 
 /******** Create a table *********/
-create table {table_name} ({column type}, {column type}, {column type}, etc.);
+create table TABLE_NAME (TABLE_COLUMN VALUE_TYPE, TABLE_COLUMN VALUE_TYPE, ...);
 
 /*** Examples - Unique ***/
 create table person (
@@ -80,58 +80,58 @@ show tables;
 
 
 /******** Show all columns from a table *********/
-select * from {table_name};
+select * from TABLE_NAME;
 
 
 /******** Delete a table *********/
-drop table {table_name};
+drop table TABLE_NAME;
 
 
 /******** Add new column to table *********/
-alter table {table_name} add {column type};
+alter table TABLE_NAME add TABLE_COLUMN VALUE_TYPE;
 
 
 /******** Remove a column from table *********/
-alter table {table_name} drop column {column};
+alter table TABLE_NAME drop column TABLE_COLUMN;
 
 
 /******** Modify a column from table *********/
-alter table {table_name} modify {column type};
+alter table TABLE_NAME modify TABLE_COLUMN VALUE_TYPE;
 
 
 /******** Make a column to be unique type *********/
-alter table {table_name} add unique ({column});
+alter table TABLE_NAME add unique (TABLE_COLUMN);
 
 
 /******** Make a column to be primary key *********/
-alter table {table_name} add primary key ({column});
+alter table TABLE_NAME add primary key (TABLE_COLUMN);
 
 
 /******** Make a column to be foreign key *********/
-alter table {table_name} add foreign key ({column}) references {parent_table_name} ({parent_column});
+alter table TABLE_NAME add foreign key (TABLE_COLUMN) references PARENT_TABLE_NAME (PARENT_TABLE_COLUMN);
 
 
 /******** Insert a row *********/
-insert into {table_name} ({column}, {column}, {column}, etc.) values ({value}, {value}, {value}, etc.);
+insert into TABLE_NAME (TABLE_COLUMN, TABLE_COLUMN, ...) values (VALUE, VALUE, ...);
 
 /*** Example ***/
 insert into person (id, firstName, middleName, lastName, age, bornCountry) values ("801060850", "Ming", "Chung", "Ou", 25, "Taiwan");
 
 
 /******** Remove all rows *********/
-truncate {table_name};
+truncate TABLE_NAME;
 
 
 /******** Get specific row(s) *********/
-select * from {table_name} where {condition};
+select * from TABLE_NAME where CONDITION;
 
 
 /******** Delete a row(s) *********/
-delete from {table_name} where {condition};
+delete from TABLE_NAME where CONDITION;
 
 
 /******** Update a row(s) *********/
-update {table_name} set {column} = {value} where {condition};
+update TABLE_NAME set TABLE_COLUMN = VALUE, ... where CONDITION;
 
 
 /******** Some examples of select *********/

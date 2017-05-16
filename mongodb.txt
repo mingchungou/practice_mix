@@ -1,0 +1,200 @@
+//It is sensitive to upper/lower cases
+
+* Show all databases created in Mongodb
+/> show dbs
+
+
+
+* Select a specific database to use
+/> use DB_NAME
+
+Ej: Use "mydb" database
+/> use mydb;
+
+
+
+* Create a new database
+/> use DB_NAME
+/> db.COLLECTION_NAME.insert(ATTRS_JSON); //Have to add a new collection with a row to complete the creation of new db
+
+
+
+* Remove a database
+/> use DB_NAME
+/> db.dropDatabase();
+
+
+
+* Create a collection
+/> db.createCollection(COLLECTION_NAME, EXTRA_OPTIONS);
+
+Ej: Create a collection worker
+/> db.createCollection("worker");
+
+
+
+* Remove a collection
+/> db.COLLECTION_NAME.drop();
+
+Ej:
+/> db.worker.drop();
+
+
+
+* Show all collections from a db
+/> show collections
+
+
+
+* Add a row to a collection
+/> db.COLLECTION_NAME.insert(ATTRS_JSON);
+
+Ej:
+/> db.worker.insert({firstName: "Ming Chung", lastName: "Ou", age: 25, created: new Date()});
+
+
+
+* Add several rows to a collection
+/> db.COLLECTION_NAME.insert([ATTRS_JSON, ATTRS_JSON, ...]);
+
+Ej:
+/> db.worker.insert([{firstName: "Jeiner", lastName: "Mora", age: 29, created: new Date()},
+                     {firstName: "Daniel", lastName: "Colindres", age: 32, created: new Date()}]);
+
+
+
+* Remove all rows from a collection
+/> db.COLLECTION_NAME.remove({});
+
+
+
+* Remove specific row(s) from a collection
+/> db.COLLECTION_NAME.remove(SPEC_ATTRS_JSON);
+
+Ej: Remove from worker collection, workers are 25 years old
+/> db.worker.remove({age: 25});
+
+
+
+* Update specific row from a collection
+1 - /> db.COLLECTION_NAME.save({_id: ObjectId(), NEW_DATA});
+
+Ej:
+/> db.worker.save({_id: ObjectId("59162e3ad7d8765d77df47d2"), firstName: "Ming Chung", age: 27});
+
+2 - /> db.COLLECTION_NAME.update(SELECTION_CRITERIA, {$set: UPDATED_DATA});
+
+Ej:
+/> db.worker.update({_id: ObjectId("59162e3ad7d8765d77df47d2")}, {$set: {lastName: "Chen", created: new Date()}});
+
+Ej: Increase age to 1
+/> db.worker.update({_id: ObjectId("59162e3ad7d8765d77df47d2")}, {$inc: {age: 1}});
+
+
+
+* Show all rows from a collection
+/> db.COLLECTION_NAME.find();
+
+
+
+* Getting better readable result by show request
+/> db.COLLECTION_NAME.find().pretty();
+
+
+
+* Show specific row(s) from a collection with Mongodb operation
+/> db.COLLECTION_NAME.find(SPEC_ATTRS_JSON);
+
+Ej: Worker(s) age = 25
+/> db.worker.find({age: 25});
+
+Ej: Worker(s) age > 25
+/> db.worker.find({age: {$gt: 25}});
+
+Ej: Worker(s) age >= 25
+/> db.worker.find({age: {$gte: 25}});
+
+Ej: Worker(s) age < 25
+/> db.worker.find({age: {$lt: 25}});
+
+Ej: Worker(s) age <= 25
+/> db.worker.find({age: {$lte: 25}});
+
+Ej: Worker(s) age != 25
+/> db.worker.find({age: {$ne: 25}});
+
+Ej: Worker(s) age = 22 or age = 25
+/> db.worker.find({$or: [{age: 22}, {age: 25}]});
+
+Ej: Worker(s) don't have "created" field
+/> db.worker.find({created: {$exists: false}});
+
+Ej: Worker(s) that have first Name starts with "M", either upper or lower case
+/> db.worker.find({firstName: /^m+/i});
+
+Ej: Order workers by age asc
+/> db.worker.find().sort({age: 1});
+
+Ej: Order workers by age desc
+/> db.worker.find().sort({age: -1});
+
+Ej: Show only 2 rows from index 0 after ordering the rows desc.
+/> db.worker.find().sort({age: -1}).limit(2);
+
+Ej: Show only 2 rows from index 2 after ordering the rows desc.
+/> db.worker.find().sort({age: -1}).limit(2).skip(2);
+
+Ej: Show only worker's firstName
+/> db.worker.find({}, {firstName: 1, _id: 0});
+
+
+
+* Show number of rows in a collection
+/> db.COLLECTION_NAME.count();
+
+
+
+* Show general information about a collection
+/> db.COLLECTION_NAME.stats();
+
+
+
+* Add index to fields
+/> db.COLLECTION_NAME.ensureIndex({KEY: 1, ...});
+
+Ej:
+/> db.worker.ensureIndex({firstName: 1, lastName: 1});
+
+
+
+* Remove index from fields
+/> db.COLLECTION_NAME.dropIndex({KEY: 1, ...});
+
+Ej:
+/> db.worker.dropIndex({firstName: 1, lastName: 1});
+
+
+
+* Use aggregate to make complex search
+/> db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION);
+
+Ej: Grouping all overviews by user
+/> db.mix.aggregate([{$group: {_id: "$by_user", total: {$sum: 1}}}]);
+
+Ej: Sum likes of same user's overviews
+/> db.mix.aggregate([{$group: {_id: "$by_user", total: {$sum: "$likes"}}}]);
+
+Ej: Get average of likes from user's overviews
+/> db.mix.aggregate([{$group: {_id: "$by_user", total: {$avg: "$likes"}}}]);
+
+Ej: Get minimum of likes from user's overviews
+/> db.mix.aggregate([{$group: {_id: "$by_user", total: {$min: "$likes"}}}]);
+
+Ej: Get maximum of likes from user's overviews
+/> db.mix.aggregate([{$group: {_id: "$by_user", total: {$max: "$likes"}}}]);
+
+Ej: Get the first overview's url from user's overviews
+/> db.mix.aggregate([{$group: {_id: "$by_user", total: {$first: "$url"}}}]);
+
+Ej: Get the last overview's url from user's overviews
+/> db.mix.aggregate([{$group: {_id: "$by_user", total: {$last: "$url"}}}]);
