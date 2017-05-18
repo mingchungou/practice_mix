@@ -1,5 +1,4 @@
 /****************** Output *****************/
-
 var greeting = function(name, self) {
     self.innerHTML = "Hello " + name;
 };
@@ -8,38 +7,44 @@ var greeting = function(name, self) {
 //window.alert("Hello World");
 
 
-/****************** typeof/instanceof *****************/
-/*console.log(typeof greeting);
-console.log(typeof "abc");
-console.log(typeof 123);
-console.log(typeof 3.14);
-console.log(typeof NaN);
-console.log(typeof Infinity);
-console.log(typeof true);
-console.log(typeof {});
-console.log(typeof isNull);
-console.log(typeof []);
 
-console.log([] instanceof Array);
-console.log({} instanceof Object);*/
+/****************** typeof/instanceof *****************/
+/*console.log(typeof greeting); //Will show function
+console.log(typeof "abc"); //Will show string
+console.log(typeof 123); //Will show number
+console.log(typeof 3.14); //Will show number
+console.log(typeof NaN); //Will show number
+console.log(typeof Infinity); //Will show number
+console.log(typeof true); //Will show boolean
+console.log(typeof {}); //Will show object
+console.log(typeof isNull); //Will show undefined
+console.log(typeof []); //Will show object, not correct
+
+console.log([] instanceof Array); //Will show true, better way to check if element is array
+console.log({} instanceof Object); //Will show true*/
+
 
 
 /****************** String *****************/
-var myString = "Javascript is very extense programming language";
+var myString = "Javascript is very extense programming language is";
 
 /*console.log(myString.length);
 console.log(myString.indexOf("very")); //Return the first match position
-console.log(myString.lastIndexOf("e")); //Return last match position
+console.log(myString.lastIndexOf("is")); //Return last match position
 console.log(myString.search("very")); //Better than indexOf
 console.log(myString.slice(7, 15)); //Extract portion of string according to limitation
 console.log(myString.substring(7, 15)); //Same as slice
-console.log(myString.substr(7, 15));
+console.log(myString.substr(7, 15)); //From index selected, extract next 15 characters
 console.log("blue red green blue red green".replace(/e/g, "@"));
 console.log(myString.toUpperCase());
 console.log(myString.toLowerCase());
 console.log("Hello".concat(" ", "Ming", " ","Chung")); //Join n string
 console.log(myString.charAt(0)); //Get character of string according to position
-console.log(myString.split(" ")); //Convert string to array*/
+console.log(myString.split(" ")); //Convert string to array
+
+//Revert the string
+console.log(myString.split(" ").reverse().join(" "));*/
+
 
 
 /****************** Number *****************/
@@ -53,13 +58,14 @@ console.log(Math.PI.toPrecision(5));
 console.log(parseInt("100")); //Convert string to number
 console.log(Math.round(Math.PI));
 console.log(Math.pow(8, 2));
-console.log(Math.sqrt(64));
-console.log(Math.abs(-4));
+console.log(Math.sqrt(64)); //Calculate square root
+console.log(Math.abs(-4)); //Get absolute number
 console.log(Math.ceil(4.0001)); //Round up
 console.log(Math.floor(4.9999)); //Round down
-console.log(Math.min(0, 150, 30, 20, -8, -200));
-console.log(Math.max(0, 150, 30, 20, -8, -200));
-console.log(Math.floor(Math.random() * 10) + 1); //Get random number 1 - 10*/
+console.log(Math.min(0, 150, 30, 20, -8, -200)); //Get minimum number
+console.log(Math.max(0, 150, 30, 20, -8, -200)); //Get maximum number
+console.log(Math.floor(Math.random() * 10) + 1); //Get randomly a number 1 - 10*/
+
 
 
 /****************** Array *****************/
@@ -75,33 +81,50 @@ var xArray1 = ["Banana", "Apple", "Orange", "Mango"],
 /*console.log(Array.isArray(xArray1)); //Check whether of not is array
 console.log(xArray1.toString()); //Convert array to string
 console.log(xArray1.join(" - ")); //Its similar as toString but you can add personal separator
-console.log(xArray1.pop()); //Remove last item
+xArray1.pop(); //Remove last item
 xArray1.push("Kiwi"); //Add new item to last
+xArray1.unshift("Lemon"); //Add new item at first
+
+//Add item(s) from specific position
+xArray1.splice(2, 0, "Banana", "Mango");
 console.log(xArray1.toString());
-console.log(xArray1.shift()); //Remove first item
-xArray1.unshift("Lemon"); //Add new item to first
+
+//Remove an item at specific position
+xArray1.splice(4, 1); //Return the item removed
 console.log(xArray1.toString());
-xArray1.splice(2, 0, "Banana", "Mango"); //Add item(s) from specific position
-console.log(xArray1.toString());
-xArray1.splice(0, 1); //Remove item set
-console.log(xArray1.toString()); //Remove an item at specific position
+
 console.log(xArray1.concat(xArray2, xArray3).toString()); //Join n arrays
-console.log(xArray1.slice(1).toString());
-console.log(xArray1.sort().toString()); //Sort strings
-xArray3.sort(function(a, b) { //Sort numbers asd
+console.log(xArray1.slice(1).toString()); //Take out a portion of array
+
+//Sort strings asc
+console.log(xArray1.sort().toString());
+
+//Sort strings desc
+console.log(xArray1.sort(function(a, b) {
+    if (a < b) return 1;
+    if (a > b) return -1;
+}).toString());
+
+//Sort numbers asc
+xArray3.sort(function(a, b) {
     return a - b;
 });
 console.log(xArray3.toString());
-xArray3.sort(function(a, b) { //Sort numbers desc
+
+//Sort numbers desc
+xArray3.sort(function(a, b) {
     return b - a;
 });
 console.log(xArray3.toString());
-console.log(xArray4.sort(function(a, b) { //Order object string asc
+
+//Order object string asc
+console.log(xArray4.sort(function(a, b) {
     aux1 = a.type.toLowerCase();
     aux2 = b.type.toLowerCase();
     if (aux1 < aux2) return -1;
     if (aux1 > aux2) return 1;
 }));*/
+
 
 
 /****************** Label *****************/
@@ -144,12 +167,13 @@ var test = function() {
 test();*/
 
 
+
 /****************** Regular Expression *****************/
 myString = "I am a eateR";
-var ex = /r$/i;
+var ex = /r$/gi;
 //console.log(myString.match(ex));
 
-ex = /^i/i;
+ex = /^i/gi;
 //console.log(myString.match(ex));
 
 myString = "A black ghost booooed is going Baack home.";
@@ -168,17 +192,21 @@ ex = /\d+?/;
 //console.log(myString.match(ex));
 
 myString = "Nano nanda an orange island nothing";
-//ex = /n./gi;
-ex = /.n/gi;
+ex = /n./gi;
+//ex = /.n/gi;
 //console.log(myString.match(ex));
 
 myString = "Ming Chung";
-ex = /(.+) (.+)/;
-//ex = /(\w+) (\w+)/;
+//ex = /(.+) (.+)/;
+ex = /(\w+) (\w+)/;
 //console.log(myString.replace(ex, "$2 $1"));
 
-myString = "Ming Chung";
-ex = /ming(?=\s)/i;
+ex = /ming(?=\s)/gi;
+//console.log(myString.match(ex));
+
+//Check if element is a html tag
+myString = "<table>";
+ex = /\<(?=\w)\w+\>(?=$)/gi;
 //console.log(myString.match(ex));
 
 myString = "3.1415";
@@ -189,9 +217,9 @@ myString = "Los Angeles is the place where you can have fun on vacation.";
 ex = /on|is/gi;
 //console.log(myString.match(ex));
 
-myString = "Caaaaandy25";
-//ex = /\d{2}/;
-ex = /a{1,}/;
+myString = "CaaaAAaandy2515";
+ex = /\d{2}/g;
+//ex = /a{1,}/gi;
 //console.log(myString.match(ex));
 
 myString = "Los Angeles is the place where you can have fun on vacation.";
@@ -202,19 +230,20 @@ ex = /[^a-c]+/gi;
 //console.log(myString.match(ex));
 
 myString = "(506)86653047";
-ex = /^(\(\d{3}\))?\s?[0-9]{8}/;
+ex = /^(\(\d{3}\))?\s?[0-9]{8}/g;
 //console.log(myString.match(ex));
 
 myString = "mingchungou@gmail.com.cr";
-ex = /^[^()\/\\\[\]@#$%&?¡!¿{}<>]+@[a-zA-Z0-9]+(?:\.[a-zA-Z]{2,3}){1,2}/;
+ex = /^[^()\/\\\[\]@#$%&?¡!¿{}<>]+@[a-zA-Z0-9]+(?:\.[a-zA-Z]{2,3}){1,2}/g;
 //console.log(myString.match(ex));
+
 
 
 /****************** Errors *****************/
 //Used for executing several tasks but controlling the errores
 //debugger;
 /*try {
-	getDate();
+	//getDate();
 	if (isNaN(x)) throw "x is not a Number"
 } catch(err) {
 	if (err.message) console.log(err.message);
@@ -222,6 +251,7 @@ ex = /^[^()\/\\\[\]@#$%&?¡!¿{}<>]+@[a-zA-Z0-9]+(?:\.[a-zA-Z]{2,3}){1,2}/;
 } finally {
 	console.log("Get End");
 }*/
+
 
 
 /****************** JSON *****************/
@@ -233,43 +263,48 @@ var myObject = {"name": "Ming Chung", "Birth": new Date()};
 //console.log(JSON.stringify(myObject));
 
 
-/****************** Object *****************/
+
+/****************** Object class *****************/
 function Person(first, last, age, eye) {
 	this.firstName = first;
 	this.lastName = last;
 	this.age = age;
 	this.eyeColor = eye;
 };
-
 myObject = new Person("Michael", "Forbes", 35, "brown");
-delete myObject.age;
 //console.log(myObject);
 
-//Add new attribute and function to constructor object
+delete myObject.age; //Delete object attribute
+//console.log(myObject);
+
+//Add new attribute and function to object class
 Person.prototype.country = "";
 Person.prototype.getName = function() {
     return this.firstName.concat(" ", this.lastName);
 };
 
-myObject = new Person("Maria", "Alpizar", 24, "blue", "Costa Rica");
+myObject = new Person("Maria", "Alpizar", 24, "blue");
 myObject.country = "Costa Rica";
 //console.log(myObject);
 
 
-/****************** Object - Heritage *****************/
+
+/****************** Heritage object *****************/
 function Worker(first, last, age, eye, profession) {
     Person.call(this, first, last, age, eye); //Inherit the attributes from object Person to Worker but not the properties of object Person
     this.profession = profession;
 };
 
-Worker.prototype = Object.create(Person.prototype); //Add properties from object Person to Worker
-Worker.prototype.constructor = Worker; //But wanting to keep Worker own constructor
+//Inheriting prototype but not the constructor
+Worker.prototype = Object.create(Person.prototype);
+Worker.prototype.constructor = Worker;
 
 myObject = new Worker("Ming", "Ou", 25, "black", "Engineer");
 /*console.log(myObject);
 console.log(myObject.getName());
 console.log(myObject instanceof Person);
 console.log(myObject instanceof Worker);*/
+
 
 
 /****************** Arguments *****************/
@@ -287,20 +322,23 @@ var sumAll = function() {
 //console.log(sumAll(1, 2, 3, 4, 5));
 
 
+
 /****************** Call *****************/
-//Call whatever function but tring the object passed by parameter as this
-//Special character is receiving extra parameters as usual
-var sayHello = function(name_person, greeting) {
-	console.log("Hola soy " + this.firstName + ", y saludo a " + name_person + " con " + greeting);
-}
+//Call whatever function but trying the object passed by parameter as this
+//Able to receive extra parameters as usual
+var sayHello = function(namePerson, greeting) {
+	console.log("Hola soy " + this.firstName + ", y saludo a " + namePerson + " con " + greeting);
+};
 
 //sayHello.call(myObject, "Juan", "afecto");
 
 
+
 /****************** Apply *****************/
 //Call whatever function but tring the object passed by parameter as this
-//Special character is receiving extra parameters as an unique array
+//Able to receive extra parameters as an array
 //sayHello.apply(myObject, ["Juan", "afecto"]);
+
 
 
 /****************** Closure *****************/
@@ -317,8 +355,9 @@ add();
 console.log(add());*/
 
 
+
 /****************** Ajax *****************/
-//Method to create interactive applications where works asynchronous
+//Method to create interactive applications where have functions to work asynchronous
 var loadData = function() {
 	var xhttp = new XMLHttpRequest();
 
@@ -331,7 +370,7 @@ var loadData = function() {
 			}
 		}
 	};
-	xhttp.open("GET", "localData/myXml.xml", true);
+	xhttp.open("GET", "localData/myJson.json", true);
 	xhttp.send();
 };
 
@@ -391,6 +430,7 @@ var getJSONData = function(jsonData) {
 //loadData();
 
 
+
 /****************** Callback *****************/
 //Callback function is executed after current one finished
 function doSomething(callback) {
@@ -402,33 +442,5 @@ function justPrint() {
 };
 
 //doSomething(justPrint);
-
-
-/****************** Promise *****************/
-//Method to do a task asynchronous, but the result could be available now, future or never.
-var tryLoadingFile = function() {
-    return new Promise(function(resolve, reject) {
-        var xhttp = new XMLHttpRequest();
-
-    	xhttp.onreadystatechange = function() {
-            if (this.readyState === 4) {
-                if (this.status === 200) {
-                    resolve("Loading correctly");
-                } else {
-                    reject("Error on loading");
-                }
-            }
-    	};
-    	xhttp.open("GET", "localData/myXml.xm", true);
-    	xhttp.send();
-    });
-};
-
-/*tryLoadingFile().then(function(res) {
-    console.log(res);
-}, function(err) {
-    console.log(err);
-});*/
-
 
 //use strict: in other word strict mode, and it helps us to detect syntasis errors

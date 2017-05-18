@@ -7,7 +7,8 @@ Examples:
 - git
 - grunt
 - angularjs 1.5
-- javascript
+- javascript ES5
+- javascript ES6
 - sass
 - php
 - xml

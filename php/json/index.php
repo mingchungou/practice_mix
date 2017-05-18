@@ -9,6 +9,7 @@
     echo $myJson;*/
 
 
+
     /******************** Creating simple object *****************/
     class customObject {
         function __construct(array $arguments = array()) {

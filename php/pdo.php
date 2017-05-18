@@ -41,6 +41,7 @@
         }*/
 
 
+
         /******************* Prepare ********************/
         /*$id = $_GET["id"];
         $statement = $connection->prepare("select * from todo where id = :id");
@@ -106,6 +107,7 @@
         }
 
         echo "</tbody></table>";*/
+
 
 
         /******************* Exec ********************/

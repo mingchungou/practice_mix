@@ -38,6 +38,3 @@
         <price>39.95</price>
     </book>
 </bookstore>
-
-<!-- version indicates the version of XML used -->
-<!-- standalone indicates if datas inside are based on external source -->

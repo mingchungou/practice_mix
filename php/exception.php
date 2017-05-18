@@ -16,6 +16,7 @@
     }*/
 
 
+
     /******************** Creating custom exception *****************/
     class customException extends Exception {
         public function errorMessage() {
@@ -38,6 +39,7 @@
     }*/
 
 
+
     /******************** Re-throwing exceptions *****************/
     /*try {
         try {
@@ -48,6 +50,7 @@
     } catch (customException $err) {
         echo $err->errorMessage();
     }*/
+
 
 
     /******************** Set exception function *****************/

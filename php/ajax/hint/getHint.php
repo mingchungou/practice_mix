@@ -59,7 +59,6 @@
 
     $hint = "";
 
-
     //Check the request brings value parameter
     if (isset($_GET["value"])) {
         $requestValue = strtolower($_GET["value"]);

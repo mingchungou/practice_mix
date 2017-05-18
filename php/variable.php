@@ -1,4 +1,5 @@
 <?php
+    /******************** Init *****************/
     $name = "Ming Chung";
     $lastName = 'Ou';
     $number = 25;
@@ -22,12 +23,14 @@
     echo $name;*/
 
 
+
     /******************** Constant *****************/
     define('PI', 3.14);
     define("name", 'Ming Chung');
 
     #echo PI;
     #echo name;
+
 
 
     /******************** Array *****************/
@@ -75,6 +78,7 @@
     echo print_r($myArray);*/
 
 
+
     /******************** Associative array *****************/
     $personalInfo = array('phone number' => '12345678', 'age' => 25, 'last name' => 'Ou', 'country' => 'Costa Rica');
     $personalInfo['phone number'] = '87654321';
@@ -103,6 +107,8 @@
     /*$myArray = array_combine($fname, $age); //First array contains keys and the second contains values
     print_r($myArray);*/
 
+
+
     /******************** Multidimensional array *****************/
     $friends = [
         ['Ming', ['Saprissa', 'Hala Madrid', [1, 2, 3]]],
@@ -112,6 +118,7 @@
     ];
 
     #echo $friends[0][1][2][0];
+
 
 
     /******************** Scope *****************/
@@ -156,6 +163,7 @@
     #print $x + $y;
 
 
+
     /******************** Functions *****************/
     function greeting($name) {
         echo "Hello $name";
@@ -175,7 +183,9 @@
     #echo trim($specialK); //Remove white spaces at beginning and at the end
 
 
+
     /******************** Condition *****************/
+    //If condition
     $left = $personalInfo["age"];
     $right = 18;
 
@@ -199,7 +209,7 @@
     }*/
 
 
-    /******************** Switch *****************/
+    //Switch condition
     /*$favColor = "green";
 
     switch($favColor) {
@@ -218,11 +228,13 @@
     }*/
 
 
-    /******************** Short condition *****************/
+    //Short condition
     #echo (isset($number)) ? "Defined" : "Undefined";
 
 
-    /******************** For *****************/
+
+    /******************** Loops *****************/
+    //For
     /*for ($i = 0; $i < 10; $i += 2) {
         echo "<p>Number is $i</p>";
     }*/
@@ -232,7 +244,7 @@
     }*/
 
 
-    /******************** While *****************/
+    //While
     /*$i = 10;
     while($i > 0) {
         echo "<p>Number is $i</p>";
@@ -240,12 +252,13 @@
     }*/
 
 
-    /******************** Do while *****************/
+    //Do while
     /*$i = 10;
     do {
         echo "<p>Number is $i</p>";
         $i--;
     } while($i > 0);*/
+
 
 
     /******************** Break/continue *****************/
@@ -262,6 +275,7 @@
     }*/
 
 
+
     /******************** Math *****************/
     $decimal = 3.14141414;
 
@@ -271,8 +285,10 @@
     #echo M_PI;
 
 
+
     /******************** Die *****************/
     #die(); //Cut down the code below
+
 
 
     /******************** Date and Time *****************/

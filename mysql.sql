@@ -4,20 +4,25 @@
 create database DB_NAME;
 
 
+
 /******** Show all databases *********/
 show databases;
+
 
 
 /******** Select a database *********/
 use DB_NAME;
 
 
+
 /******** Remove a specific database *********/
 drop database DB_NAME;
 
 
+
 /******** Know the database is using *********/
 select database();
+
 
 
 /******** Create a table *********/
@@ -75,40 +80,50 @@ create table orders (
 );
 
 
+
 /******** Show all tables *********/
 show tables;
+
 
 
 /******** Show all columns from a table *********/
 select * from TABLE_NAME;
 
 
+
 /******** Delete a table *********/
 drop table TABLE_NAME;
+
 
 
 /******** Add new column to table *********/
 alter table TABLE_NAME add TABLE_COLUMN VALUE_TYPE;
 
 
+
 /******** Remove a column from table *********/
 alter table TABLE_NAME drop column TABLE_COLUMN;
+
 
 
 /******** Modify a column from table *********/
 alter table TABLE_NAME modify TABLE_COLUMN VALUE_TYPE;
 
 
+
 /******** Make a column to be unique type *********/
 alter table TABLE_NAME add unique (TABLE_COLUMN);
+
 
 
 /******** Make a column to be primary key *********/
 alter table TABLE_NAME add primary key (TABLE_COLUMN);
 
 
+
 /******** Make a column to be foreign key *********/
 alter table TABLE_NAME add foreign key (TABLE_COLUMN) references PARENT_TABLE_NAME (PARENT_TABLE_COLUMN);
+
 
 
 /******** Insert a row *********/
@@ -118,20 +133,25 @@ insert into TABLE_NAME (TABLE_COLUMN, TABLE_COLUMN, ...) values (VALUE, VALUE, .
 insert into person (id, firstName, middleName, lastName, age, bornCountry) values ("801060850", "Ming", "Chung", "Ou", 25, "Taiwan");
 
 
+
 /******** Remove all rows *********/
 truncate TABLE_NAME;
+
 
 
 /******** Get specific row(s) *********/
 select * from TABLE_NAME where CONDITION;
 
 
+
 /******** Delete a row(s) *********/
 delete from TABLE_NAME where CONDITION;
 
 
+
 /******** Update a row(s) *********/
 update TABLE_NAME set TABLE_COLUMN = VALUE, ... where CONDITION;
+
 
 
 /******** Some examples of select *********/
@@ -162,6 +182,7 @@ select count(person.id), person.bornCountry, sum(orders.mount) from person
 				order by sum(orders.mount) asc;
 
 select * from person where exists (select mount from orders where personID = person.id and mount < 5000);
+
 
 
 /******** Some examples of functions *********/
@@ -259,6 +280,7 @@ end;
 select practica();
 
 
+
 /******** Some examples of procedure *********/
 drop procedure if exists practica;
 delimiter //
@@ -280,6 +302,7 @@ begin
 end;
 
 call authentication("mingchungou@gmail.com", "mingchun1991");
+
 
 
 /******** Configuration of connecting to mysql db from other domain *********/

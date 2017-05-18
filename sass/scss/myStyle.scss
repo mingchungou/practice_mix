@@ -51,6 +51,8 @@
     }
 }
 
+
+
 /******************* @if and @else ******************/
 @mixin add-dynamic-width($option: 1, $width: auto) {
     @if $option == 1 {
@@ -77,6 +79,8 @@
         background-color: black;
     }
 }
+
+
 
 /******************* map-has-key and map-get ******************/
 $media-types: (
@@ -106,6 +110,8 @@ $media-types: (
         background-color: purple;
     }
 }
+
+
 
 /******************* map-merge ******************/
 @function extend($obj, $ext-obj) {
@@ -160,6 +166,8 @@ $merge: extend($default-object, $object);
     )...);
 }*/
 
+
+
 /******************* type-of ******************/
 @mixin check-type-of($value: ()) {
     @if type-of($value) == string {
@@ -190,6 +198,8 @@ $data: ("item1" "item2" "item3");
         @include check-type-of($data);
     }
 }
+
+
 
 /******************* @each ******************/
 $configuration: (
@@ -238,6 +248,8 @@ $cube-attr-list: (
     }
 }
 
+
+
 /******************* placeholder selectors ******************/
 %animal {
     width: 100%;
@@ -257,6 +269,8 @@ $cube-attr-list: (
         background-color: darkgray;
     }
 }
+
+
 
 /******************* loop for and while ******************/
 $class-slug: for !default;
@@ -296,7 +310,7 @@ $class-collection: (
     }
 }
 
-.forStatemente {
+.loopStatemente {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -309,6 +323,8 @@ $class-collection: (
     //@include run-for();
     @include run-while();
 }
+
+
 
 /******************* interesting mixin ******************/
 @mixin large-text() {

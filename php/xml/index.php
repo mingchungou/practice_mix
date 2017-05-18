@@ -38,6 +38,7 @@
     $bookstore->asXml("bookstore.xml");*/
 
 
+
     /******************* Convert string to xml ********************/
     /*$xmlFile = "<?xml version='1.0' encoding='UTF-8'?>
     <note>
@@ -50,6 +51,7 @@
     $note = simplexml_load_string($xmlFile) or die("Error: cannot create object");
 
     echo $note->to;*/
+
 
 
     /******************* Xml custom parser ********************/
@@ -95,6 +97,7 @@
 
     //Free the xml parser
     xml_parser_free($parser);*/
+
 
 
     /******************* DOMDocument ********************/
