@@ -1,0 +1,13 @@
+* Build typescript file
+/> tsc FILE_NAME
+
+
+
+* Set change watcher to typescript file
+/> tsc FILE_NAME -w
+
+
+
+* Init typescript config file
+/> tsc -init
+/> tsc
