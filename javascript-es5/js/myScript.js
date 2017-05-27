@@ -25,25 +25,48 @@ console.log({} instanceof Object); //Will show true*/
 
 
 
+/****************** Selectors *****************/
+//Get all elements created by the tag targeted and return an array with all elements found.
+//console.log(document.getElementsByTagName("li"));
+
+//Get all elements with the class targeted and return an array with all elements found.
+//console.log(document.getElementsByClassName("list-item"));
+
+//Get an element with the id targeted and return that element.
+//console.log(document.getElementById("title1"));
+
+//Get all elements with the name targeted and return an array with all elements found.
+//console.log(document.getElementsByName("email"));
+
+//Get all elements with css selector and return an array with all elements found.
+//console.log(document.querySelectorAll(".list-item"));
+
+//Get the first element with css selector and return that element
+//console.log(document.querySelector("li"));
+
+
+
 /****************** String *****************/
 var myString = "Javascript is very extense programming language is";
 
 /*console.log(myString.length);
 console.log(myString.indexOf("very")); //Return the first match position
 console.log(myString.lastIndexOf("is")); //Return last match position
-console.log(myString.search("very")); //Better than indexOf
-console.log(myString.slice(7, 15)); //Extract portion of string according to limitation
+console.log(myString.search("very")); //Better than indexOf, can search by regular expresion
+console.log("blue red green blue red green".replace(/e/g, "@"));*/
+
+/*console.log(myString.slice(7, 15)); //Extract portion of string x <= i < y
 console.log(myString.substring(7, 15)); //Same as slice
-console.log(myString.substr(7, 15)); //From index selected, extract next 15 characters
-console.log("blue red green blue red green".replace(/e/g, "@"));
-console.log(myString.toUpperCase());
+console.log(myString.substr(7, 15)); //From index selected, extract next 15 characters*/
+
+/*console.log(myString.toUpperCase());
 console.log(myString.toLowerCase());
 console.log("Hello".concat(" ", "Ming", " ","Chung")); //Join n string
 console.log(myString.charAt(0)); //Get character of string according to position
-console.log(myString.split(" ")); //Convert string to array
+console.log(myString.split(" ")); //Convert string to array*/
 
 //Revert the string
-console.log(myString.split(" ").reverse().join(" "));*/
+//console.log(myString.split(" ").reverse().join(" "));
 
 
 
@@ -76,28 +99,40 @@ var xArray1 = ["Banana", "Apple", "Orange", "Mango"],
 		{type: "Volvo", year: 2016},
 		{type: "Saab", year: 2001},
 		{type: "BMW", year: 2010}
-	];
+	],
+    xArray5 = [
+        {firstname : "Luffy", lastname: "Monkey D."},
+        {firstname : "Zoro", lastname: "Roronoa"},
+        {firstname : "Sanji", lastname: "Vinsmoke"}
+    ];
 
 /*console.log(Array.isArray(xArray1)); //Check whether of not is array
 console.log(xArray1.toString()); //Convert array to string
-console.log(xArray1.join(" - ")); //Its similar as toString but you can add personal separator
-xArray1.pop(); //Remove last item
+console.log(xArray1.join(" - ")); //Its similar as toString but you can add personal separator*/
+
+/*xArray1.pop(); //Remove last item
+console.log(xArray1.toString());
 xArray1.push("Kiwi"); //Add new item to last
+console.log(xArray1.toString());
 xArray1.unshift("Lemon"); //Add new item at first
+console.log(xArray1.toString());
+xArray1.shift("Lemon"); //Remove first item
+console.log(xArray1.toString());*/
 
 //Add item(s) from specific position
-xArray1.splice(2, 0, "Banana", "Mango");
+/*xArray1.splice(2, 0, "Pear", "Pineapple");
 console.log(xArray1.toString());
 
 //Remove an item at specific position
-xArray1.splice(4, 1); //Return the item removed
-console.log(xArray1.toString());
+xArray1.splice(2, 1); //Return the item removed
+console.log(xArray1.toString());*/
 
-console.log(xArray1.concat(xArray2, xArray3).toString()); //Join n arrays
+/*console.log(xArray1.concat(xArray2, xArray3).toString()); //Join n arrays
 console.log(xArray1.slice(1).toString()); //Take out a portion of array
+console.log(xArray1.reverse().toString()); //Reverse the array*/
 
 //Sort strings asc
-console.log(xArray1.sort().toString());
+/*console.log(xArray1.sort().toString());
 
 //Sort strings desc
 console.log(xArray1.sort(function(a, b) {
@@ -125,6 +160,21 @@ console.log(xArray4.sort(function(a, b) {
     if (aux1 > aux2) return 1;
 }));*/
 
+//Using map
+//Go through each array item and execute the function sent with each item
+/*function getFullName(item, index) {
+    console.log(index);
+    console.log([item.lastname, item.firstname].join(" "));
+};
+
+xArray5.map(getFullName);*/
+
+//Using filter
+//Return a new array with items that passd the condition
+/*console.log(xArray3.filter(function(item, index) {
+    return item <= 100;
+}));*/
+
 
 
 /****************** Label *****************/
@@ -134,15 +184,17 @@ for(var i = 0; i < 3; i++) {
     for (var j = 0; j < 3; j++) {
         if (i === 1 && j === 1) {
             //continue loop1;
-            break loop1;
+            continue loop2;
+            //break loop1;
+            //break loop2;
         }
 
-        document.write("<span>i = " + i + ", j = " + j + "</span><br>");
+        console.log("".concat("i= ", i, ", j=", j));
     }
-}
+}*/
 
-//Can't use continue within blocks
-var date = new Date();
+//Can't use continue within a code block
+/*var date = new Date();
 var test = function() {
 	label1:
 	x = 5;
@@ -234,20 +286,19 @@ ex = /^(\(\d{3}\))?\s?[0-9]{8}/g;
 //console.log(myString.match(ex));
 
 myString = "mingchungou@gmail.com.cr";
-ex = /^[^()\/\\\[\]@#$%&?¡!¿{}<>]+@[a-zA-Z0-9]+(?:\.[a-zA-Z]{2,3}){1,2}/g;
+ex = /^[^()\/\\|\[\]@#$%&?¡!¿{}<>"'`~,:;\^]+@[a-zA-Z0-9]+(?:\.[a-zA-Z]{2,3}){1,2}$/g;
 //console.log(myString.match(ex));
 
 
 
 /****************** Errors *****************/
 //Used for executing several tasks but controlling the errores
-//debugger;
+
 /*try {
 	//getDate();
 	if (isNaN(x)) throw "x is not a Number"
 } catch(err) {
-	if (err.message) console.log(err.message);
-	else console.log(err);
+	console.log(err.message);
 } finally {
 	console.log("Get End");
 }*/
@@ -270,45 +321,52 @@ function Person(first, last, age, eye) {
 	this.lastName = last;
 	this.age = age;
 	this.eyeColor = eye;
+    this.isAdult = function() {
+        return this.age > 18;
+    };
 };
-myObject = new Person("Michael", "Forbes", 35, "brown");
-//console.log(myObject);
 
-delete myObject.age; //Delete object attribute
-//console.log(myObject);
+//Delect object attributes
+/*myObject = new Person("Michael", "Forbes", 35, "brown");
 
-//Add new attribute and function to object class
+delete myObject.age;
+console.log(myObject);*/
+
+//Add new attribute and function to declaration class
 Person.prototype.country = "";
 Person.prototype.getName = function() {
     return this.firstName.concat(" ", this.lastName);
 };
 
-myObject = new Person("Maria", "Alpizar", 24, "blue");
+/*myObject = new Person("Maria", "Alpizar", 16, "blue");
 myObject.country = "Costa Rica";
-//console.log(myObject);
+console.log(myObject);
+console.log("Full name: " + myObject.getName());
+console.log("Is adult: " + myObject.isAdult());*/
 
 
 
-/****************** Heritage object *****************/
+/****************** Object - Heritage *****************/
 function Worker(first, last, age, eye, profession) {
-    Person.call(this, first, last, age, eye); //Inherit the attributes from object Person to Worker but not the properties of object Person
+    //Inherit the attributes from object Person to Worker but not the properties of object Person
+    Person.call(this, first, last, age, eye);
     this.profession = profession;
 };
 
-//Inheriting prototype but not the constructor
+//Inheriting Person prototype to Worker object
 Worker.prototype = Object.create(Person.prototype);
 Worker.prototype.constructor = Worker;
 
 myObject = new Worker("Ming", "Ou", 25, "black", "Engineer");
 /*console.log(myObject);
-console.log(myObject.getName());
+console.log("Full name: " + myObject.getName());
 console.log(myObject instanceof Person);
 console.log(myObject instanceof Worker);*/
 
 
 
 /****************** Arguments *****************/
-var sumAll = function() {
+/*var sumAll = function() {
     myNumber = 0;
 
 	for (var i = 0; i < arguments.length; i++) {
@@ -319,46 +377,55 @@ var sumAll = function() {
 	return myNumber;
 };
 
-//console.log(sumAll(1, 2, 3, 4, 5));
+console.log(sumAll(1, 2, 3, 4, 5));*/
 
 
 
 /****************** Call *****************/
-//Call whatever function but trying the object passed by parameter as this
-//Able to receive extra parameters as usual
-var sayHello = function(namePerson, greeting) {
+/*
+Call whatever function but trying the object passed by parameter as this
+Able to receive extra parameters as usual
+*/
+
+/*var sayHello = function(namePerson, greeting) {
 	console.log("Hola soy " + this.firstName + ", y saludo a " + namePerson + " con " + greeting);
 };
 
-//sayHello.call(myObject, "Juan", "afecto");
+sayHello.call(myObject, "Juan", "afecto");*/
 
 
 
 /****************** Apply *****************/
-//Call whatever function but tring the object passed by parameter as this
-//Able to receive extra parameters as an array
+/*
+- Call whatever function but tring the object passed by parameter as this
+- Able to receive extra parameters as an array
+*/
+
 //sayHello.apply(myObject, ["Juan", "afecto"]);
 
 
 
 /****************** Closure *****************/
 //Functions that handles independent variables and remembers them
-var add = (function() {
+
+/*var add = function() {
 	var counter = 0;
 	return function() {
 		return counter += 1;
 	};
-})();
+};
 
-/*add();
-add();
-console.log(add());*/
+var executeAdd = add();
+executeAdd();
+executeAdd();
+console.log(executeAdd());*/
 
 
 
 /****************** Ajax *****************/
 //Method to create interactive applications where have functions to work asynchronous
-var loadData = function() {
+
+/*var loadData = function() {
 	var xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
@@ -427,13 +494,14 @@ var getJSONData = function(jsonData) {
 	document.body.appendChild(table);
 };
 
-//loadData();
+loadData();*/
 
 
 
 /****************** Callback *****************/
-//Callback function is executed after current one finished
-function doSomething(callback) {
+//Callback function that is executed after current one finished
+
+/*function doSomething(callback) {
     callback();
 };
 
@@ -441,6 +509,167 @@ function justPrint() {
     console.log("Printing");
 };
 
-//doSomething(justPrint);
+doSomething(justPrint);*/
 
-//use strict: in other word strict mode, and it helps us to detect syntasis errors
+
+
+/****************** Events *****************/
+/*
+- When adding the event by html, then event object is not possible to catch.
+- Only adding event by javascript, event object is catchable.
+*/
+
+/*
+Semantic event
+- Adding event by this way, the event can't be removed until the page is closed.
+*/
+
+/*document.querySelector("#button1").onclick = function(ev) {
+    console.log("Semantic event");
+    console.log(ev);
+};*/
+
+/*
+Multiple event
+- By this, the event can be added and removed at any moment.
+- Also can handle event flow.
+*/
+
+/*var button1 = document.querySelector("#button1");
+
+function catchEvent(ev) {
+    console.log("Multiple event");
+    console.log(ev);
+    button1.removeEventListener("click", catchEvent);
+};
+
+button1.addEventListener("click", catchEvent, false);*/
+
+//Cancel default event by preventDefault
+/*document.querySelector(".facebook-link").onclick = function(ev) {
+    ev.preventDefault();
+    console.log("Default event is avoided");
+};*/
+
+
+
+/****************** Event flow - Bubbling/Capture phases *****************/
+/*
+Bubling phase
+- To activated this phase, the boolean parameter should be in false.
+- The bubbling is spreading the event from more inside element to more outside element.
+*/
+
+/*
+Capture phase
+- To activated this phase, the boolean parameter should be in true.
+- The capture is spreading the event from more outside element to more inside element.
+*/
+
+/*function catchEvent(ev) {
+    console.log("Hello " + this.className);
+    console.log("The event click is generated by " + ev.target.className);
+
+    //If want to stop event spread, then using stopPropagation
+    //ev.stopPropagation();
+};
+
+var divs = document.querySelectorAll("div[class^='div-']");
+
+for (var i = 0; i < divs.length; i++) {
+    divs[i].addEventListener("click", catchEvent, false);
+}*/
+
+/*
+- According to this example, if using bubbling, when clicking the div-three, then click
+event is spread throw div-two, div-one and body.
+- But if using capture, when clicking the div-three, the click event starts from body,
+then div-one, then div-two and finally div-three.
+*/
+
+
+
+/****************** Declared Function vs Expressed function *****************/
+/*
+Declared function
+- When declaring a function, then that function is declared function.
+- Declared functions belong to global.
+- In javascript, declared stuff and global stuff are read in compile phase. And execution
+stuff and instantiation stuff are read in execution phase.
+*/
+
+/*sayHello(); //So this will execute correctly
+
+function sayHello() {
+    console.log("Hello World");
+};*/
+
+/*
+Expressed function
+- When storing a function into a variable, then that function is expressed function.
+- Expressed functions belong to variables and not to global.
+*/
+
+/*sayHello(); //This will throw an error
+
+var sayHello = function() {
+    console.log("Hello World");
+};*/
+
+
+
+/****************** Anonymous Function *****************/
+/*
+- Functions which are created without name.
+- One advantage is when it is declared, at the same time it is being used.
+- One disadvantage is when wanting to use it in other moment, then its impossible.
+*/
+
+/*window.onload = function() {
+    console.log("This is an anonymous function");
+};*/
+
+
+
+/****************** Auto-executable Function *****************/
+/*
+- Into first parantheses contains the function.
+- The second parentheses is executing the function, into the second parentheses can add
+the parameters that the function needs.
+- One advantage is avoiding touch between libraries that using same symbol to represent
+themselve, like jquery, underscore, lodash...
+*/
+
+//Classic declaration
+/*(function(d, w, n, $) {
+    console.log("This is an auto-executable classic function");
+    console.log(d, w, n);
+    $("#title1").css({color: "#00ff00"});
+})(document, window, navigator, jQuery);*/
+
+//Crockford declaration
+/*((function(d, w, n, $) {
+    console.log("This is an auto-executable crockford function");
+})(document, window, navigator, jQuery));*/
+
+//Unary declaration
+/*+function(d, w, n, $) {
+    console.log("This is an auto-executable unary function");
+}(document, window, navigator, jQuery);*/
+
+//Facebook declaration
+/*!function(d, w, n, $) {
+    console.log("This is an auto-executable facebook function");
+}(document, window, navigator, jQuery);*/
+
+
+
+/*
+Note:
+- "use strict"; - in other word strict mode, and it helps us to detect syntasis errors
+- debugger; - works as breakpoint.
+- Three main variables of parent are: document, window, navigator
+- Document contains all html page elements
+- Window contains all global stuff, like global objects, functions, variables, etc.
+- Navigator has browser information.
+*/

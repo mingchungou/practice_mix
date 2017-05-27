@@ -5,12 +5,75 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <style>
+            div[class^="div-"] {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .div-one {
+                width: 300px;
+                height: 300px;
+                background-color: #ff0000;
+            }
+
+            .div-two {
+                width: 200px;
+                height: 200px;
+                background-color: #ffff00;
+            }
+
+            .div-three {
+                width: 100px;
+                height: 100px;
+                background-color: #00ff00;
+            }
+        </style>
     </head>
     <body>
         <h1 id="title1" onclick="window.greeting('Ming', this)">Hello World</h1>
         <h2 id="title3" onclick="greeting('Ou', this)">Hello World</h2>
         <input type="text" onfocus="this.blur()" />
 
+        <!--<section>
+            <h2>Selectors</h2>
+            <ul>
+                <li class="list-item">Item 1</li>
+                <li class="list-item">Item 2</li>
+                <li class="list-item">Item 3</li>
+                <li class="list-item">Item 4</li>
+                <li class="list-item">Item 5</li>
+            </ul>
+            <form>
+                <input type="text" name="name" /><br />
+                <input type="email" name="email" /><br />
+                <input type="password" name="password" /><br />
+                <input type="date" name="birth" />
+            </form>
+        </section>-->
+
+        <!--<section>
+            <h2>Events</h2>
+            <button id="button1" type="button">Click Me</button>
+            <br />
+            <a class="facebook-link" href="https://www.facebook.com" target="_blank">Facebook</a>
+        </section>-->
+
+        <!--<section>
+            <h2>Declared Function vs Expressed function</h2>
+            <div class="div-one">
+                1
+                <div class="div-two">
+                    2
+                    <div class="div-three">3</div>
+                </div>
+            </div>
+        </section>-->
+
+        <script src="../lib/jquery-3.2.0.min.js"></script>
         <script src="js/myScript.js"></script>
     </body>
 </html>
