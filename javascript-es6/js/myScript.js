@@ -1,37 +1,49 @@
 
 /****************** Var vs let *****************/
-//Case 1
-//Var doesn't force you to create it before using it, so here returns undefined
+/*
+Case 1
+- Var doesn't force you to create it before using it, so here returns undefined.
+- Let forces you to create it before using it, so here returns an error.
+*/
+
 /*console.log(message);
 var message = "Hello World";*/
 
-//Let forces you to create it before using it, so here returns an error
 /*console.log(message);
 let message = "Hello World";*/
 
 
-//Case 2
-//Variebles created by let live only into that scope
+/*
+Case 2
+- Variebles created by let live only into that scope.
+*/
+
 /*if (true) {
     let message = "Hello World"; //Message exists only inside the if condition
 }
 console.log(message); //So you will get error of not defined*/
 
 
-//Case 3
-//Var allows to re-declare the same variable
+/*
+Case 3
+- Var allows to re-declare the same variable.
+- Let doesn't allow to re-declare the same variable.
+*/
+
 /*var message = "Hello";
 var message = "123";
 var message = "abc";
 console.log(message); //You will see the last declaration value*/
 
-//Let doesn't allow to re-declare the same variable
 /*let message = "Hello";
 var message = "World"; //You will get an error*/
 
 
-//Case 4
-//Let allows to declare the same variable but in different scopes
+/*
+Case 4
+- Let allows to declare the same variable but in different scopes.
+*/
+
 /*let message = "Hello World";
 if (true) {
     let message = "Hello Ming"; //This won't throw any error, but case 2 applies here
@@ -39,21 +51,7 @@ if (true) {
 console.log(message); //Will see the message declared from window scope*/
 
 
-//Case 5
-//Using var
-/*for (var i = 0; i < 10; i++) {
-    console.log("Number " + i);
-}
-console.log(i); //Will show number 10*/
-
-//Using let
-/*for (let i = 0; i < 10; i++) {
-    console.log("Number " + i);
-}
-console.log(i); //Will throw an error, because i variable as created by let, it lives only into for loop*/
-
-
-//case 6
+//case 5
 //Exercise - show 0 - 4
 //By ES5
 /*var functionsArray = [];
@@ -88,27 +86,39 @@ functionsArray.forEach(function(item) {
 
 
 /****************** Const *****************/
-//Case 1
-//Const variables should be declared with its value
+/*
+Case 1
+- Const variables should be declared with its value.
+*/
+
 //const SALES_TAX; //Will throw an error
 
 
-//Case 2
-//Const variables can't be modified even in different scopes
+/*
+Case 2
+- Const variables can't be modified even in different scopes.
+*/
+
 /*const SALES_TAX = 15.25;
 SALES_TAX = 10; //Will throw an error*/
 
 
-//Case 3
-//Variables created by const live only into that scope
+/*
+Case 3
+- Variables created by const live only into that scope.
+*/
+
 /*if (true) {
     const SALES_TAX = 10.25; //Sales tax exists only inside the if condition
 }
 console.log(SALES_TAX); //So you will get error of not defined*/
 
 
-//Case 4
-//Const allows to declare the same variable but in different scopes
+/*
+Case 4
+- Const allows to declare the same variable but in different scopes.
+*/
+
 /*const SALES_TAX = 15.25;
 if (true) {
     const SALES_TAX = 10.25; //This won't throw any error, but case 3 applies here
@@ -116,8 +126,11 @@ if (true) {
 console.log(SALES_TAX); //Will see the sales tax declared from window scope*/
 
 
-//Case 5
-//Const variables are able to contain anything
+/*
+Case 5
+- Const variables are able to contain anything.
+*/
+
 /*const ABLE_TO_FIGHT = true,
     TAXS = 15.25,
     NICKNAME = "GOKU",
@@ -131,6 +144,7 @@ console.log(SALES_TAX); //Will see the sales tax declared from window scope*/
 //But you can change object attributes and array items
 PERSON.firstName = "Maicol";
 FAV_FRUITS[0] = "Watermelon";
+FAV_FRUITS.push("Grape");
 
 //Declaring const doesn't replace variable type
 console.log(typeof PERSON); //Show object
@@ -144,7 +158,7 @@ let greeting = "Hello World";
 
 //Using startsWith - check if first character(s) of string is COMPARED_VALUE, return boolean
 /*console.log(greeting.startsWith("He")); //Show true
-//Can add from which index of string to check
+//Can add from which index of string want to check
 console.log(greeting.startsWith("Wor", 6)); //Show true*/
 
 
@@ -208,7 +222,7 @@ console.log(message);*/
 
 //Using raw - only works for literal templates
 /*let message = String.raw `Hello \nWorld\\`;
-console.log(message); //Will show exactly what we wrote*/
+console.log(message); //Will show specific characters*/
 
 
 
@@ -235,11 +249,11 @@ function sayHello6(message = "Hello World", time = 1500) {
 sayHello6();*/
 
 //Also can set default functions and objects in parameters
-/*function fnTemperal() {
+/*function fnTemporal() {
     console.log("Hello World");
 };
 
-function execute(fn = fnTemperal, person = {name: "Ming Chung"}) {
+function execute(fn = fnTemporal, person = {name: "Ming Chung"}) {
     fn();
     console.log(person);
 };
@@ -254,9 +268,11 @@ execute(fnTemperal, {name: "Melissa"});*/
 sum();*/
 
 
-//Rest parameters
-//Each function can recieve only one rest parameter
-//Rest parameter should be placed in the last parameter
+/*
+Rest parameters
+- Each function can recieve only one rest parameter.
+- Rest parameter should be placed in the last parameter.
+*/
 
 //Exercise - adding N new students into the student array
 //By ES5
@@ -346,9 +362,11 @@ var personX6 = new Person6("Luffy");
 
 
 /****************** Arrow functions *****************/
-//Don't have arguments array, but it can take the closer parent arguments
-//Don't have this object, but it can take the closer parent this
-//Don't have constructor
+/*
+- Don't have arguments array, but it can take the closer parent arguments.
+- Don't have this object, but it can take the closer parent this.
+- Don't have a constructor.
+*/
 
 //Function with no parameter
 //By ES5
@@ -476,8 +494,11 @@ console.log(subtract instanceof Function); //Will show true
 
 
 /****************** Objects *****************/
-//Creating literal object
-//If attribute name is the same than value container name, then can write it only once
+/*
+Creating literal object
+- If attribute name is the same than value container name, then can write it only once.
+*/
+
 /*function createPerson(firstName, lastName, age) {
     return {
         firstName,
@@ -488,17 +509,25 @@ console.log(subtract instanceof Function); //Will show true
 console.log(createPerson("Sanji", "Vinsumoku", 21));*/
 
 
-//Concise function
+/*
+Concise function
+- Able to take out function statement.
+*/
+
 /*let person = {
     name: "God Ussop",
-    getName() { //Able to take out function statement
+    getName() {
         console.log(this.name);
     }
 };
 person.getName();*/
 
 
-//Computed properties in Object
+/*
+Computed properties in Object
+- Able to build the object attributes.
+*/
+
 /*let suffix = "first ",
     myself = {
         [suffix + "name"]: "Luffy",
@@ -546,8 +575,10 @@ console.log(mix5(zoro, ace));
 console.log(Object.assign(zoro, ace));*/
 
 
-//Object attributes new order standard
-//All number attributes will show first asc, then string attributes as normal
+/*
+Object attributes new order standard
+- All number attributes will show first as asc, then string attributes show after as asc.
+*/
 
 /*let myObject = {
         c: 1,
@@ -621,7 +652,12 @@ console.log(friend.greeting());*/
 
 
 /****************** Destructuring *****************/
-//Object destructuring
+/*
+Object destructuring
+- Convert object attributes to separate variables.
+- Doesn't mind the order of variables, but name of variables need to match object attributes.
+*/
+
 /*let settings = {
         name: "Ming Chung",
         email: "mingchungou@gmail.com",
@@ -630,19 +666,21 @@ console.log(friend.greeting());*/
         premium: true
     };
 
-//Convert object attributes to separate variables
-//Doesn't mind the order of variables, but name of variables need to match object attributes
 let {name, email, facebook, google, premium} = settings;
 console.log(name, email, facebook, google, premium);
 
 //Set different variable name instead of object attribute
 let {premium:payment} = settings;
-console.log(payment);
+console.log(payment);*/
 
-//Able to set default value to variable
-//If variable matches to object attribute, then variable will take object attribute value
-//If not, then using default value
-let {twitter:accounTwi = "ming08"} = settings;
+
+/*
+- Able to set default value to variable.
+- If variable matches to object attribute, then variable will take object attribute value.
+- If not, then using default value.
+*/
+
+/*let {twitter:accounTwi = "ming08"} = settings;
 console.log(accounTwi);*/
 
 
@@ -678,28 +716,36 @@ let {lastFile:{extraFile:{cursor:actCursor3}}} = autoSaved;
 console.log(actCursor3);*/
 
 
-//Array destructuring
+/*
+Array destructuring
+- Convert array items to separate variables.
+- Order of variables cares.
+*/
+
 /*let fruits = ["Apple", "Banana", "Melon", "Pineapple"];
 
-//Convert array items to separate variables
-//Order of variables cares
 let [fruit1, fruit2, fruit3, fruit4] = fruits;
 console.log(fruit1, fruit2, fruit3, fruit4);
 
 //Get specific index
 let [,,thirdFruit] = fruits;
-console.log(thirdFruit);
+console.log(thirdFruit);*/
 
-//Able to set default value to variable
-//If variable matches to array item, then variable will take array item value
-//If not, then using default value
-let sports = ["Soccer"];
+
+/*
+- Able to set default value to variable.
+- If variable matches to array item, then variable will take array item value.
+- If not, then using default value.
+*/
+
+/*let sports = ["Soccer"];
 
 let [sport1, sport2 = "PaintBall"] = sports;
-console.log(sport1, sport2);
+console.log(sport1, sport2);*/
+
 
 //Exchange data between two variables
-let a = 1,
+/*let a = 1,
     b = 2;
 [a, b] = [b, a];
 console.log(a);
@@ -743,6 +789,7 @@ person[firstName] = "Luffy";
 console.log(person[firstName]);
 console.log(person[ability]); //But having to access that attribute by symbol as well
 
+
 //Each symbol is unique although having same aria
 let symbol1 = Symbol("onePiece"),
     symbol2 = Symbol("onePiece");
@@ -753,11 +800,13 @@ console.log(typeof symbol1); //Will show symbol
 console.log(typeof symbol2); //Will show symbol*/
 
 
-//Using Symbol.for() and Symbol.keyFor()
-//Symbol.for() checks if there is a symbol created with key specified
-//If so, then loading that same symbol
-//If not, then creating a new one
-//Symbol.keyFor() shows the key used to create the symbol
+/*
+Using Symbol.for() and Symbol.keyFor()
+- Symbol.for() checks if there is a symbol created with key specified.
+- If so, then loading that same symbol.
+- If not, then creating a new one.
+- Symbol.keyFor() shows the key used to create the symbol
+*/
 
 /*let userID = Symbol.for("userID"), //Creating symbol userID
     object = {};
@@ -1071,6 +1120,11 @@ console.log(square instanceof Rectangle); //Will show true*/
 
 
 /****************** Promise *****************/
+/*
+- One advantage is abling to bind N promises as wanting.
+- Also is abling to know if the task finishes successful or fail
+*/
+
 /*let asynTask = () => {
     let promise = new Promise((resolve, rejecta) => {
         setTimeout(() => {

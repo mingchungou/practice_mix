@@ -1,3 +1,4 @@
+
 /****************** Output *****************/
 var greeting = function(name, self) {
     self.innerHTML = "Hello " + name;
@@ -220,7 +221,7 @@ test();*/
 
 
 
-/****************** Regular Expression *****************/
+/****************** Regular expression *****************/
 myString = "I am a eateR";
 var ex = /r$/gi;
 //console.log(myString.match(ex));
@@ -589,7 +590,7 @@ then div-one, then div-two and finally div-three.
 
 
 
-/****************** Declared Function vs Expressed function *****************/
+/****************** Declared function vs Expressed function *****************/
 /*
 Declared function
 - When declaring a function, then that function is declared function.
@@ -618,7 +619,7 @@ var sayHello = function() {
 
 
 
-/****************** Anonymous Function *****************/
+/****************** Anonymous function *****************/
 /*
 - Functions which are created without name.
 - One advantage is when it is declared, at the same time it is being used.
@@ -631,10 +632,10 @@ var sayHello = function() {
 
 
 
-/****************** Auto-executable Function *****************/
+/****************** Auto-executable function *****************/
 /*
 - Into first parantheses contains the function.
-- The second parentheses is executing the function, into the second parentheses can add
+- The second parenthesis is executing the function, into the second parenthesis can add
 the parameters that the function needs.
 - One advantage is avoiding touch between libraries that using same symbol to represent
 themselve, like jquery, underscore, lodash...
@@ -661,6 +662,34 @@ themselve, like jquery, underscore, lodash...
 /*!function(d, w, n, $) {
     console.log("This is an auto-executable facebook function");
 }(document, window, navigator, jQuery);*/
+
+
+
+/****************** Pattern design - Singleton *****************/
+/*var User = (function() {
+    var user;
+
+    function create() {
+        var object = new Object();
+        object.firstName = "Ming Chung";
+        object.lastName = "Ou";
+        object.age = 25;
+        return object;
+    };
+
+    return {
+        getUser: function() {
+            if (!user) {
+                user = create();
+            }
+
+            return user;
+        }
+    };
+})();
+
+var user = User.getUser();
+console.log(user);*/
 
 
 
