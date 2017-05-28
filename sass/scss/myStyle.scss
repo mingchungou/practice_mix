@@ -1,4 +1,7 @@
-/******************* get quantify of specific element ******************/
+
+@import "./variables";
+
+/******************* Get quantify of specific element ******************/
 @mixin quantity-query($number, $comparison: "=") {
     $nth: "";
 
@@ -19,7 +22,7 @@
     &:nth-last-child(#{$nth}):first-of-type {
         &,
         & ~ * {
-            @content;
+            @content; //Able to pass a block of styles to @mixin
         }
     }
 }
@@ -28,24 +31,21 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    text-align: center;
-
+    @extend %text-center;
     h1 {
         flex: 1 1 100%;
     }
-
     .container {
         flex: 2 1 0px;
-
         p {
             @include quantity-query(3, ">=") {
-                color: red;
+                color: $red;
             }
             @include quantity-query(2, "=") {
-                color: blue;
+                color: $blue;
             }
             @include quantity-query(4, "<=") {
-                color: green;
+                color: $green;
             }
         }
     }
@@ -71,12 +71,11 @@
 }
 
 .ifelse {
-    text-align: center;
-
+    @extend %text-center;
     .container {
         @include add-dynamic-width(4, 400px);
         height: 60px;
-        background-color: black;
+        background-color: $black;
     }
 }
 
@@ -105,9 +104,9 @@ $media-types: (
 .mapHasGet {
     width: 100%;
     height: 200px;
-    text-align: center;
+    @extend %text-center;
     @include respond-to(non-retina) {
-        background-color: purple;
+        background-color: $purple;
     }
 }
 
@@ -125,7 +124,7 @@ $media-types: (
         @error "Empty parameter";
     } @else {
         @each $property, $value in $configuration {
-            #{$property}: $value;
+            #{$property}: #{$value};
         }
     }
 }
@@ -140,13 +139,13 @@ $default-object: (
 $object: (
     width: 300px,
     height: 300px,
-    background-color: green
+    background-color: $green
 );
 
 $merge: extend($default-object, $object);
 
 .mapMerge {
-    text-align: center;
+    @extend %text-center;
     @include copy($merge);
 }
 
@@ -158,12 +157,12 @@ $merge: extend($default-object, $object);
 }
 
 .mapMerge {
-    text-align: center;
+    @extend %text-center;
     @include addAttrDynamically((
         width: 300px,
         height: 300px,
-        background-color: gray
-    )...);
+        background-color: $gray20
+    )...); //Adding three points are indicating that it can accept incomplete parameters
 }*/
 
 
@@ -171,17 +170,17 @@ $merge: extend($default-object, $object);
 /******************* type-of ******************/
 @mixin check-type-of($value: ()) {
     @if type-of($value) == string {
-        background-color: black;
+        background-color: $black;
     } @else if type-of($value) == number {
-        background-color: red;
+        background-color: $red;
     } @else if type-of($value) == bool {
-        background-color: green;
+        background-color: $green;
     } @else if type-of($value) == color {
-        background-color: orange;
+        background-color: $orange;
     } @else if type-of($value) == list {
-        background-color: blue;
+        background-color: $blue;
     } @else if type-of($value) == map {
-        background-color: pink;
+        background-color: $pink;
     } @else {
         @error "Can't identify type of value";
     }
@@ -190,8 +189,7 @@ $merge: extend($default-object, $object);
 $data: ("item1" "item2" "item3");
 
 .typeOf {
-    text-align: center;
-
+    @extend %text-center;
     .container {
         width: 200px;
         height: 200px;
@@ -206,7 +204,7 @@ $configuration: (
     margin: 0,
     padding: 0,
     list-style: none,
-    background-color: green
+    background-color: $green
 );
 
 $icons: (
@@ -217,14 +215,13 @@ $icons: (
 );
 
 $cube-attr-list: (
-    red 40px (1 1 auto),
-    green 60px (1 1 auto),
-    blue 80px (1 1 auto)
+    red 40px (1 1 auto) $red,
+    green 60px (1 1 auto) $green,
+    blue 80px (1 1 auto) $blue
 );
 
 .each {
-    text-align: center;
-
+    @extend %text-center;
     ul {
         @include copy($configuration);
         @each $name, $icon in $icons {
@@ -233,16 +230,14 @@ $cube-attr-list: (
             }
         }
     }
-
     .colorCollector {
         display: flex;
         margin-top: 1.5rem;
-
         @each $name in $cube-attr-list {
             .cube-#{nth($name, 1)} {
-                flex: nth($name, 3);
-                height: nth($name, 2);
-                background-color: nth($name, 1);
+                flex: #{nth($name, 3)};
+                height: #{nth($name, 2)};
+                background-color: #{nth($name, 4)};
             }
         }
     }
@@ -250,35 +245,49 @@ $cube-attr-list: (
 
 
 
-/******************* placeholder selectors ******************/
+/******************* Placeholder selectors ******************/
+//Using placeholder select can avoid the generator includes the class inherited.
+
 %animal {
     width: 100%;
     height: 60px;
-    color: white;
     font-size: 1rem;
+    line-height: 60px;
 }
+
+/*@media (max-width: 576px) {
+    %animal {
+        width: 100%;
+        height: 60px;
+        font-size: 1rem;
+        line-height: 60px;
+    }
+}*/
 
 .placeholder {
-    text-align: right;
-    .cat {
-        @extend %animal;
-        background-color: black;
-    }
+    @extend %text-center;
+    .cat,
     .dog {
         @extend %animal;
-        background-color: darkgray;
+        color: $whilte;
+    }
+    .cat {
+        background-color: $black;
+    }
+    .dog {
+        background-color: $gray;
     }
 }
 
 
 
-/******************* loop for and while ******************/
+/******************* Loop for and while ******************/
 $class-slug: for !default;
 $class-collection: (
-    ((1 1 0px), 60px, red),
-    ((1 1 0px), 60px, green),
-    ((1 1 0px), 60px, purple),
-    ((1 1 0px), 60px, brown)
+    ((1 1 0px), 60px, $red),
+    ((1 1 0px), 60px, $green),
+    ((1 1 0px), 60px, $purple),
+    ((1 1 0px), 60px, $brown)
 );
 
 @mixin run-for() {
@@ -287,9 +296,9 @@ $class-collection: (
     @for $i from 1 through length($class-collection) {
         .#{$class-slug}-#{$i} {
             $aux: nth($class-collection, $i);
-            flex: nth($aux, 1);
-            height: nth($aux, 2);
-            background-color: nth($aux, 3);
+            flex: #{nth($aux, 1)};
+            height: #{nth($aux, 2)};
+            background-color: #{nth($aux, 3)};
         }
     }
 }
@@ -301,9 +310,9 @@ $class-collection: (
     @while $counter <= length($class-collection) {
         .#{$class-slug}-#{$counter} {
             $aux: nth($class-collection, $counter);
-            flex: nth($aux, 1);
-            height: nth($aux, 2);
-            background-color: nth($aux, 3);
+            flex: #{nth($aux, 1)};
+            height: #{nth($aux, 2)};
+            background-color: #{nth($aux, 3)};
         }
 
         $counter: $counter + 1;
@@ -314,21 +323,19 @@ $class-collection: (
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    text-align: center;
-
+    @extend %text-center;
     h1 {
         flex: 1 1 100%;
     }
-
     //@include run-for();
     @include run-while();
 }
 
 
 
-/******************* interesting mixin ******************/
-@mixin large-text() {
-    color: blue;
+/******************* Interesting stuff in mixin ******************/
+@mixin large-text {
+    color: $blue;
     font: {
         family: Arial;
         size: 2rem;
@@ -342,14 +349,30 @@ $class-collection: (
 
 .mixin {
     h1 {
-        @include large-text();
+        @include large-text;
+        @extend %text-center;
     }
-
     .container {
         width: 200px;
         height: 200px;
-        border: 3px solid red;
-        @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
-        background-color: yellow
+        border: 3px solid $red;
+        @include box-shadow(0px 4px 5px $gray40, 6px 6px 10px $gray60);
+        background-color: $yellow
     }
 }
+
+
+
+/*
+Note:
+- @extend helps us to add reusable styles to different selectors.
+- @mixin helps us to add reusable styles to different selectors as well, but it can execute
+complex rules.
+- When adding same styles to two or more selectors by extend, generator group same styles in
+one selector.
+- When adding same styles to two or more selectors by include, generator add styles into each
+selector.
+- Can't use @extend inside media query selectors.
+- One advantage that sass provides is allowing write styles in a structured and friendly way.
+- & refers to parent element.
+*/
