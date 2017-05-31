@@ -306,7 +306,7 @@ call authentication("mingchungou@gmail.com", "mingchun1991");
 
 
 /******** Configuration of connecting to mysql db from other domain *********/
-create user 'monty'@'localhost' identified by 'some_pass';
-grant all privileges on *.* to 'monty'@'localhost' with grant option;
-create user 'monty'@'%' identified by 'some_pass';
-grant all privileges on *.* TO 'monty'@'%' with grant option;
+create user 'USER_NAME'@'localhost' identified by 'USER_PASS';
+grant all privileges on *.* to 'USER_NAME'@'localhost' with grant option;
+create user 'USER_NAME'@'%' identified by 'USER_PASS';
+grant all privileges on *.* TO 'USER_NAME'@'%' with grant option;

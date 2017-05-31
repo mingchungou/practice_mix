@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Angularjs - Heroes</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/myStyle.css" />
+    </head>
+    <body>
+        <section class="main-content my-3" ng-cloak>
+            <div class="hero-list-content container">
+                <h2 class="text-center">Hero List</h2>
+                <hero-list></hero-list>
+            </div>
+
+            <!--<div class="hero-select-content container">
+                <my-tab>
+                    <my-pane title="Superman">
+                        <p><strong>Superman</strong> is a fictional superhero appearing in American comic books published by DC Comics. The character was created by writer Jerry Siegel and artist Joe Shuster, high school students living in Cleveland, Ohio, in 1933.</p>
+                    </my-pane>
+                    <my-pane title="Batman">
+                        <p><strong>Batman</strong> is a fictional superhero appearing in American comic books published by DC Comics. The character was created by artist Bob Kane and writer Bill Finger, and first appeared in Detective Comics #27 (1939).</p>
+                        <p>How many villains he beaten? <a href ng-click="i = i + 1">{{i || 0}}</a></p>
+                    </my-pane>
+                    <my-pane title="Spider Man">
+                        <p><strong>Spider Man</strong> is a fictional superhero appearing in American comic books published by Marvel Comics. The character was created by writer-editor Stan Lee and writer-artist Steve Ditko, and first appeared in the anthology comic book Amazing Fantasy #15 (Aug. 1962) in the Silver Age of Comic Books.</p>
+                    </my-pane>
+                    <my-pane title="Hulk">
+                        <p><strong>Hulk</strong> is a fictional superhero appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in the debut issue of The Incredible Hulk (May 1962).</p>
+                    </my-pane>
+                </my-tab>
+            </div>-->
+
+            <!-- Different ways to add directives
+            <main-example />
+            <main-example></main-example>
+            <main:example></main:example>
+            <div main-example></div>
+            <div class="main-example"></div>-->
+
+            <main-example />
+        </section>
+
+        <script src="../../lib/jquery-3.2.0.min.js"></script>
+        <script src="../../lib/tether.min.js"></script>
+        <script src="../../lib/bootstrap.min.js"></script>
+        <script src="../../lib/angular-1.5.min.js"></script>
+        <script src="js/app.module.js"></script>
+        <script src="js/directives/heroList/heroList.directive.js"></script>
+        <script src="js/directives/heroDetail/heroDetail.directive.js"></script>
+        <script src="js/directives/editableField/editableField.directive.js"></script>
+        <script src="js/directives/myPane/myPane.directive.js"></script>
+        <script src="js/directives/myTab/myTab.directive.js"></script>
+        <script src="js/directives/example.directive.js"></script>
+    </body>
+</html>

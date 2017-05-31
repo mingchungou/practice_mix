@@ -22,7 +22,7 @@
     &:nth-last-child(#{$nth}):first-of-type {
         &,
         & ~ * {
-            @content; //Able to pass a block of styles to @mixin
+            @content; //Able to pass a block of styles to @mixin.
         }
     }
 }

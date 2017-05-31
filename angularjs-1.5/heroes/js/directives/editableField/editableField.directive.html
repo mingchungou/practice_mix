@@ -1,0 +1,21 @@
+<div class="location-data">
+    <!--<span class="mr-3" ng-switch="$ctrl.editMode">
+        <input ng-switch-when="true" type="{{fieldType}}" ng-model="$ctrl.fieldValue" />
+        <span ng-switch-default>{{$ctrl.fieldValue}}</span>
+    </span>-->
+    <ng-switch on="$ctrl.editMode">
+        <input ng-switch-when="true" type="{{fieldType}}" ng-model="$ctrl.fieldValue" />
+        <span ng-switch-default>{{$ctrl.fieldValue}}</span>
+    </ng-switch>
+    <button class="btn btn-secondary"
+        type="button"
+        ng-click="$ctrl.handleModeChange()">
+        {{$ctrl.editMode ? "Save" : "Edit"}}
+    </button>
+    <button class="btn btn-secondary"
+        type="button"
+        ng-click="$ctrl.reset()"
+        ng-if="$ctrl.editMode">
+        Reset
+    </button>
+</div>

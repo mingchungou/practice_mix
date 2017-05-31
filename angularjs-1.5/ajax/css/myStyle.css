@@ -1,0 +1,43 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #111111;
+}
+
+.main-content h1 {
+    text-align: center;
+}
+
+.main-content .todo-table-content {
+    width: 100%;
+}
+
+.main-content .todo-table-content .table caption {
+    padding: 0;
+    color: #808080;
+    caption-side: top;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1;
+}
+
+.main-content .todo-table-content .table th,
+.main-content .todo-table-content .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.main-content .form-content {
+    padding: 1rem;
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid #009500;
+    border-radius: 5px;
+    box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1);
+}
+
+.main-content .form-content .form-group:last-child {
+    margin-bottom: 0;
+}

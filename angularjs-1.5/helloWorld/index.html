@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Angularjs - Hello world</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    </head>
+    <body>
+        <section class="container my-3"
+            ng-init="name = 'Ming Chung'"
+            ng-controller="mainController as $ctrl"
+            ng-cloak>
+            <h1>Hello World</h1>
+            <p>{{$ctrl.luffy.name}} say hello to {{zoro.name}}</p>
+            <h2>Hello {{name}}</h2>
+            <button class="btn btn-info" type="button" ng-click="changeName()">Change Name</button>
+            <p class="message mt-3"></p>
+        </section>
+
+        <script src="../../lib/jquery-3.2.0.min.js"></script>
+        <script src="../../lib/tether.min.js"></script>
+        <script src="../../lib/bootstrap.min.js"></script>
+        <script src="../../lib/angular-1.5.min.js"></script>
+        <script src="js/app.module.js"></script>
+        <script src="js/controllers/app.controller.js"></script>
+    </body>
+</html>

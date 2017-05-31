@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Angularjs - Local todo list</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/myStyle.css" />
+    </head>
+    <body>
+        <section class="main-content my-3"
+            ng-controller="localTodoController as $ctrl"
+            ng-cloak>
+            <h1>Local Todo List</h1>
+            <div class="form-content container">
+                <form ng-submit="$ctrl.addActivity()">
+                    <div class="form-group row" ng-class="{'has-danger': $ctrl.isError}">
+                        <label for="description" class="col-sm-3 form-control-label">Description</label>
+                        <div class="col-sm-9">
+                            <input id="description"
+                                class="form-control"
+                                type="text"
+                                name="description"
+                                placeholder="Write a description"
+                                ng-model="$ctrl.todo.description"
+                                required
+                                ng-class="{'form-control-danger': $ctrl.isError}" />
+                            <div class="form-control-feedback" ng-show="$ctrl.isError">
+                                This one is already added!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="date" class="col-sm-3 form-control-label">Date</label>
+                        <div class="col-sm-9">
+                            <input id="date"
+                                class="form-control"
+                                type="datetime-local"
+                                name="date"
+                                placeholder="Select a date"
+                                ng-model="$ctrl.todo.date"
+                                required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-9 offset-sm-3">
+                            <button class="btn btn-primary"
+                                type="submit"
+                                ng-if="$ctrl.isEditing">
+                                Save
+                            </button>
+                            <button class="btn btn-primary"
+                                type="submit"
+                                ng-if="!$ctrl.isEditing">
+                                Add
+                            </button>
+
+                            <button type="button"
+                                class="btn btn-primary"
+                                ng-click="$ctrl.clearAll()">
+                                Clear All
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="todo-list-content container" ng-hide="$ctrl.activities.length <= 0">
+                <h2 class="my-3 text-center">My Activities</h2>
+                <ul>
+                    <li ng-repeat="act in $ctrl.activities | orderBy: 'description'">
+                        <p>{{act.description}} <strong>-</strong> {{act.date | date: "short"}}</p>
+                        <div>
+                            <a ng-click="$ctrl.editActivity(act)">edit</a>
+                            <span> | </span>
+                            <a ng-click="$ctrl.removeActivity(act)">remove</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <script src="../../lib/jquery-3.2.0.min.js"></script>
+        <script src="../../lib/tether.min.js"></script>
+        <script src="../../lib/bootstrap.min.js"></script>
+        <script src="../../lib/angular-1.5.min.js"></script>
+        <script src="../../lib/angular-local-storage.min.js"></script>
+        <script src="js/app.module.js"></script>
+        <!--<script src="js/services/todo.service.js"></script>-->
+        <script src="js/factories/todo.factory.js"></script>
+        <script src="js/controllers/todo.controller.js"></script>
+    </body>
+</html>

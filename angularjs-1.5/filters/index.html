@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Angularjs - Filters</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    </head>
+    <body>
+        <section class="container my-3" ng-controller="filtersController as $ctrl" ng-cloak>
+            <h1 class="text-center">Filters</h1>
+            <table class="table">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Variables</th>
+                        <th>Filter</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{$ctrl.name}}</td>
+                        <td>uppercase</td>
+                        <td>{{$ctrl.name | uppercase}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.name}}</td>
+                        <td>lowercase</td>
+                        <td>{{$ctrl.name | lowercase}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li ng-repeat="person in $ctrl.people">
+                                    {{person.name}} - {{person.location}}
+                                </li>
+                            </ul>
+                        </td>
+                        <td>orderBy:'name'</td>
+                        <td>
+                            <ul>
+                                <li ng-repeat="person in $ctrl.people | orderBy:'name'">
+                                    {{person.name}}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li ng-repeat="person in $ctrl.people">
+                                    {{person.name}} - {{person.location}}
+                                </li>
+                            </ul>
+                        </td>
+                        <td>orderBy:'name':true</td>
+                        <td>
+                            <ul>
+                                <li ng-repeat="person in $ctrl.people | orderBy:'name':true">
+                                    {{person.name}}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li ng-repeat="person in $ctrl.people">
+                                    {{person.name}} - {{person.location}}
+                                </li>
+                            </ul>
+                        </td>
+                        <td>orderBy:'-name'</td>
+                        <td>
+                            <ul>
+                                <li ng-repeat="person in $ctrl.people | orderBy:'-name'">
+                                    {{person.name}}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.amount}}</td>
+                        <td>currency</td>
+                        <td>{{$ctrl.amount | currency}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.amount}}</td>
+                        <td>currency:"₡"</td>
+                        <td>{{$ctrl.amount | currency:"₡"}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.amount}}</td>
+                        <td>currency:"₡":3</td>
+                        <td>{{$ctrl.amount | currency:"₡":3}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.number}}</td>
+                        <td>number</td>
+                        <td>{{$ctrl.number | number}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.number}}</td>
+                        <td>number:0</td>
+                        <td>{{$ctrl.number | number:0}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.today}}</td>
+                        <td>date</td>
+                        <td>{{$ctrl.today | date}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.today}}</td>
+                        <td>date:"short"</td>
+                        <td>{{$ctrl.today | date:"short"}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.today}}</td>
+                        <td>date:"MMMM-dd-yyyy hh:mm:ss"</td>
+                        <td>{{$ctrl.today | date:"MMMM-dd-yyyy hh:mm:ss"}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.today}}</td>
+                        <td>date:"short":"+0800"</td>
+                        <td>{{$ctrl.today | date:"short":"+0800"}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.letters}}</td>
+                        <td>limitTo:5</td>
+                        <td>{{$ctrl.letters | limitTo:5}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.letters}}</td>
+                        <td>limitTo:-5</td>
+                        <td>{{$ctrl.letters | limitTo:-5}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.letters}}</td>
+                        <td>limitTo:5:5</td>
+                        <td>{{$ctrl.letters | limitTo:5:5}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul><li ng-repeat="name in $ctrl.names">{{name}}</li></ul>
+                        </td>
+                        <td>filter:'i'</td>
+                        <td>
+                            <ul>
+                                <li ng-repeat="name in $ctrl.names | filter:'i'">
+                                    {{name}}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.phrase}}</td>
+                        <td>capitalize</td>
+                        <td>{{$ctrl.phrase | capitalize}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.phrase}}</td>
+                        <td>capitalize:true</td>
+                        <td>{{$ctrl.phrase | capitalize:true}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{$ctrl.password}}</td>
+                        <td>password:true</td>
+                        <td>{{$ctrl.password | password:true}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <script src="../../lib/jquery-3.2.0.min.js"></script>
+        <script src="../../lib/tether.min.js"></script>
+        <script src="../../lib/bootstrap.min.js"></script>
+        <script src="../../lib/angular-1.5.min.js"></script>
+        <script src="js/app.module.js"></script>
+        <script src="js/filters/capitalize.filter.js"></script>
+        <script src="js/filters/password.filter.js"></script>
+        <script src="js/controllers/filters.controller.js"></script>
+    </body>
+</html>

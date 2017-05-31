@@ -19,9 +19,9 @@ Case 2
 */
 
 /*if (true) {
-    let message = "Hello World"; //Message exists only inside the if condition
+    let message = "Hello World"; //Message exists only inside the if condition.
 }
-console.log(message); //So you will get error of not defined*/
+console.log(message); //So you will get error of not defined.*/
 
 
 /*
@@ -33,10 +33,10 @@ Case 3
 /*var message = "Hello";
 var message = "123";
 var message = "abc";
-console.log(message); //You will see the last declaration value*/
+console.log(message); //You will see the last declaration value.*/
 
 /*let message = "Hello";
-var message = "World"; //You will get an error*/
+var message = "World"; //You will get an error.*/
 
 
 /*
@@ -46,9 +46,9 @@ Case 4
 
 /*let message = "Hello World";
 if (true) {
-    let message = "Hello Ming"; //This won't throw any error, but case 2 applies here
+    let message = "Hello Ming"; //This won't throw any error, but case 2 applies here.
 }
-console.log(message); //Will see the message declared from window scope*/
+console.log(message); //Will see the message declared from window scope.*/
 
 
 //case 5
@@ -56,7 +56,7 @@ console.log(message); //Will see the message declared from window scope*/
 //By ES5
 /*var functionsArray = [];
 for (var i = 0; i < 5; i++) {
-    //Using closure can make this to work
+    //Using closure can make this to work.
     functionsArray.push(
         (function(value) {
             return function() {
@@ -64,16 +64,16 @@ for (var i = 0; i < 5; i++) {
             };
         })(i)
     );
-    //But this code is kind of complicated
+    //But this code is kind of complicated.
 }
 
 functionsArray.forEach(function(item) {
-    item(); //Will show 0 - 4
+    item(); //Will show 0 - 4.
 });*/
 
 //By ES6
 /*var functionsArray = [];
-for (let i = 0; i < 5; i++) { //Using let can solve var problem
+for (let i = 0; i < 5; i++) { //Using let can solve var problem.
     functionsArray.push(function() {
         console.log(i);
     });
@@ -91,7 +91,7 @@ Case 1
 - Const variables should be declared with its value.
 */
 
-//const SALES_TAX; //Will throw an error
+//const SALES_TAX; //Will throw an error.
 
 
 /*
@@ -100,7 +100,7 @@ Case 2
 */
 
 /*const SALES_TAX = 15.25;
-SALES_TAX = 10; //Will throw an error*/
+SALES_TAX = 10; //Will throw an error.*/
 
 
 /*
@@ -109,9 +109,9 @@ Case 3
 */
 
 /*if (true) {
-    const SALES_TAX = 10.25; //Sales tax exists only inside the if condition
+    const SALES_TAX = 10.25; //Sales tax exists only inside the if condition.
 }
-console.log(SALES_TAX); //So you will get error of not defined*/
+console.log(SALES_TAX); //So you will get error of not defined.*/
 
 
 /*
@@ -121,9 +121,9 @@ Case 4
 
 /*const SALES_TAX = 15.25;
 if (true) {
-    const SALES_TAX = 10.25; //This won't throw any error, but case 3 applies here
+    const SALES_TAX = 10.25; //This won't throw any error, but case 3 applies here.
 }
-console.log(SALES_TAX); //Will see the sales tax declared from window scope*/
+console.log(SALES_TAX); //Will see the sales tax declared from window scope.*/
 
 
 /*
@@ -141,35 +141,35 @@ Case 5
     },
     FAV_FRUITS = ["Apple", "Pear", "Orange", "Banana"];
 
-//But you can change object attributes and array items
+//But you can change object attributes and array items.
 PERSON.firstName = "Maicol";
 FAV_FRUITS[0] = "Watermelon";
 FAV_FRUITS.push("Grape");
 
-//Declaring const doesn't replace variable type
-console.log(typeof PERSON); //Show object
-console.log(typeof NICKNAME); //Show string
-console.log(typeof ABLE_TO_FIGHT); //Show boolean*/
+//Declaring const doesn't replace variable type.
+console.log(typeof PERSON); //Show object.
+console.log(typeof NICKNAME); //Show string.
+console.log(typeof ABLE_TO_FIGHT); //Show boolean.*/
 
 
 
 /****************** New methods for strings *****************/
 let greeting = "Hello World";
 
-//Using startsWith - check if first character(s) of string is COMPARED_VALUE, return boolean
-/*console.log(greeting.startsWith("He")); //Show true
-//Can add from which index of string want to check
-console.log(greeting.startsWith("Wor", 6)); //Show true*/
+//Using startsWith - check if first character(s) of string is COMPARED_VALUE, return boolean.
+/*console.log(greeting.startsWith("He")); //Show true.
+//Can add from which index of string want to check.
+console.log(greeting.startsWith("Wor", 6)); //Show true.*/
 
 
-//Using endsWith - check if last character(s) of string is COMPARED_VALUE, return boolean
-/*console.log(greeting.endsWith("d")); //Show true
-console.log(greeting.endsWith("o", 5)); //Show true*/
+//Using endsWith - check if last character(s) of string is COMPARED_VALUE, return boolean.
+/*console.log(greeting.endsWith("d")); //Show true.
+console.log(greeting.endsWith("o", 5)); //Show true.*/
 
 
-//Using includes - check if COMPARED_VALUE exists in the string, return boolean
-/*console.log(greeting.includes("or")); //Show true
-console.log(greeting.includes("ll", 2)); //Show true*/
+//Using includes - check if COMPARED_VALUE exists in the string, return boolean.
+/*console.log(greeting.includes("or")); //Show true.
+console.log(greeting.includes("ll", 2)); //Show true.*/
 
 
 //Using repeat
@@ -220,15 +220,15 @@ let message = tag `${amout} ${(amout > 1) ? "pencils" : "pencil"} ${(amout > 1) 
 console.log(message);*/
 
 
-//Using raw - only works for literal templates
+//Using raw - only works for literal templates.
 /*let message = String.raw `Hello \nWorld\\`;
-console.log(message); //Will show specific characters*/
+console.log(message); //Will show specific characters.*/
 
 
 
 /****************** Functions *****************/
 //Optional parameters
-//Exercise - checking if parameters are not empty
+//Exercise - checking if parameters are not empty.
 
 //By ES5
 /*function sayHello5(message, time) {
@@ -248,7 +248,7 @@ function sayHello6(message = "Hello World", time = 1500) {
 };
 sayHello6();*/
 
-//Also can set default functions and objects in parameters
+//Also can set default functions and objects in parameters.
 /*function fnTemporal() {
     console.log("Hello World");
 };
@@ -260,9 +260,9 @@ function execute(fn = fnTemporal, person = {name: "Ming Chung"}) {
 
 execute(fnTemperal, {name: "Melissa"});*/
 
-//In addcition, optional parameters affect arguments array
+//In addcition, optional parameters affect arguments array.
 /*function sum(a = 1, b = 2) {
-    console.log(arguments); //Will show empty arguments array
+    console.log(arguments); //Will show empty arguments array.
 };
 
 sum();*/
@@ -274,7 +274,7 @@ Rest parameters
 - Rest parameter should be placed in the last parameter.
 */
 
-//Exercise - adding N new students into the student array
+//Exercise - adding N new students into the student array.
 //By ES5
 /*function addStudent5() {
     for (var i = 1; i < arguments.length; i++) {
@@ -301,7 +301,7 @@ console.log(addStudent6(studentArray6, "María", "Pedro", "Susana"));*/
 
 
 //Spread
-//Exercise - finding maximun number
+//Exercise - finding maximun number.
 //By ES5
 /*var numbers = [1, 5, 10, 20, 100, 234],
     maximun5 = Math.max.apply(Math, numbers);
@@ -335,7 +335,7 @@ console.log(body);*/
 //Function behavior as class
 //ES5
 /*function Person5(name) {
-    if (this instanceof Person5) { //By this condition can avoid missing new statement error
+    if (this instanceof Person5) { //By this condition can avoid missing new statement error.
         this.name = name;
     } else {
         throw new Error("Have to init with new");
@@ -343,12 +343,12 @@ console.log(body);*/
 };
 
 var personX5 = new Person5("Luffy");
-//var personY5 = Person5("Luffy"); //This error is avoid
-var personZ5 = Person5.call(personX5, "Luffy"); //But this error is still untarget
+//var personY5 = Person5("Luffy"); //This error is avoid.
+var personZ5 = Person5.call(personX5, "Luffy"); //But this error is still untarget.
 
 //ES6
 function Person6(name) {
-    if (typeof new.target !== "undefined") { //By this condition, force to use new to instance this object
+    if (typeof new.target !== "undefined") { //By this condition, force to use new to instance this object.
         this.name = name;
     } else {
         throw new Error("Have to init with new");
@@ -356,8 +356,8 @@ function Person6(name) {
 };
 
 var personX6 = new Person6("Luffy");
-//var personY6 = Person6("Luffy"); //This error is avoid
-//var personZ6 = Person6.call(personX6, "Luffy"); //This error is avoid*/
+//var personY6 = Person6("Luffy"); //This error is avoid.
+//var personZ6 = Person6.call(personX6, "Luffy"); //This error is avoid.*/
 
 
 
@@ -478,17 +478,17 @@ console.log(array.sort((a, b) => a - b));*/
 
 //Other examples
 /*let subtract = (a, b) => a - b;
-console.log(typeof subtract); //Will show function
-console.log(subtract instanceof Function); //Will show true
+console.log(typeof subtract); //Will show function.
+console.log(subtract instanceof Function); //Will show true.
 
 (function subtract(a, b) {
     ((a, b) => {
-        console.log(arguments); //Will show parent arguments array
+        console.log(arguments); //Will show parent arguments array.
     })();
 })(1, 2);
 
 ((a, b) => {
-    console.log(arguments[0]); //Will throw an error, because of arguments undefined
+    console.log(arguments[0]); //Will throw an error, because of arguments undefined.
 })();*/
 
 
@@ -539,13 +539,13 @@ console.log(myself[suffix + "lastname"] + " " + myself["first name"]);*/
 
 //New method - Object.is
 //NaN is the same than NaN
-/*console.log(NaN == NaN); //Will show false, incorrect
-console.log(NaN === NaN); //Will show false, incorrect
-console.log(Object.is(NaN, NaN)); //Will show true, correct*/
+/*console.log(NaN == NaN); //Will show false, incorrect.
+console.log(NaN === NaN); //Will show false, incorrect.
+console.log(Object.is(NaN, NaN)); //Will show true, correct.*/
 
 
 //New method - Object.assign
-//Exercise - Merge second object properties to first one
+//Exercise - Merge second object properties to first one.
 //By ES5
 /*function mix5(objReceiver, objDonor) {
     Object.keys(objDonor).forEach(function(key) {
@@ -565,7 +565,7 @@ var zoro = {
         getName() {
             return this.name;
         },
-        get attack1() { //This method is not able to transfer to receiver object, but converting this method in attribute
+        get attack1() { //This method is not able to transfer to receiver object, but converting this method in attribute.
             return "Hiken";
         }
     };
@@ -615,19 +615,19 @@ var personX = new Person("Unknown");
 var person5 = {
         name:"Zoro"
     };
-person5 = Object.create(personX); //Inherit Person properties to person5
-console.log(person5); //Doesn't keep its own properties
+person5 = Object.create(personX); //Inherit Person properties to person5.
+console.log(person5); //Doesn't keep its own properties.
 person5.attack1();
-console.log(Object.getPrototypeOf(person5) === personX); //Will show true
+console.log(Object.getPrototypeOf(person5) === personX); //Will show true.
 
 //By ES6
 let person6 = {
         name:"Zoro"
     };
-Object.setPrototypeOf(person6, personX); //Inherit Person properties to person6
-console.log(person6); //Keep its own properties
+Object.setPrototypeOf(person6, personX); //Inherit Person properties to person6.
+console.log(person6); //Keep its own properties.
 person6.attack1();
-console.log(Object.getPrototypeOf(person6) === personX); //Will show true*/
+console.log(Object.getPrototypeOf(person6) === personX); //Will show true.*/
 
 
 //Call inherited functions
@@ -646,7 +646,7 @@ let friend = {
             return super.greeting() + ", how are you!";
         }
     };
-Object.setPrototypeOf(friend, person); //Inheriting properties of person to friend
+Object.setPrototypeOf(friend, person); //Inheriting properties of person to friend.
 console.log(friend.greeting());*/
 
 
@@ -783,21 +783,21 @@ createGamer("Graves", {
 /*let firstName = Symbol(),
     ability = Symbol(),
     person = {
-        [ability]: "Gomu Gomu no Bazooka" //Can create object attribute by symbol
+        [ability]: "Gomu Gomu no Bazooka" //Can create object attribute by symbol.
     };
 person[firstName] = "Luffy";
 console.log(person[firstName]);
-console.log(person[ability]); //But having to access that attribute by symbol as well
+console.log(person[ability]); //But having to access that attribute by symbol as well.
 
 
 //Each symbol is unique although having same aria
 let symbol1 = Symbol("onePiece"),
     symbol2 = Symbol("onePiece");
-console.log(symbol1 == symbol2); //Will show false
-console.log(symbol1 === symbol2); //Will show false
-console.log(Object.is(symbol1, symbol2)); //Will show false
-console.log(typeof symbol1); //Will show symbol
-console.log(typeof symbol2); //Will show symbol*/
+console.log(symbol1 == symbol2); //Will show false.
+console.log(symbol1 === symbol2); //Will show false.
+console.log(Object.is(symbol1, symbol2)); //Will show false.
+console.log(typeof symbol1); //Will show symbol.
+console.log(typeof symbol2); //Will show symbol.*/
 
 
 /*
@@ -805,20 +805,20 @@ Using Symbol.for() and Symbol.keyFor()
 - Symbol.for() checks if there is a symbol created with key specified.
 - If so, then loading that same symbol.
 - If not, then creating a new one.
-- Symbol.keyFor() shows the key used to create the symbol
+- Symbol.keyFor() shows the key used to create the symbol.
 */
 
-/*let userID = Symbol.for("userID"), //Creating symbol userID
+/*let userID = Symbol.for("userID"), //Creating symbol userID.
     object = {};
 object[userID] = "1234";
 console.log(object[userID]);
 console.log(userID);
 console.log(Symbol.keyFor(userID));
 
-let userID2 = Symbol.for("userID"); //Accessing to created symbol userID
-console.log(userID == userID2); //Will show true
-console.log(userID === userID2); //Will show true
-console.log(Object.is(userID, userID2)); //Will show true
+let userID2 = Symbol.for("userID"); //Accessing to created symbol userID.
+console.log(userID == userID2); //Will show true.
+console.log(userID === userID2); //Will show true.
+console.log(Object.is(userID, userID2)); //Will show true.
 console.log(object[userID2]);
 console.log(userID2);
 console.log(Symbol.keyFor(userID2));*/
@@ -852,8 +852,8 @@ for (let key in symbols) {
 //Init set
 /*let mySet = new Set([1, 2, 3, 4, 5, 6, 6, 6]);
 console.log(mySet);
-console.log(mySet.size); //Get size
-console.log(mySet.has(3)); //Check if exists the specific item
+console.log(mySet.size); //Get size.
+console.log(mySet.has(3)); //Check if exists the specific item.
 
 //Insert items
 mySet.add(7);
@@ -899,8 +899,8 @@ console.log(removeDup(numbers));*/
 //Init map
 /*let myMap = new Map([["name", "Luffy"], ["age", 18]]);
 console.log(myMap);
-console.log(myMap.size); //Get size
-console.log(myMap.has("name")); //Check if exists the specific item
+console.log(myMap.size); //Get size.
+console.log(myMap.has("name")); //Check if exists the specific item.
 
 //Add element
 myMap.set("demonFruit", "Gomu Gomu no mi");
@@ -1072,8 +1072,9 @@ class Person {
         this.name = name;
     };
 
-    //Static function, it works independent of the class
-    //Function should be called directly from the class, shouldn't be called by instances of the class
+    //- Static function, it works independent of the class.
+    //- Function should be called directly from the class, shouldn't be called by instances
+    //of the class.
     static create(name) {
         return new Person(name);
     };
@@ -1114,15 +1115,15 @@ class Square extends Rectangle {
 
 let square = new Square(3);
 console.log(square.getArea());
-console.log(square instanceof Square); //Will show true
-console.log(square instanceof Rectangle); //Will show true*/
+console.log(square instanceof Square); //Will show true.
+console.log(square instanceof Rectangle); //Will show true.*/
 
 
 
 /****************** Promise *****************/
 /*
 - One advantage is abling to bind N promises as wanting.
-- Also is abling to know if the task finishes successful or fail
+- Also is abling to know if the task finishes successful or fail.
 */
 
 /*let asynTask = () => {

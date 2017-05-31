@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Angularjs - Ajax</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+        <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/myStyle.css" />
+    </head>
+    <body>
+        <section class="main-content my-3"
+            ng-controller="ajaxController as $ctrl"
+            ng-cloak>
+            <h1>Ajax Request</h1>
+            <div class="todo-table-content container">
+                <table class="table table-inverse" ng-show="$ctrl.todoList.length > 0">
+                    <caption>Todo List 2017</caption>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Activity</th>
+                            <th>Date</th>
+                            <th>Priority</th>
+                            <th>Created</th>
+                            <th>Updated</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="todo in $ctrl.todoList | orderBy:$ctrl.order">
+                            <th scope="row">{{todo.id}}</th>
+                            <td>{{todo.activity}}</td>
+                            <td>{{todo.fromX | date: "short"}}</td>
+                            <td>{{todo.priority}}</td>
+                            <td>{{todo.created | date: "short"}}</td>
+                            <td>{{todo.updated | date: "short"}}</td>
+                            <td>{{todo.status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-content container pt-3">
+                <h2 class="text-center">Sign In</h2>
+                <form ng-submit="$ctrl.signin()">
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 form-control-label">Username</label>
+                        <div class="col-sm-9">
+                            <input id="name"
+                                class="form-control"
+                                type="text"
+                                name="name"
+                                placeholder="Write your name"
+                                required
+                                ng-model="$ctrl.login.name" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-3 form-control-label">Password</label>
+                        <div class="col-sm-9">
+                            <input id="password"
+                                class="form-control"
+                                type="password"
+                                name="password"
+                                placeholder="Write your password"
+                                required
+                                ng-model="$ctrl.login.password" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-9 offset-sm-3">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <p class="text-center" ng-if="$ctrl.loginResponse">{{$ctrl.loginResponse}}</p>
+        </section>
+
+        <script src="../../lib/jquery-3.2.0.min.js"></script>
+        <script src="../../lib/tether.min.js"></script>
+        <script src="../../lib/bootstrap.min.js"></script>
+        <script src="../../lib/angular-1.5.min.js"></script>
+        <script src="js/app.module.js"></script>
+        <script src="js/services/server.service.js"></script>
+        <script src="js/controllers/ajax.controller.js"></script>
+    </body>
+</html>

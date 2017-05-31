@@ -1,0 +1,8 @@
+<ul class="hero-list">
+    <li ng-repeat="hero in $ctrl.list">
+        <hero-detail hero="hero"
+            update-location="$ctrl.updateHero(hero, prop, value)"
+            delete-hero="$ctrl.deleteHero(hero)">
+        </hero-detail>
+    </li>
+</ul>

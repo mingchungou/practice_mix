@@ -1,0 +1,39 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #111111;
+}
+
+.main-content .hero-list-content .hero-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-content .hero-list-content .hero-list li {
+    padding: 1rem;
+    border-bottom: 1px solid #009500;
+}
+
+.main-content .hero-list-content .hero-list li .hero-detail {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-content .hero-list-content .hero-list li .hero-detail > p {
+    flex: 1 1 100%;
+}
+
+.main-content .hero-list-content .hero-list li .hero-detail .location-content,
+.main-content .hero-list-content .hero-list li .hero-detail .location-content editable-field,
+.main-content .hero-list-content .hero-list li .hero-detail .location-content .location-data {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.main-content .hero-list-content .hero-list li .hero-detail .location-content .location-data button:first-of-type{
+    margin-left: auto;
+}

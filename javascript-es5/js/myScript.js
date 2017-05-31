@@ -10,19 +10,19 @@ var greeting = function(name, self) {
 
 
 /****************** typeof/instanceof *****************/
-/*console.log(typeof greeting); //Will show function
-console.log(typeof "abc"); //Will show string
-console.log(typeof 123); //Will show number
-console.log(typeof 3.14); //Will show number
-console.log(typeof NaN); //Will show number
-console.log(typeof Infinity); //Will show number
-console.log(typeof true); //Will show boolean
-console.log(typeof {}); //Will show object
-console.log(typeof isNull); //Will show undefined
-console.log(typeof []); //Will show object, not correct
+/*console.log(typeof greeting); //Will show function.
+console.log(typeof "abc"); //Will show string.
+console.log(typeof 123); //Will show number.
+console.log(typeof 3.14); //Will show number.
+console.log(typeof NaN); //Will show number.
+console.log(typeof Infinity); //Will show number.
+console.log(typeof true); //Will show boolean.
+console.log(typeof {}); //Will show object.
+console.log(typeof isNull); //Will show undefined.
+console.log(typeof []); //Will show object, not correct.
 
-console.log([] instanceof Array); //Will show true, better way to check if element is array
-console.log({} instanceof Object); //Will show true*/
+console.log([] instanceof Array); //Will show true, better way to check if element is array.
+console.log({} instanceof Object); //Will show true.*/
 
 
 
@@ -42,7 +42,7 @@ console.log({} instanceof Object); //Will show true*/
 //Get all elements with css selector and return an array with all elements found.
 //console.log(document.querySelectorAll(".list-item"));
 
-//Get the first element with css selector and return that element
+//Get the first element with css selector and return that element.
 //console.log(document.querySelector("li"));
 
 
@@ -51,20 +51,20 @@ console.log({} instanceof Object); //Will show true*/
 var myString = "Javascript is very extense programming language is";
 
 /*console.log(myString.length);
-console.log(myString.indexOf("very")); //Return the first match position
-console.log(myString.lastIndexOf("is")); //Return last match position
-console.log(myString.search("very")); //Better than indexOf, can search by regular expresion
+console.log(myString.indexOf("very")); //Return the first match position.
+console.log(myString.lastIndexOf("is")); //Return last match position.
+console.log(myString.search("very")); //Better than indexOf, can search by regular expresion.
 console.log("blue red green blue red green".replace(/e/g, "@"));*/
 
-/*console.log(myString.slice(7, 15)); //Extract portion of string x <= i < y
-console.log(myString.substring(7, 15)); //Same as slice
-console.log(myString.substr(7, 15)); //From index selected, extract next 15 characters*/
+/*console.log(myString.slice(7, 15)); //Extract portion of string x <= i < y.
+console.log(myString.substring(7, 15)); //Same as slice.
+console.log(myString.substr(7, 15)); //From index selected, extract next 15 characters.*/
 
 /*console.log(myString.toUpperCase());
 console.log(myString.toLowerCase());
-console.log("Hello".concat(" ", "Ming", " ","Chung")); //Join n string
-console.log(myString.charAt(0)); //Get character of string according to position
-console.log(myString.split(" ")); //Convert string to array*/
+console.log("Hello".concat(" ", "Ming", " ","Chung")); //Join n string.
+console.log(myString.charAt(0)); //Get character of string according to position.
+console.log(myString.split(" ")); //Convert string to array.*/
 
 //Revert the string
 //console.log(myString.split(" ").reverse().join(" "));
@@ -75,20 +75,20 @@ console.log(myString.split(" ")); //Convert string to array*/
 var myNumber = 123;
 
 /*console.log(isNaN(myString));
-console.log(myNumber.toString()); //Convert number to string
+console.log(myNumber.toString()); //Convert number to string.
 console.log(myNumber.toExponential(2));
 console.log(Math.PI.toFixed(5));
 console.log(Math.PI.toPrecision(5));
-console.log(parseInt("100")); //Convert string to number
+console.log(parseInt("100")); //Convert string to number.
 console.log(Math.round(Math.PI));
 console.log(Math.pow(8, 2));
-console.log(Math.sqrt(64)); //Calculate square root
-console.log(Math.abs(-4)); //Get absolute number
-console.log(Math.ceil(4.0001)); //Round up
-console.log(Math.floor(4.9999)); //Round down
-console.log(Math.min(0, 150, 30, 20, -8, -200)); //Get minimum number
-console.log(Math.max(0, 150, 30, 20, -8, -200)); //Get maximum number
-console.log(Math.floor(Math.random() * 10) + 1); //Get randomly a number 1 - 10*/
+console.log(Math.sqrt(64)); //Calculate square root.
+console.log(Math.abs(-4)); //Get absolute number.
+console.log(Math.ceil(4.0001)); //Round up.
+console.log(Math.floor(4.9999)); //Round down.
+console.log(Math.min(0, 150, 30, 20, -8, -200)); //Get minimum number.
+console.log(Math.max(0, 150, 30, 20, -8, -200)); //Get maximum number.
+console.log(Math.floor(Math.random() * 10) + 1); //Get randomly a number 1 - 10.*/
 
 
 
@@ -107,17 +107,17 @@ var xArray1 = ["Banana", "Apple", "Orange", "Mango"],
         {firstname : "Sanji", lastname: "Vinsmoke"}
     ];
 
-/*console.log(Array.isArray(xArray1)); //Check whether of not is array
-console.log(xArray1.toString()); //Convert array to string
-console.log(xArray1.join(" - ")); //Its similar as toString but you can add personal separator*/
+/*console.log(Array.isArray(xArray1)); //Check whether of not is array.
+console.log(xArray1.toString()); //Convert array to string.
+console.log(xArray1.join(" - ")); //Its similar as toString but you can add personal separator.*/
 
-/*xArray1.pop(); //Remove last item
+/*xArray1.pop(); //Remove last item.
 console.log(xArray1.toString());
-xArray1.push("Kiwi"); //Add new item to last
+xArray1.push("Kiwi"); //Add new item to last.
 console.log(xArray1.toString());
-xArray1.unshift("Lemon"); //Add new item at first
+xArray1.unshift("Lemon"); //Add new item at first.
 console.log(xArray1.toString());
-xArray1.shift("Lemon"); //Remove first item
+xArray1.shift("Lemon"); //Remove first item.
 console.log(xArray1.toString());*/
 
 //Add item(s) from specific position
@@ -128,9 +128,9 @@ console.log(xArray1.toString());
 xArray1.splice(2, 1); //Return the item removed
 console.log(xArray1.toString());*/
 
-/*console.log(xArray1.concat(xArray2, xArray3).toString()); //Join n arrays
-console.log(xArray1.slice(1).toString()); //Take out a portion of array
-console.log(xArray1.reverse().toString()); //Reverse the array*/
+/*console.log(xArray1.concat(xArray2, xArray3).toString()); //Join n arrays.
+console.log(xArray1.slice(1).toString()); //Take out a portion of array.
+console.log(xArray1.reverse().toString()); //Reverse the array.*/
 
 //Sort strings asc
 /*console.log(xArray1.sort().toString());
@@ -162,7 +162,7 @@ console.log(xArray4.sort(function(a, b) {
 }));*/
 
 //Using map
-//Go through each array item and execute the function sent with each item
+//Go through each array item and execute the function sent with each item.
 /*function getFullName(item, index) {
     console.log(index);
     console.log([item.lastname, item.firstname].join(" "));
@@ -171,7 +171,7 @@ console.log(xArray4.sort(function(a, b) {
 xArray5.map(getFullName);*/
 
 //Using filter
-//Return a new array with items that passd the condition
+//Return a new array with items that passd the condition.
 /*console.log(xArray3.filter(function(item, index) {
     return item <= 100;
 }));*/
@@ -194,7 +194,7 @@ for(var i = 0; i < 3; i++) {
     }
 }*/
 
-//Can't use continue within a code block
+//Can't use continue within a code block.
 /*var date = new Date();
 var test = function() {
 	label1:
@@ -293,7 +293,7 @@ ex = /^[^()\/\\|\[\]@#$%&?¡!¿{}<>"'`~,:;\^]+@[a-zA-Z0-9]+(?:\.[a-zA-Z]{2,3}){1
 
 
 /****************** Errors *****************/
-//Used for executing several tasks but controlling the errores
+//Used for executing several tasks but controlling the errores.
 
 /*try {
 	//getDate();
@@ -349,7 +349,7 @@ console.log("Is adult: " + myObject.isAdult());*/
 
 /****************** Object - Heritage *****************/
 function Worker(first, last, age, eye, profession) {
-    //Inherit the attributes from object Person to Worker but not the properties of object Person
+    //Inherit the attributes from object Person to Worker but not the properties of object Person.
     Person.call(this, first, last, age, eye);
     this.profession = profession;
 };
@@ -384,8 +384,8 @@ console.log(sumAll(1, 2, 3, 4, 5));*/
 
 /****************** Call *****************/
 /*
-Call whatever function but trying the object passed by parameter as this
-Able to receive extra parameters as usual
+- Call whatever function but trying the object passed by parameter as this.
+- Able to receive extra parameters as usual.
 */
 
 /*var sayHello = function(namePerson, greeting) {
@@ -398,8 +398,8 @@ sayHello.call(myObject, "Juan", "afecto");*/
 
 /****************** Apply *****************/
 /*
-- Call whatever function but tring the object passed by parameter as this
-- Able to receive extra parameters as an array
+- Call whatever function but tring the object passed by parameter as this.
+- Able to receive extra parameters as an array.
 */
 
 //sayHello.apply(myObject, ["Juan", "afecto"]);
@@ -407,7 +407,7 @@ sayHello.call(myObject, "Juan", "afecto");*/
 
 
 /****************** Closure *****************/
-//Functions that handles independent variables and remembers them
+//Functions that handles independent variables and remembers them.
 
 /*var add = function() {
 	var counter = 0;
@@ -424,7 +424,7 @@ console.log(executeAdd());*/
 
 
 /****************** Ajax *****************/
-//Method to create interactive applications where have functions to work asynchronous
+//Method to create interactive applications where have functions to work asynchronous.
 
 /*var loadData = function() {
 	var xhttp = new XMLHttpRequest();
@@ -500,7 +500,7 @@ loadData();*/
 
 
 /****************** Callback *****************/
-//Callback function that is executed after current one finished
+//Callback function that is executed after current one finished.
 
 /*function doSomething(callback) {
     callback();
@@ -599,7 +599,7 @@ Declared function
 stuff and instantiation stuff are read in execution phase.
 */
 
-/*sayHello(); //So this will execute correctly
+/*sayHello(); //So this will execute correctly.
 
 function sayHello() {
     console.log("Hello World");
@@ -611,7 +611,7 @@ Expressed function
 - Expressed functions belong to variables and not to global.
 */
 
-/*sayHello(); //This will throw an error
+/*sayHello(); //This will throw an error.
 
 var sayHello = function() {
     console.log("Hello World");

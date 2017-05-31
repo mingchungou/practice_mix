@@ -79,7 +79,7 @@
 
     //Function for connecting to database
     function connectDB() {
-        $connection = new PDO("mysql:host=192.168.1.7:3306;dbname=mydb", "mingchung", "admin");
+        $connection = new PDO("mysql:host=192.168.1.6:3306;dbname=mydb", "mingchung", "admin");
 
         if (!$connection) {
             errorHandler(500, "Connection to database failed");
