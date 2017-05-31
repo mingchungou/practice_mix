@@ -297,7 +297,7 @@ ex = /^[^()\/\\|\[\]@#$%&?¡!¿{}<>"'`~,:;\^]+@[a-zA-Z0-9]+(?:\.[a-zA-Z]{2,3}){1
 
 /*try {
 	//getDate();
-	if (isNaN(x)) throw "x is not a Number"
+	if (isNaN(x)) throw "x is not a Number";
 } catch(err) {
 	console.log(err.message);
 } finally {

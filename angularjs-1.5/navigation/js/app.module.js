@@ -7,6 +7,9 @@ app.config(["$routeProvider", "$locationProvider", "$httpProvider",
     function($routeProvider, $locationProvider, $httpProvider) {
         $routeProvider
             //An path option
+            .when("/home", {
+                template: "<app-home></app-home>"
+            })
             .when("/about", {
                 /*
                 Add Dom element by string
@@ -35,11 +38,11 @@ app.config(["$routeProvider", "$locationProvider", "$httpProvider",
             //Option for when requested path doesn't match with any previous options.
             .otherwise({
                 //Can resend to another option.
-                redirectTo: "/about"
+                redirectTo: "/home"
             });
 
         //Interceptors execute after router events are thrown.
-        /*$httpProvider.interceptors.push(["$location", "$q",
+        $httpProvider.interceptors.push(["$location", "$q",
             function($location, $q) {
                 return {
                     request: function (config) {
@@ -55,7 +58,7 @@ app.config(["$routeProvider", "$locationProvider", "$httpProvider",
                         return $q.reject(err);
                     }
                 };
-            }]);*/
+            }]);
     }
 ]);
 

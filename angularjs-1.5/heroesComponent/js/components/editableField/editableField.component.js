@@ -1,4 +1,3 @@
-//Component is similar than directive. It is block of reusable code.
 
 "use strict";
 

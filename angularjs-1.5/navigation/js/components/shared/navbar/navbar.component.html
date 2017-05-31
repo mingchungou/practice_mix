@@ -1,0 +1,23 @@
+<div class="container">
+    <nav class="navbar navbar-toggleable-sm navbar-inverse">
+        <button class="navbar-toggler navbar-toggler-right"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#home">Navbar</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+                <li class="nav-item"
+                    ng-repeat="item in $ctrl.optionList"
+                    ng-class="{'active':$ctrl.isActive(item.path)}">
+                    <a class="nav-link" ng-href="{{$ctrl.setPath(item)}}">{{item.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

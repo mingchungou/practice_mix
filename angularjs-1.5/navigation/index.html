@@ -9,7 +9,14 @@
         <link rel="stylesheet" href="../../css/bootstrap.min.css" />
     </head>
     <body>
-        <app-home></app-home>
+        <section class="main-content"
+            ng-controller="mainController as $ctrl"
+            ng-cloak>
+            <header class="bg-inverse">
+                <app-navbar></app-navbar>
+            </header>
+            <div class="container" ng-view></div>
+        </section>
 
         <script src="../../lib/jquery-3.2.0.min.js"></script>
         <script src="../../lib/tether.min.js"></script>
@@ -17,9 +24,11 @@
         <script src="../../lib/angular-1.5.min.js"></script>
         <script src="../../lib/angular-route.min.js"></script>
         <script src="js/app.module.js"></script>
+        <script src="js/controllers/app.controller.js"></script>
         <script src="js/components/home/home.component.js"></script>
         <script src="js/components/about/about.component.js"></script>
         <script src="js/components/service/service.component.js"></script>
         <script src="js/components/contact/contact.component.js"></script>
+        <script src="js/components/shared/navbar/navbar.component.js"></script>
     </body>
 </html>
