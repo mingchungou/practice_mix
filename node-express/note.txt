@@ -1,0 +1,29 @@
+- Node
+
+* Why to use Node?
+- Its fast.
+- Its built to work asynchronous.
+- Its a good option for apps work in real time.
+- It works really good with No SQL databases.
+
+* How to execute a node server file?
+/> node NAME_FILE.js
+
+
+
+- Npm, is the package handler of Node.
+
+* Create package.js file
+/> npm init
+
+* Install all modules by package.js file
+/> npm install
+
+* Install a module from Node
+/> npm install MODULE_NAME --save
+
+* Install a module from Node only for develop stage
+/> npm install MODULE_NAME --save-dev
+
+* Uninstall a module from Node
+/> npm uninstall MODULE_NAME --save

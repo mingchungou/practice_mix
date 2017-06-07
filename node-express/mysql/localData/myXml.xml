@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE paises [
+   <!ELEMENT paises (pais)>
+   <!ELEMENT pais (nombre,color,habitantes)>
+   <!ELEMENT nombre (#PCDATA)>
+   <!ELEMENT color (#PCDATA)>
+   <!ELEMENT habitantes (#PCDATA)>
+]>
+<paises>
+	<pais>
+		<nombre>Costa Rica</nombre>
+		<color>Rojo</color>
+		<habitantes>4000000</habitantes>
+	</pais>
+	<pais>
+		<nombre>Nicaragua</nombre>
+		<color>Azul</color>
+		<habitantes>10000000</habitantes>
+	</pais>
+	<pais>
+		<nombre>Brasil</nombre>
+		<color>Verde</color>
+		<habitantes>40000000</habitantes>
+	</pais>
+</paises>

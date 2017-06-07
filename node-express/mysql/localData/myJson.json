@@ -1,0 +1,15 @@
+{
+	"paises": [{
+		"nombre": "Costa Rica",
+		"color": "Rojo",
+		"habitantes": 4000000
+	},{
+		"nombre": "Nicaragua",
+		"color": "Azul",
+		"habitantes": 10000000
+	},{
+		"nombre": "Brasil",
+		"color": "Verde",
+		"habitantes": 40000000
+	}]
+}

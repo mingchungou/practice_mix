@@ -1,0 +1,27 @@
+{
+  "name": "node-express-mysql",
+  "version": "1.0.0",
+  "description": "Practice of Node Express with mysql",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ming Chung",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.2",
+    "body-parser-xml": "^1.1.0",
+    "connect-multiparty": "^2.0.0",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.18.1",
+    "mysql": "^2.13.0",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

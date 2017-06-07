@@ -1,0 +1,68 @@
+//user
+add
+{"name":"Ming Chung Ou","username":"mingchung","email":"ming@qxdev.com","password":"12345"}
+{"name":"Ulisses Segura","username":"ulisegura","email":"segura@hotmail.com","password":"12345"}
+
+login
+{"email":"ming@qxdev.com","password":"12345","gethash":true}
+{"email":"segura@hotmail.com","password":"12345"}
+
+token
+"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1OTM0YmYyNTI4ZDVmODZkODJiNDZhZDYiLCJuYW1lIjoiTWluZyBDaHVuZyBPdSIsInVzZXJuYW1lIjoibWluZ2NodW5nIiwiZW1haWwiOiJtaW5nQHF4ZGV2LmNvbSIsImltYWdlIjpudWxsLCJpYXQiOjE0OTY2MzA2MDAsImV4cCI6MTQ5OTIyMjYwMH0.vOz1wGwfPy5APlDYM90HYlR7PaRJiFii-BgOS2hI5y8"
+
+update
+{"name":"Ou Ming","username":"mingchung"}
+
+
+//artist
+add
+{"name":"Enrique Iglesias","description":"Pop,Latin pop"}
+{"name":"Belinda Peregrín","description":"Pop Rock,Latin pop"}
+{"name":"Juan Magán","description":"House,Electronic"}
+{"name":"Ricky Martin","description":"Pop,Dance-pop"}
+<artist>
+  <name>Enrique Iglesias</name>
+  <description>Pop,Latin pop</description>
+</artist>
+
+update
+{"name":"Enrique Iglesias","description":"Pop,Latin pop,Dance-pop"}
+
+
+//album
+add - mysql
+{"title":"Quizás","description":"Sixth album","year":2002,"artistID":7}
+{"title":"Escape","description":"Fifth album","year":2001,"artistID":7}
+
+{"title":"Vuelve","description":"Forth album","year":1998,"artistID":4}
+{"title":"Life","description":"Third album","year":2005,"artistID":4}
+
+add - mongodb
+{"title":"Quizás","description":"Sixth album","year":2002,"artist":"5936fef2285f14785fe1070f"}
+{"title":"Escape","description":"Fifth album","year":2001,"artist":"5936fef2285f14785fe1070f"}
+
+{"title":"Vuelve","description":"Forth album","year":1998,"artist":"59361a0b7afb1e749e944b38"}
+{"title":"Life","description":"Third album","year":2005,"artist":"59361a0b7afb1e749e944b38"}
+
+update
+{"title":"Quizás x","description":"Sixth album","year":2002}
+{"title":"Vuelve x","description":"Forth album","year":1998}
+
+
+//song
+add - mysql
+{"number":1,"name":"Tres palabras","duration":"4:24","albumID":8}
+{"number":2,"name":"Para qué la vida","duration":"4:05","albumID":8}
+
+{"number":1,"name":"Vuelve","duration":"5:09","albumID":9}
+{"number":2,"name":"Perdido sin ti","duration":"4:11","albumID":9}
+
+add - mongodb
+{"number":1,"name":"Tres palabras","duration":"4:24","album":"5936ff25285f14785fe10710"}
+{"number":2,"name":"Para qué la vida","duration":"4:05","album":"5936ff25285f14785fe10710"}
+
+{"number":1,"name":"Vuelve","duration":"5:09","album":"5936e1f86434f175bdf63055"}
+{"number":2,"name":"Perdido sin ti","duration":"4:11","album":"5936e1f86434f175bdf63055"}
+
+update
+{"name":"Tres palabras x","duration":"4:24"}
