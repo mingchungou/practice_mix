@@ -1,9 +1,22 @@
-*Enter to the project folder and run:
 
+* Grunt
+Its a toot to automate tasks in projects, like:
+- Concatenate css/js files.
+- Minify css/js files.
+- Handle images.
+- Compile sass files.
+- Unit test.
+- Building final project.
+- Set watcher for changes.
+- Provide a server.
+
+
+* Having this installed
 /> npm install -g grunt-cli
 
+* Init grunt
 /> npm init
+/> npm install grunt --save-dev
 
-/> npm install -S grunt
-
+* Create gruntfile.js file to config grunt
 /> touch Gruntfile.js

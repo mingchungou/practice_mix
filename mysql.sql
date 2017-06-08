@@ -1,5 +1,3 @@
-/*** Note: {} is data to change ***/
-
 /******** Create a database *********/
 create database DB_NAME;
 
@@ -169,6 +167,7 @@ select * from person where age = (select max(age) from person);   /* Get the row
 select avg(age) from person;   /* Get average value of numeric column */
 select count(*) from person where middleName is null;
 select * from person where firstName like "m%";
+select * from user where email like "%.com";
 select * from person where bornCountry in ("Taiwan", "Costa Rica");
 select * from person where bornCountry in (select bornCountry from person where middleName is null);
 select person.firstName, person.lastName, orders.mount from person inner join orders on person.id = orders.personID;
@@ -302,6 +301,42 @@ begin
 end;
 
 call authentication("mingchungou@gmail.com", "mingchun1991");
+
+
+
+/******** Example of triggers *********/
+create table todo (
+	id int auto_increment,
+	activity varchar(255) not null,
+	priority varchar(10) not null,
+	fromX timestamp not null,
+	created timestamp not null,
+	updated timestamp not null,
+	status boolean not null,
+	primary key (id)
+);
+
+/******** Trigger to check the priority data and set created/updated dates *********/
+drop trigger if exists check_priority;
+delimiter //
+create trigger check_priority before insert on todo for each row
+begin
+	declare prio varchar(10);
+	set prio = lower(new.priority); /* Change the string to lowercase */
+
+	if (prio != "low" and prio != "medium" and prio != "high") then
+		signal sqlstate '45000' set message_text = "You can only set low, medium or high in priority space"; /* Throw error */
+	else
+		set new.created = now();
+		set new.updated = now();
+		set new.priority = prio;
+	end if;
+end;//
+
+/******** Trigger to update updated date when a row gets changed *********/
+drop trigger if exists refresh_updated;
+delimiter //
+create trigger refresh_updated before update on todo for each row set new.updated = now();
 
 
 

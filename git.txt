@@ -1,25 +1,23 @@
-— Git
+
+— Config git
 
 * add user name
-/> git config --global user.name “{user-name}”
+/> git config --global user.name "USER_NAME"
 
 * show user name
 /> git config user.name
 
 * user email
-/> git config --global user.email “{user-email}”
+/> git config --global user.email "USER_EMAIL"
 
 * show user email
 /> git config user.email
 
 * user password
-/> git config --global user.password {user-password}
+/> git config --global user.password USER_PASSWORD
 
 * show user password
 /> git config user.password
-
-* check version
-/> git —-version
 
 * Add color to different results
 /> git config --global color.ui true
@@ -27,26 +25,18 @@
 * Look at all configurations
 /> git config --global --list
 
+* check version
+/> git —-version
 
 
 
+— Init git
 
-* Start handle new project with git
+* Init git
 /> git init
 
-* Look at status of project
+* Look at new changes or general status of project
 /> git status
-
-/> git add {url of file to commit}
-
-* Add everything
-/> git add -A
-
-* One way to commit a change
-/> git commit -m “{message for commit}”
-
-* Another way to commit a change
-/> git commit, then add a comment + esc + :wq
 
 * Show the commits done
 /> git log
@@ -55,79 +45,125 @@
 /> git log > commits.txt
 
 * Go back to previous commit
-/> git checkout {number of previous commit}
+/> git checkout COMMIT_NUMBER
 
-* Return to last commit done
-/> git checkout {branch name selected}
+* If stay in previous commit and want to return to last one
+/> git checkout BRANCH_NAME
 
-* Show the branch selected
-/> git branch
+* Roll back to commit selected, but keeping all changes of removed commits
+/> git reset --soft COMMIT_NUMBER
 
-* Remove all changes until the commit mentioned, but the changes are kept
-/> git reset --soft {number of commit}
-
-* Remove all changes until the commit mentioned and the changes also are removed
-/> git reset --hard {number of commit}
+* Roll back to commit selected and remove completely the changes of removed commits
+/> git reset --hard COMMIT_NUMBER
 
 
 
+— Add new commits to git
 
-* Associate git to github
-/> git remote add origin {root of repository to bind}
+* Add everything to commit
+/> git add -A
 
-* Remote the association
-/> git remote remove origin
+* Add specific files to commit
+/> git add FILE_PATH FILE_PATH ...
 
-* Change the association path
-/> git remote set-url origin {root of repository to bind}
+* First way to create a commit with message
+/> git commit -m "COMMIT_COMMENT"
 
-* Look at the association path
-/> git remote -v
-
-* Push a branch
-/> git push -u origin {branch}  o   /> git push origin {branch}
-
-
-
-
-
-* Create a branch
-/> git branch {name of new branch}
-
-* Switch to another branch
-/> git checkout {branch}
-
-* Add change from a specific branch
-/> git merge {branch}
-
-* Remove a branch
-/> git branch -D {branch}
-
-* Create a new branch and switch to it at once
-/> git checkout -b {branch}
+* Second way to create a commit
+/> git commit
+- Git will open an internal editor.
+- After writting the comment, tap [esc] + :wq
 
 * Change message of last commit
-/> git commit --amend -m “{new message}”
+/> git commit --amend -m "COMMIT_COMMENT"
 
-* Add tag
-/> git tag -a v{number of version} -m “{message}”
+* First way to push new commits to repository
+/> git push origin BRANCH_NAME
 
-* Push a tag
-/> git push origin v{number of version}   o   /> git push origin —-tags
-
-* Remove a tag
-/> git tag -d v{number of version}
-
-* Remove a remote tag
-/> git push origin :v{number of version}
+* Second way to push new commits to repository
+/> git push
 
 
 
-
+— Update local repositories
 
 * Update the local repository
 /> git fetch origin
-/> git merge origin/{branch}
+/> git merge origin/BRANCH_NAME
 
-* Push a new change to repository
-/> git push origin {branch}
+* Another way to update
+/> git pull
+
+
+
+— Associate git to Github
+
+* Start association
+- Create a repository in Github.
+/> git remote add origin REPOSITORY_PATH
+
+* Remove the association
+/> git remote remove origin
+
+* Change the association path
+/> git remote set-url origin REPOSITORY_PATH
+
+* Look at the association info
+/> git remote -v
+
+* Push a branch
+/> git push -u origin BRANCH_NAME   o   /> git push origin BRANCH_NAME
+
+
+
+— About branches
+
+* Show the branch list
+/> git branch
+
+* Create a branch
+/> git branch BRANCH_NAME
+
+* Switch to another branch
+/> git checkout BRANCH_NAME
+
+* Add change from a specific branch
+/> git merge BRANCH_NAME
+
+* Remove a branch
+/> git branch -D BRANCH_NAME
+
+* Create a new branch and switch to it at once
+/> git checkout -b BRANCH_NAME
+
+
+
+— About tags
+
+* Add tag
+/> git tag -a vVERSION_NUMBER -m "TAG_COMMENT"
+
+* Push a tag
+/> git push origin vVERSION_NUMBER   o   /> git push origin —-tags
+
+* Remove a tag
+/> git tag -d vVERSION_NUMBER
+
+* Remove a remote tag
+/> git push origin :vVERSION_NUMBER
+
+
+
+- Merge new changes from repository but avoiding messing current changes
+
+/> git stash
+/> git pull
+/> git stash pop
+
+
+
+/*
+Note:
+- .gitignore: file where specifying which files git should ignore.
+- .gitkeep: file that make empty folders are recognized by git.
+*/
