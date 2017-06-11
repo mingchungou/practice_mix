@@ -1,3 +1,4 @@
+
 /****************** Let *****************/
 let message:string = "Hello World"; //Life of let depends on where it is created, so this variable lives in whole file
 
@@ -27,6 +28,7 @@ let age:number = 20;
 let isAdult:boolean = true;
 let birthday:Date = new Date("1991-10-25");
 
+
 //When setting type as any, that variable can receive whatever values
 let general:any;
 general = firstName;
@@ -34,10 +36,40 @@ general = age;
 general = isAdult;
 general = birthday;
 
-let spiderman:{name:string, age:number} = {
+
+/*
+When setting type as Object, could do it by two ways:
+First one, specifying each attribute that object has.
+*/
+/*let spiderman:{name:string, age:number} = {
     name: "Peter",
     age: 20
 };
+
+function checkAdult(data:{name:string, age:number}):void {
+    //Specify object by this case, can access to attributes by dot.
+    console.log(data.age > 18);
+};
+
+console.log(checkAdult(spiderman));*/
+
+/*
+Second one, just set type as Object. But using this way, typescript will throw
+error when trying to access the object attributes but dot.
+*/
+/*let superman:Object = {
+    name: "Clack",
+    age: 24
+};
+
+function checkAdult(data:Object):boolean {
+    //Specify object by Object, can't access to attributes by dot.
+    //return data.age > 18; //This will throw an error.
+
+    return data["age"] > 18; //Should access by this way.
+};
+
+console.log(checkAdult(superman));*/
 
 
 
