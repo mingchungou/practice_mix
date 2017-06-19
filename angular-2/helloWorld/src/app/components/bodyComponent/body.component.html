@@ -1,0 +1,38 @@
+<section class="body-content my-3">
+    <div class="container">
+        <h2>Structural Directives</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <h3>*ngIf</h3>
+                <hr />
+                <button class="btn btn-outline-primary btn-block my-3"
+                    type="button"
+                    (click)="isVisible = !isVisible">
+                    {{isVisible ? "Hide" : "Show"}}
+                </button>
+                <div class="card card-inverse card-primary mb-3 text-center"
+                    *ngIf="isVisible">
+                    <div class="card-block">
+                        <blockquote class="card-blockquote">
+                            <p>{{phrase}}</p>
+                            <footer>
+                                Author: <cite title="Source Title">{{author}}</cite>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>*ngFor</h3>
+                <hr />
+                <ul class="list-group">
+                    <li class="list-group-item"
+                        *ngFor="let member of strawHatTeam; let i = index">
+                        {{i + 1}} - {{member}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

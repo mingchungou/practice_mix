@@ -1,0 +1,28 @@
+<section>
+    <div class="container">
+        <!--<h2>About ngIf in Angular 2</h2>
+        <div *ngIf="user">
+            Welcome {{user.name}}
+        </div>
+        <div *ngIf="!user">
+            <button class="btn btn-primary"
+                type="button"
+                (click)="user = {name: 'Ming Chung'}">
+                Init User
+            </button>
+        </div>-->
+
+        <h2>About ngIf in Angular 4</h2>
+        <div *ngIf="user; then display else insert"></div>
+        <ng-template #display>
+            Welcome {{user.name}}
+        </ng-template>
+        <ng-template #insert>
+            <button class="btn btn-primary"
+                type="button"
+                (click)="user = {name: 'Ming Chung'}">
+                Init User
+            </button>
+        </ng-template>
+    </div>
+</section>

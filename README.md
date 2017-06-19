@@ -3,6 +3,8 @@
 Examples:
 - JS stuff:
     - angularjs 1.5
+    - angular 2
+    - angular 4
     - javascript ES5
     - javascript ES6
     - typescript

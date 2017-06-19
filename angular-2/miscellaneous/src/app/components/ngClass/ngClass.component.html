@@ -1,0 +1,60 @@
+<h2>- Ng Class</h2>
+<section class="py-3">
+    <div class="alert" role="alert" [ngClass]="alertType">
+        <strong>Well done!</strong> You successfully read this important alert message.
+    </div>
+    <button class="btn btn-success"
+        type="button"
+        (click)="alertType = 'alert-success'">
+        Success
+    </button>
+    <button class="btn btn-info"
+        type="button"
+        (click)="alertType = 'alert-info'">
+        Info
+    </button>
+    <button class="btn btn-warning"
+        type="button"
+        (click)="alertType = 'alert-warning'">
+        Warning
+    </button>
+    <button class="btn btn-danger"
+        type="button"
+        (click)="alertType = 'alert-danger'">
+        Danger
+    </button>
+</section>
+
+<section class="py-3">
+    <h3 [ngClass]="{'text-success': textProperties.colorType === 1,
+            'text-info': textProperties.colorType === 2,
+            'text-warning': textProperties.colorType === 3,
+            'text-danger': textProperties.colorType === 4}">
+        Hello World
+    </h3>
+    <button class="btn"
+        type="button"
+        [ngClass]="{'btn-success': textProperties.colorType === 1,
+            'btn-info': textProperties.colorType === 2,
+            'btn-warning': textProperties.colorType === 3,
+            'btn-danger': textProperties.colorType === 4}"
+        (click)="(textProperties.colorType >= 4) ?
+            textProperties.colorType = 1 :
+            textProperties.colorType = textProperties.colorType + 1">
+        Change
+    </button>
+</section>
+
+<section class="py-3">
+    <h3>Asynchronous process</h3>
+    <button class="btn btn-primary"
+        type="button"
+        (click)="executeProcess()"
+        [disabled]="loading">
+        <i class="fa fa-save mr-1"
+            [ngClass]="{'fa-save': !loading, 'fa-refresh fa-spin': loading}">
+        </i>
+        <span *ngIf="!loading">Save changes</span>
+        <span *ngIf="loading">Waiting</span>
+    </button>
+</section>

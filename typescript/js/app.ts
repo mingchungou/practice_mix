@@ -243,3 +243,7 @@ class Member {
 
     };
 };*/
+
+
+
+//More info: http://www.typescriptlang.org/docs/handbook/basic-types.html

@@ -1,0 +1,69 @@
+* What is Angular Cli
+- Is a tool to help us to create the project using Angular 2 framework, it helps us
+to create and import the components, directives, pipes, services by command line.
+
+
+
+* Install Angular Cli
+/> npm install -g angular-cli
+
+
+
+* Init new project
+/> ng new PROJECT_NAME
+
+
+
+* Run server
+/> ng serve o /> ng server
+
+
+
+* Create a full component
+/> ng g c FILE_PATH
+
+
+* Create a component without style file
+/> ng g c FILE_PATH -is
+
+
+* Create a component without html file
+/> ng g c FILE_PATH -is -it
+
+
+* Create a component without grouping the component files within a folder
+/> ng g c FILE_PATH -is --flat
+
+
+
+* Create a full directive
+/> ng g d FILE_PATH
+
+
+
+* Create a full service
+/> ng g s FILE_PATH
+
+
+
+* Create a full pipe
+/> ng g p FILE_PATH
+
+
+
+* Create a build
+/*
+Note: Have to stop serve if want to create a build, this build is not production, is
+pre-production.
+*/
+/> ng build
+
+
+
+* Create a production build
+- Navigate to "src/environment/environment.ts" and change production attribute to true.
+/> ng build --prod
+
+
+
+More info: https://cli.angular.io/reference.pdf

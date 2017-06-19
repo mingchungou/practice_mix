@@ -1,0 +1,139 @@
+<h4>Form <small>data</small></h4>
+<hr>
+<form [formGroup]="form" (ngSubmit)="save()">
+    <!-- Full Name - name -->
+    <div formGroupName="fullName">
+        <div class="form-group row" [ngClass]="{'has-danger': form.get('fullName.name').invalid}">
+            <label class="col-md-2 col-form-label" for="name">Name</label>
+            <div class="col-md-8">
+                <input class="form-control"
+                    id="name"
+                    type="text"
+                    placeholder="Write your name"
+                    formControlName="name"
+                    [ngClass]="{'form-control-danger': form.get('fullName.name').invalid}" />
+                <div class="form-control-feedback" *ngIf="form.get('fullName.name').errors?.required">
+                    This field is required
+                </div>
+                <div class="form-control-feedback" *ngIf="form.get('fullName.name').errors?.minlength">
+                    Name should have at lease {{form.get('fullName.name').errors.minlength.requiredLength}} characters
+                </div>
+                <div class="form-control-feedback" *ngIf="form.get('fullName.name').errors?.maxlength">
+                    Name should have less or equal than {{form.get('fullName.name').errors.maxlength.requiredLength}} characters
+                </div>
+                <div class="form-control-feedback" *ngIf="form.get('fullName.name').errors?.pattern">
+                    The name written is invalid
+                </div>
+                <div class="form-control-feedback" *ngIf="form.get('fullName.name').errors?.namebanned">
+                    The name written is not allowed
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Username -->
+    <div class="form-group row" [ngClass]="{'has-danger': form.get('username').invalid}">
+        <label class="col-md-2 col-form-label" for="username">Username</label>
+        <div class="col-md-8">
+            <input class="form-control"
+                id="username"
+                type="text"
+                placeholder="Write a user name"
+                formControlName="username"
+                [ngClass]="{'form-control-danger': form.get('username').invalid}" />
+            <div class="form-control-feedback" *ngIf="form.get('username').errors?.required">
+                This field is required
+            </div>
+            <div class="form-control-feedback" *ngIf="form.get('username').errors?.checkusername">
+                Current user name is used by other user
+            </div>
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group row" [ngClass]="{'has-danger': form.get('email').invalid}">
+        <label class="col-md-2 col-form-label" for="email">Email</label>
+        <div class="col-md-8">
+            <input class="form-control"
+                id="email"
+                type="email"
+                placeholder="Write your email"
+                formControlName="email"
+                [ngClass]="{'form-control-danger': form.get('email').invalid}" />
+            <div class="form-control-feedback" *ngIf="form.get('email').errors?.required">
+                This field is required
+            </div>
+            <div class="form-control-feedback" *ngIf="form.get('email').errors?.pattern">
+                The email written is invalid
+            </div>
+        </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group row" [ngClass]="{'has-danger': form.get('password').invalid}">
+        <label class="col-md-2 col-form-label" for="password">Password</label>
+        <div class="col-md-8">
+            <input class="form-control"
+                id="password"
+                type="password"
+                placeholder="Write your password"
+                formControlName="password"
+                [ngClass]="{'form-control-danger': form.get('password').invalid}" />
+            <div class="form-control-feedback" *ngIf="form.get('password').errors?.required">
+                This field is required
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm -->
+    <div class="form-group row" [ngClass]="{'has-danger': form.get('confirm').invalid}">
+        <label class="col-md-2 col-form-label" for="confirm">Confirm</label>
+        <div class="col-md-8">
+            <input class="form-control"
+                id="confirm"
+                type="password"
+                placeholder="Confirm your password"
+                formControlName="confirm"
+                [ngClass]="{'form-control-danger': form.get('confirm').invalid}" />
+            <div class="form-control-feedback" *ngIf="form.get('confirm').errors?.required">
+                This field is required
+            </div>
+            <div class="form-control-feedback" *ngIf="form.get('confirm').errors?.checkequal">
+                The confirm is different than password
+            </div>
+        </div>
+    </div>
+
+    <!-- Hobby -->
+    <div class="form-group row">
+        <label class="col-md-2 col-form-label">Hobbies</label>
+        <div class="col-md-8" formArrayName="hobby">
+            <input class="form-control"
+                type="text"
+                placeholder="Write your hobby"
+                [formControlName]="i"
+                *ngFor="let item of form.get('hobby').controls; let i = index" />
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary"
+                type="button"
+                (click)="addHobby()">
+                Add
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-md-8 offset-md-2">
+            <button class="btn btn-outline-primary"
+                type="submit"
+                [disabled]="form.invalid">
+                Save
+            </button>
+        </div>
+    </div>
+</form>
+<br />
+{{form.valid}}
+<br />
+{{form.status}}

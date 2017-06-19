@@ -1,0 +1,18 @@
+<section class="py-3">
+    <h2>- Ng Style</h2>
+    <p [ngStyle]="{'font-size': fontSize + 'px'}">
+        Title 1: Monkey D. Luffy
+    </p>
+
+    <p [style.fontSize.px]="fontSize">
+        Title 2: Roronoa Zoro
+    </p>
+
+    <button class="btn btn-primary" type="button" (click)="fontSize = fontSize + 2">
+        <i class="fa fa-plus"></i>
+    </button>
+
+    <button class="btn btn-primary" type="button" (click)="fontSize = fontSize - 2">
+        <i class="fa fa-minus"></i>
+    </button>
+</section>

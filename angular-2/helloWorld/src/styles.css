@@ -1,0 +1,59 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/************ Header content styles ************/
+.main-content .header-content .container .navbar {
+    padding: 0.5rem 0;
+}
+
+.main-content .header-content .container .navbar .navbar-toggler {
+    padding: 0.2rem .75rem;
+    right: 0;
+    cursor: pointer;
+}
+
+.main-content .header-content .container .navbar .navbar-toggler:focus {
+    outline: 0;
+}
+
+.main-content .header-content .container .navbar .navbar-collapse {
+    align-items: center;
+}
+
+.main-content .header-content .container .navbar .navbar-collapse .form-inline button {
+    cursor: pointer;
+}
+
+/************ Body content styles ************/
+.main-content .body-content hr {
+    margin-top: 0;
+}
+
+/************ Footer content styles ************/
+.main-content footer-component {
+    margin-top: auto;
+}
+
+.main-content .footer-content .container {
+    padding: 1rem 15px;
+}
+
+.main-content .footer-content .container p {
+    margin: 0;
+    color: #ffffff;
+}
+
+/************ Media queries ************/
+@media (max-width: 768px) {
+    .main-content .navbar .navbar-brand {
+        margin-right: 0;
+        max-width: 100px;
+    }
+
+    .main-content .navbar .navbar-collapse .form-inline input {
+        flex: 1 1 0px;
+    }
+}
