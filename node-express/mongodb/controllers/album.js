@@ -102,7 +102,7 @@ let remove = (req, res) => {
                             res.status(500).send({message: err3});
                         } else {
                             if (album.image) {
-                                mixins.removeFile(uploadedPath + album.image)
+                                mixins.removeFile(uploadedPath + album.image);
                             }
 
                             //Remove deleted song images.

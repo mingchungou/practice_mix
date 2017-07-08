@@ -25,7 +25,8 @@ http.createServer((req, res) => {
 
     fs.readFile("./index.html", (err, file) => {
         //Inject data to file dynamically
-        let indexFile = renderView.render(file,
+        let indexFile = renderView.render(
+            file,
             (Object.getOwnPropertyNames(parameters).length > 0) ? parameters : staticDatas
         );
 
