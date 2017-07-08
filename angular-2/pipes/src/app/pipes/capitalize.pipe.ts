@@ -5,9 +5,9 @@ import {Pipe, PipeTransform} from "@angular/core";
     name: "capitalize"
 })
 export class CapitalizePipe implements PipeTransform {
-    transform(value:string, all:boolean = true):string {
+    transform(value: string, all: boolean = true): string {
         value = value.toLowerCase();
-        let valueSplit:string[] = value.split(" ");
+        let valueSplit: Array<string> = value.split(" ");
 
         if (all) {
             for (let i in valueSplit) {

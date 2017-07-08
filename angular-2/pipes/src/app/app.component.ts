@@ -6,18 +6,18 @@ import {Component} from "@angular/core";
     templateUrl: "./app.component.html"
 })
 export class AppComponent {
-    private luffy:string = "Monkey D. Luffy";
-    private myName:string = "mInG cHUNG ou ChEn";
+    private luffy: string = "Monkey D. Luffy";
+    private myName: string = "mInG cHUNG ou ChEn";
 
-    private myArray:string[] = ["Zoro", "Sanji", "Nami", "Ussop"];
+    private myArray: string[] = ["Zoro", "Sanji", "Nami", "Ussop"];
 
-    private PI:number = Math.PI;
+    private PI: number = Math.PI;
 
-    private myPercent:number = 0.234;
+    private myPercent: number = 0.234;
 
-    private mySalary:number = 1700.5;
+    private mySalary: number = 1700.5;
 
-    private zoro:{name:string, nick:string, age:number, swords:{name:string}[]} = {
+    private zoro: {name: string, nick: string, age: number, swords: {name: string}[]} = {
         name: "Roronoa Zoro",
         nick: "Marimo",
         age: 21,
@@ -30,14 +30,14 @@ export class AppComponent {
         }]
     };
 
-    private myPromise:Promise<any> = new Promise((resolve, reject) => {
+    private myPromise: Promise<any> = new Promise((resolve, reject) => {
         setTimeout(() => resolve("Data arrived"), 3500);
     });
 
-    private myBirth:Date = new Date();
+    private myBirth: Date = new Date();
 
-    private myVideo:string = "Cjvg-MFxWWY";
+    private myVideo: string = "Cjvg-MFxWWY";
 
-    private myPassword:string = "mingchungou";
-    private isActive:boolean = true;
+    private myPassword: string = "mingchungou";
+    private isActive: boolean = true;
 };

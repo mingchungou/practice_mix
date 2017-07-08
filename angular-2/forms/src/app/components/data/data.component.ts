@@ -8,21 +8,21 @@ import {Observable} from "rxjs/Rx";
     templateUrl: "./data.component.html"
 })
 export class DataComponent implements OnInit {
-    private form:FormGroup;
-    private user:object = {
+    private form: FormGroup;
+    private user: object = {
         fullName: {
-            name: "Monkey D. Luffy"
+            name: ""
         },
         username: "",
-        email: "gearfour@gmail.com",
+        email: "",
         hobby: [],
         password: "",
         confirm: ""
     };
 
     ngOnInit() {
-        let nameRegExp:RegExp = /^[^()\/\\\[\]@#$%&?¡!¿{}<>]+$/;
-        let emailRegExp:RegExp = /^[^()\/\\\[\]@#$%&?¡!¿{}<>]+@[a-zA-Z0-9]+(?:\.[a-zA-Z]{2,3}){1,2}$/;
+        let nameRegExp: RegExp = /^[^()\/\\\[\]@#$%&?¡!¿{}<>]+$/;
+        let emailRegExp: RegExp = /^[^()\/\\\[\]@#$%&?¡!¿{}<>]+@[a-zA-Z0-9]+(?:\.[a-zA-Z]{2,3}){1,2}$/;
 
         this.form = new FormGroup({
             fullName: new FormGroup({
@@ -69,31 +69,31 @@ export class DataComponent implements OnInit {
         });
     };
 
-    private save():void {
+    private save(): void {
         console.log(this.form);
         console.log(this.form.value);
 
-        let hobbyArray:FormArray = (<FormArray>this.form.get("hobby"));
-        for(let i = hobbyArray.length - 1; i >= 0; i--) {
+        let hobbyArray: FormArray = (<FormArray>this.form.get("hobby"));
+        for(let i: number = hobbyArray.length - 1; i >= 0; i--) {
             hobbyArray.removeAt(i);
         }
 
         this.form.reset(this.user);
     };
 
-    private addHobby():void {
+    private addHobby(): void {
         (<FormArray>this.form.get("hobby")).push(
             new FormControl("", Validators.required)
         );
     };
 
     //Custom Validator - Synchronous
-    private nameBanned(control:FormControl):{[s:string]:boolean} {
-        let names:string[] = ["lionel messi", "luis suarez", "david villa", "gerald piqué", "david de gea"];
-        let value:string = control.value.toLowerCase();
-        let isFound:boolean = false;
+    private nameBanned(control: FormControl): {[s: string]:boolean} {
+        let names: string[] = ["lionel messi", "luis suarez", "david villa", "gerald piqué", "david de gea"];
+        let value: string = control.value.toLowerCase();
+        let isFound: boolean = false;
 
-        names.forEach((name:string) => {
+        names.forEach((name: string) => {
             if (name === value ) {
                 isFound = true;
                 return;
@@ -110,7 +110,7 @@ export class DataComponent implements OnInit {
     };
 
     //Custom Validator - Synchronous
-    private checkEqual(control:FormControl):{[s:string]:boolean} {
+    private checkEqual(control: FormControl): {[s: string]:boolean} {
         if (control.value !== this.form.get("password").value) {
             return {
                 checkequal: true
@@ -121,7 +121,7 @@ export class DataComponent implements OnInit {
     };
 
     //Custom Validator - Asynchronous
-    private checkUsername(control:FormControl):Promise<any> | Observable<any> {
+    private checkUsername(control: FormControl): Promise<any> | Observable<any> {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (control.value === "mugiwara") {

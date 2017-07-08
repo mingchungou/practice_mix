@@ -3,7 +3,8 @@
 <form [formGroup]="form" (ngSubmit)="save()">
     <!-- Full Name - name -->
     <div formGroupName="fullName">
-        <div class="form-group row" [ngClass]="{'has-danger': form.get('fullName.name').invalid}">
+        <div class="form-group row"
+            [ngClass]="{'has-danger': form.get('fullName.name').invalid && form.get('fullName.name').touched}">
             <label class="col-md-2 col-form-label" for="name">Name</label>
             <div class="col-md-8">
                 <input class="form-control"
@@ -11,20 +12,25 @@
                     type="text"
                     placeholder="Write your name"
                     formControlName="name"
-                    [ngClass]="{'form-control-danger': form.get('fullName.name').invalid}" />
-                <div class="form-control-feedback" *ngIf="form.get('fullName.name').errors?.required">
+                    [ngClass]="{'form-control-danger': form.get('fullName.name').invalid && form.get('fullName.name').touched}" />
+                <div class="form-control-feedback"
+                    *ngIf="form.get('fullName.name').errors?.required && form.get('fullName.name').touched">
                     This field is required
                 </div>
-                <div class="form-control-feedback" *ngIf="form.get('fullName.name').errors?.minlength">
+                <div class="form-control-feedback"
+                    *ngIf="form.get('fullName.name').errors?.minlength && form.get('fullName.name').touched">
                     Name should have at lease {{form.get('fullName.name').errors.minlength.requiredLength}} characters
                 </div>
-                <div class="form-control-feedback" *ngIf="form.get('fullName.name').errors?.maxlength">
+                <div class="form-control-feedback"
+                    *ngIf="form.get('fullName.name').errors?.maxlength && form.get('fullName.name').touched">
                     Name should have less or equal than {{form.get('fullName.name').errors.maxlength.requiredLength}} characters
                 </div>
-                <div class="form-control-feedback" *ngIf="form.get('fullName.name').errors?.pattern">
+                <div class="form-control-feedback"
+                    *ngIf="form.get('fullName.name').errors?.pattern && form.get('fullName.name').touched">
                     The name written is invalid
                 </div>
-                <div class="form-control-feedback" *ngIf="form.get('fullName.name').errors?.namebanned">
+                <div class="form-control-feedback"
+                    *ngIf="form.get('fullName.name').errors?.namebanned && form.get('fullName.name').touched">
                     The name written is not allowed
                 </div>
             </div>
@@ -32,7 +38,8 @@
     </div>
 
     <!-- Username -->
-    <div class="form-group row" [ngClass]="{'has-danger': form.get('username').invalid}">
+    <div class="form-group row"
+        [ngClass]="{'has-danger': form.get('username').invalid && form.get('username').touched}">
         <label class="col-md-2 col-form-label" for="username">Username</label>
         <div class="col-md-8">
             <input class="form-control"
@@ -40,18 +47,21 @@
                 type="text"
                 placeholder="Write a user name"
                 formControlName="username"
-                [ngClass]="{'form-control-danger': form.get('username').invalid}" />
-            <div class="form-control-feedback" *ngIf="form.get('username').errors?.required">
+                [ngClass]="{'form-control-danger': form.get('username').invalid && form.get('username').touched}" />
+            <div class="form-control-feedback"
+                *ngIf="form.get('username').errors?.required && form.get('username').touched">
                 This field is required
             </div>
-            <div class="form-control-feedback" *ngIf="form.get('username').errors?.checkusername">
+            <div class="form-control-feedback"
+                *ngIf="form.get('username').errors?.checkusername && form.get('username').touched">
                 Current user name is used by other user
             </div>
         </div>
     </div>
 
     <!-- Email -->
-    <div class="form-group row" [ngClass]="{'has-danger': form.get('email').invalid}">
+    <div class="form-group row"
+        [ngClass]="{'has-danger': form.get('email').invalid && form.get('email').touched}">
         <label class="col-md-2 col-form-label" for="email">Email</label>
         <div class="col-md-8">
             <input class="form-control"
@@ -59,18 +69,21 @@
                 type="email"
                 placeholder="Write your email"
                 formControlName="email"
-                [ngClass]="{'form-control-danger': form.get('email').invalid}" />
-            <div class="form-control-feedback" *ngIf="form.get('email').errors?.required">
+                [ngClass]="{'form-control-danger': form.get('email').invalid && form.get('email').touched}" />
+            <div class="form-control-feedback"
+                *ngIf="form.get('email').errors?.required && form.get('email').touched">
                 This field is required
             </div>
-            <div class="form-control-feedback" *ngIf="form.get('email').errors?.pattern">
+            <div class="form-control-feedback"
+                *ngIf="form.get('email').errors?.pattern && form.get('email').touched">
                 The email written is invalid
             </div>
         </div>
     </div>
 
     <!-- Password -->
-    <div class="form-group row" [ngClass]="{'has-danger': form.get('password').invalid}">
+    <div class="form-group row"
+        [ngClass]="{'has-danger': form.get('password').invalid && form.get('password').touched}">
         <label class="col-md-2 col-form-label" for="password">Password</label>
         <div class="col-md-8">
             <input class="form-control"
@@ -78,15 +91,17 @@
                 type="password"
                 placeholder="Write your password"
                 formControlName="password"
-                [ngClass]="{'form-control-danger': form.get('password').invalid}" />
-            <div class="form-control-feedback" *ngIf="form.get('password').errors?.required">
+                [ngClass]="{'form-control-danger': form.get('password').invalid && form.get('password').touched}" />
+            <div class="form-control-feedback"
+                *ngIf="form.get('password').errors?.required && form.get('password').touched">
                 This field is required
             </div>
         </div>
     </div>
 
     <!-- Confirm -->
-    <div class="form-group row" [ngClass]="{'has-danger': form.get('confirm').invalid}">
+    <div class="form-group row"
+        [ngClass]="{'has-danger': form.get('confirm').invalid && form.get('confirm').touched}">
         <label class="col-md-2 col-form-label" for="confirm">Confirm</label>
         <div class="col-md-8">
             <input class="form-control"
@@ -94,11 +109,13 @@
                 type="password"
                 placeholder="Confirm your password"
                 formControlName="confirm"
-                [ngClass]="{'form-control-danger': form.get('confirm').invalid}" />
-            <div class="form-control-feedback" *ngIf="form.get('confirm').errors?.required">
+                [ngClass]="{'form-control-danger': form.get('confirm').invalid && form.get('confirm').touched}" />
+            <div class="form-control-feedback"
+                *ngIf="form.get('confirm').errors?.required && form.get('confirm').touched">
                 This field is required
             </div>
-            <div class="form-control-feedback" *ngIf="form.get('confirm').errors?.checkequal">
+            <div class="form-control-feedback"
+                *ngIf="form.get('confirm').errors?.checkequal && form.get('confirm').touched">
                 The confirm is different than password
             </div>
         </div>
@@ -137,3 +154,7 @@
 {{form.valid}}
 <br />
 {{form.status}}
+<br />
+<pre>
+    {{user | json}}
+</pre>

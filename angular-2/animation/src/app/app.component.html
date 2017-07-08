@@ -1,0 +1,59 @@
+<section class="container my-3">
+    <div class="row">
+        <div class="col-md-3">
+            <button class="btn btn-outline-primary btn-block"
+                type="button"
+                (click)="toggleMove()">
+                Animate
+            </button>
+            <button class="btn btn-outline-primary btn-block"
+                type="button"
+                (click)="toggleSlide()">
+                Slide
+            </button>
+            <button class="btn btn-outline-primary btn-block"
+                type="button"
+                (click)="toggleGroupTrigger()">
+                Group Trigger
+            </button>
+            <button class="btn btn-outline-primary btn-block"
+                type="button"
+                (click)="toggleFlyInOut()">
+                Fly
+            </button>
+        </div>
+        <div class="col-md-9">
+            <div class="animate-content-1"
+                [@focusPanel]="state"
+                (@focusPanel.start)="animationStart($event)"
+                (@focusPanel.done)="animationDone($event)">
+                Look at me animate 1
+            </div>
+            <div class="animate-content-2"
+                [@movePanel]=""
+                (@movePanel.start)="animationStart($event)"
+                (@movePanel.done)="animationDone($event)">
+                Look at me animate 2
+            </div>
+            <div class="animate-content-3"
+                [@slidePane]="slide"
+                (@slidePane.start)="animationStart($event)"
+                (@slidePane.done)="animationDone($event)">
+                Look at me animate 3
+            </div>
+            <div class="animate-content-4"
+                [@groupTrigger]="groupTrigger"
+                (@groupTrigger.start)="animationStart($event)"
+                (@groupTrigger.done)="animationDone($event)">
+                Look at me animate 4
+            </div>
+            <div class="animate-content-5"
+                [@flyInOut]
+                (@flyInOut.start)="animationStart($event)"
+                (@flyInOut.done)="animationDone($event)"
+                *ngIf="flyInOut">
+                Look at me animate 5
+            </div>
+        </div>
+    </div>
+</section>

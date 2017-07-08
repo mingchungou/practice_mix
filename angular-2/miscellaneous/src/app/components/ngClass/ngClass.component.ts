@@ -1,25 +1,29 @@
 
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy} from "@angular/core";
 
 @Component({
     selector: "app-ng-class",
     templateUrl: "./ngClass.component.html"
 })
-export class NgClassComponent implements OnInit {
-    private alertType:string = "alert-danger";
-    private textProperties:object = {
+export class NgClassComponent implements OnDestroy {
+    private loadingTimeout: any;
+    private alertType: string = "alert-danger";
+    private textProperties: object = {
         colorType: 1
     };
-    private loading:boolean = false;
 
-    ngOnInit() {
-
+    ngOnDestroy() {
+        this.stopProcess();
     };
 
-    private executeProcess():void {
-        this.loading = true;
-        setTimeout(() => {
-            this.loading = false;
+    private executeProcess(): void {
+        this.loadingTimeout = setTimeout(() => {
+            this.stopProcess();
         }, 3000);
+    };
+
+    private stopProcess(): void {
+        clearTimeout(this.loadingTimeout);
+        this.loadingTimeout = null;
     };
 };

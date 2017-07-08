@@ -1,22 +1,22 @@
 
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {NgForm, FormGroup} from "@angular/forms";
 
 @Component({
     selector: "app-template",
     templateUrl: "./template.component.html"
 })
-export class TemplateComponent implements OnInit {
-    private user:object = {
-        name: "Monkey D. Luffy",
-        email: "gearfour@gmail.com",
-        birth: "1991-10-25",
-        country: "TWN",
+export class TemplateComponent {
+    private user: object = {
+        name: "",
+        email: "",
+        birth: "",
+        country: "",
         gender: "male",
         accept: false
     };
 
-    private countries:object = [{
+    private countries: object = [{
         cod: "CRI",
         country: "Costa Rica"
     }, {
@@ -30,7 +30,7 @@ export class TemplateComponent implements OnInit {
         country: "España"
     }];
 
-    private gender:object = [{
+    private gender: object = [{
         cod: "male",
         value: "Male"
     }, {
@@ -41,11 +41,7 @@ export class TemplateComponent implements OnInit {
         value: "Other"
     }];
 
-    ngOnInit() {
-
-    };
-
-    private save(form:NgForm):void {
+    private save(form: NgForm): void {
         console.log(form);
 
         //To get the current input values, get them by form.value

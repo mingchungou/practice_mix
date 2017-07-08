@@ -1,0 +1,11 @@
+<div class="tabbable-content">
+    <h2 class="my-3 text-center">Heroes</h2>
+    <ul class="list-group mb-3">
+        <li class="list-group-item"
+            *ngFor="let pane of panes"
+            [ngClass]="{'active': pane.selected}">
+            <a class="cursor-pointer" (click)="select(pane)">{{pane.title}}</a>
+        </li>
+    </ul>
+    <ng-content></ng-content>
+</div>

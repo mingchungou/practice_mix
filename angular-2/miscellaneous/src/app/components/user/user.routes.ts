@@ -16,6 +16,9 @@ export const USER_ROUTES: Routes = [{
     path: "detail",
     component: DetailComponent
 }, {
+    path: "detail/:name",
+    component: DetailComponent
+}, {
     path: "**",
     pathMatch: "full",
     redirectTo: "add"

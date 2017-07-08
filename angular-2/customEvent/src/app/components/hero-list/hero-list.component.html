@@ -1,0 +1,7 @@
+<section class="hero-list-content mt-3">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let hero of heroList">
+            <app-hero-detail [hero]="hero" (remove)="removeHero($event)"></app-hero-detail>
+        </li>
+    </ul>
+</section>

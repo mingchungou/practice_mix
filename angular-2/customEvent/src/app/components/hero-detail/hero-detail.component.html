@@ -1,0 +1,13 @@
+<div class="hero-detail" *ngIf="hero">
+    <p>Name: {{hero.name}}</p>
+    <div class="location-content">
+        <span class="mr-3">Location: </span>
+        <app-hero-editable [location]="hero.location" (update)="updateHero($event)">
+        </app-hero-editable>
+        <button class="btn btn-danger btn-sm cursor-pointer ml-1"
+            type="button"
+            (click)="removeHero()">
+            Delete
+        </button>
+    </div>
+</div>

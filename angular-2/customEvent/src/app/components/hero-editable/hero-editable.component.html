@@ -1,0 +1,20 @@
+<div class="location-data">
+    <span [ngSwitch]="editMode">
+        <input class="form-control"
+            type="text"
+            [(ngModel)]="location"
+            *ngSwitchCase="true" />
+        <span *ngSwitchDefault>{{location}}</span>
+    </span>
+    <button class="btn btn-info btn-sm cursor-pointer ml-1"
+        type="button"
+        (click)="handleModeChange()">
+        {{editMode ? "Save" : "Edit"}}
+    </button>
+    <button class="btn btn-info btn-sm cursor-pointer ml-1"
+        type="button"
+        (click)="reset()"
+        *ngIf="editMode">
+        Reset
+    </button>
+</div>

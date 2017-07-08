@@ -4,10 +4,18 @@
 
 
 * Set change watcher to typescript file
+- Specific
 /> tsc FILE_NAME -w
+- General
+/> tsc --watch
 
 
 
 * Init typescript config file
+- By default
 /> tsc -init
+/> tsc
+
+- Manual configuration
+/> tsc -init --experimentalDecorators --emitDecoratorMetadata --target ES5 --module system --moduleResolution node --sourceMap false --noImplicitAny false
 /> tsc

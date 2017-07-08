@@ -1,0 +1,8 @@
+<section class="child-content mt-3 p-3">
+    <h2>Child</h2>
+    <p>Value entered in parent component: {{parentValue}}</p>
+    <input class="form-control"
+        type="text"
+        #childInput
+        (keyup)="onChangeValue(childInput.value)" />
+</section>

@@ -74,14 +74,12 @@ functionsArray.forEach(function(item) {
 //By ES6
 /*var functionsArray = [];
 for (let i = 0; i < 5; i++) { //Using let can solve var problem.
-    functionsArray.push(function() {
+    functionsArray.push(() => {
         console.log(i);
     });
 }
 
-functionsArray.forEach(function(item) {
-    item(); //Will show 0 - 4
-});*/
+functionsArray.forEach(item => item()); //Will show 0 - 4*/
 
 
 
@@ -271,7 +269,8 @@ sum();*/
 /*
 Rest parameters
 - Each function can recieve only one rest parameter.
-- Rest parameter should be placed in the last parameter.
+- Rest parameter should be placed as last parameter.
+- Rest groups all values into an array.
 */
 
 //Exercise - adding N new students into the student array.
@@ -300,7 +299,10 @@ let studentArray6 = ["Ming"];
 console.log(addStudent6(studentArray6, "María", "Pedro", "Susana"));*/
 
 
-//Spread
+/*
+Spread
+- Spread separates each item of array as independent value.
+*/
 //Exercise - finding maximun number.
 //By ES5
 /*var numbers = [1, 5, 10, 20, 100, 234],
@@ -335,7 +337,8 @@ console.log(body);*/
 //Function behavior as class
 //ES5
 /*function Person5(name) {
-    if (this instanceof Person5) { //By this condition can avoid missing new statement error.
+    //By this condition can avoid missing new statement error.
+    if (this instanceof Person5) {
         this.name = name;
     } else {
         throw new Error("Have to init with new");
@@ -348,7 +351,8 @@ var personZ5 = Person5.call(personX5, "Luffy"); //But this error is still untarg
 
 //ES6
 function Person6(name) {
-    if (typeof new.target !== "undefined") { //By this condition, force to use new to instance this object.
+    //By this condition, force to use new to instance this object.
+    if (typeof new.target !== "undefined") {
         this.name = name;
     } else {
         throw new Error("Have to init with new");
@@ -431,7 +435,7 @@ sayHello6("Nico Robin");*/
 console.log(getBook5(1));
 
 //By ES6
-let getBook6 = id => ({id: id, name: "One Piece"});
+let getBook6 = id => ({id, name: "One Piece"});
 console.log(getBook6(1));*/
 
 
@@ -482,9 +486,9 @@ console.log(typeof subtract); //Will show function.
 console.log(subtract instanceof Function); //Will show true.
 
 (function subtract(a, b) {
-    ((a, b) => {
+    ((name, age) => {
         console.log(arguments); //Will show parent arguments array.
-    })();
+    })("luffy", 16);
 })(1, 2);
 
 ((a, b) => {
@@ -528,13 +532,14 @@ Computed properties in Object
 - Able to build the object attributes.
 */
 
-/*let suffix = "first ",
+/*let suffix = "first",
     myself = {
-        [suffix + "name"]: "Luffy",
-        [suffix + "lastname"]: "Monkey D.",
-        [suffix + "girlfriend"]: "Boa Hancock"
+        [`${suffix} name`]: "Luffy",
+        [`${suffix} lastname`]: "Monkey D.",
+        [`${suffix} girlfriend`]: "Boa Hancock"
     };
-console.log(myself[suffix + "lastname"] + " " + myself["first name"]);*/
+console.log(myself);
+console.log(myself[`${suffix} lastname`] + " " + myself["first name"]);*/
 
 
 //New method - Object.is
@@ -592,7 +597,8 @@ Object attributes new order standard
 myObject.d = 1;
 myObject["2"] = 1;
 myObject["a"] = 1;
-console.log(Object.getOwnPropertyNames(myObject).join(","));
+console.log(myObject);
+console.log(Object.getOwnPropertyNames(myObject));
 console.log(Object.keys(myObject));
 console.log(JSON.stringify(myObject));*/
 
@@ -654,11 +660,12 @@ console.log(friend.greeting());*/
 /****************** Destructuring *****************/
 /*
 Object destructuring
-- Convert object attributes to separate variables.
-- Doesn't mind the order of variables, but name of variables need to match object attributes.
+- Convert object attributes to independent variables.
+- Doesn't mind the order of variables, but name of variables need to match object
+attribute names.
 */
 
-/*let settings = {
+let settings = {
         name: "Ming Chung",
         email: "mingchungou@gmail.com",
         facebook: "mingchung.777",
@@ -666,11 +673,11 @@ Object destructuring
         premium: true
     };
 
-let {name, email, facebook, google, premium} = settings;
+/*let {name, email, facebook, google, premium} = settings;
 console.log(name, email, facebook, google, premium);
 
 //Set different variable name instead of object attribute
-let {premium:payment} = settings;
+let {premium: payment} = settings;
 console.log(payment);*/
 
 
@@ -680,7 +687,7 @@ console.log(payment);*/
 - If not, then using default value.
 */
 
-/*let {twitter:accounTwi = "ming08"} = settings;
+/*let {twitter: accounTwi = "ming08"} = settings;
 console.log(accounTwi);*/
 
 
@@ -708,17 +715,17 @@ console.log(accounTwi);*/
     };
 
 //Accessing to second floor attribute
-let {lastFile:{cursor:actCursor2}} = autoSaved;
-console.log(actCursor2);
+let {lastFile: {cursor}} = autoSaved;
+console.log(cursor);
 
 //Accessing to third floor attribute
-let {lastFile:{extraFile:{cursor:actCursor3}}} = autoSaved;
+let {lastFile: {extraFile: {cursor: actCursor3}}} = autoSaved;
 console.log(actCursor3);*/
 
 
 /*
 Array destructuring
-- Convert array items to separate variables.
+- Convert array items to independent variables.
 - Order of variables cares.
 */
 
@@ -805,7 +812,7 @@ Using Symbol.for() and Symbol.keyFor()
 - Symbol.for() checks if there is a symbol created with key specified.
 - If so, then loading that same symbol.
 - If not, then creating a new one.
-- Symbol.keyFor() shows the key used to create the symbol.
+- Symbol.keyFor() shows the aria used to create the symbol.
 */
 
 /*let userID = Symbol.for("userID"), //Creating symbol userID.
@@ -843,12 +850,14 @@ for (let key in person) {
 let symbols = Object.getOwnPropertySymbols(person);
 
 for (let key in symbols) {
-    console.log(person[symbols[key]]);
+    console.log(symbols[key], person[symbols[key]]);
 }*/
 
 
 
 /****************** Set *****************/
+//Set prevent duplicated items automatically.
+
 //Init set
 /*let mySet = new Set([1, 2, 3, 4, 5, 6, 6, 6]);
 console.log(mySet);
@@ -1086,7 +1095,7 @@ person.setName("Roronoa Zoro");
 console.log(person);*/
 
 
-//Class heritage
+//Inheritance class
 /*class Rectangle {
     constructor(high, long) {
         this.high = high;
@@ -1119,6 +1128,28 @@ console.log(square instanceof Square); //Will show true.
 console.log(square instanceof Rectangle); //Will show true.*/
 
 
+//Setter and Getter
+/*class Person {
+    constructor(name) {
+        this.name = name;
+    };
+
+    set setName(name) {
+        console.log(`is setting new name: ${name}`);
+        this.name = name;
+    };
+
+    get getName() {
+        console.log(`is getting name: ${this.name}`);
+        return this.name;
+    };
+};
+
+let person = new Person("Sanji");
+person.setName = "Reiju";
+person.getName;*/
+
+
 
 /****************** Promise *****************/
 /*
@@ -1144,3 +1175,10 @@ asynTask().then(() => {
 });
 
 console.log("Sequential code");*/
+
+
+
+/*
+Note:
+- By including module concept in ES6, there are import and export new keywords.
+*/

@@ -50,11 +50,11 @@
     <button class="btn btn-primary"
         type="button"
         (click)="executeProcess()"
-        [disabled]="loading">
+        [disabled]="loadingTimeout">
         <i class="fa fa-save mr-1"
-            [ngClass]="{'fa-save': !loading, 'fa-refresh fa-spin': loading}">
+            [ngClass]="{'fa-save': !loadingTimeout, 'fa-refresh fa-spin': loadingTimeout}">
         </i>
-        <span *ngIf="!loading">Save changes</span>
-        <span *ngIf="loading">Waiting</span>
+        <span *ngIf="!loadingTimeout">Save changes</span>
+        <span *ngIf="loadingTimeout">Waiting</span>
     </button>
 </section>

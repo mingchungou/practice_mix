@@ -1,0 +1,31 @@
+<div class="container my-3">
+    <section class="parent-content p-3">
+        <h1>Parent</h1>
+        <p>Value entered in child component: {{childValue}}</p>
+        <input class="form-control" type="text" #parentInput (keyup)="0" />
+        <app-child [parentValue]="parentInput.value" (childChange)="childValue = $event">
+        </app-child>
+    </section>
+    <app-hero-list></app-hero-list>
+    <app-my-tab>
+        <app-my-pane title="Superman">
+            <p><strong>Superman</strong> is a fictional superhero appearing in American comic books published by DC Comics. The character was created by writer Jerry Siegel and artist Joe Shuster, high school students living in Cleveland, Ohio, in 1933.</p>
+        </app-my-pane>
+        <app-my-pane title="Batman">
+            <p><strong>Batman</strong> is a fictional superhero appearing in American comic books published by DC Comics. The character was created by artist Bob Kane and writer Bill Finger, and first appeared in Detective Comics #27 (1939).</p>
+            <p>How many villains he beaten? <a href ng-click="i = i + 1">{{i || 0}}</a></p>
+        </app-my-pane>
+        <app-my-pane title="Spider Man">
+            <p><strong>Spider Man</strong> is a fictional superhero appearing in American comic books published by Marvel Comics. The character was created by writer-editor Stan Lee and writer-artist Steve Ditko, and first appeared in the anthology comic book Amazing Fantasy #15 (Aug. 1962) in the Silver Age of Comic Books.</p>
+        </app-my-pane>
+        <app-my-pane title="Hulk">
+            <p><strong>Hulk</strong> is a fictional superhero appearing in American comic books published by Marvel Comics. Created by writer Stan Lee and artist Jack Kirby, the character first appeared in the debut issue of The Incredible Hulk (May 1962).</p>
+        </app-my-pane>
+    </app-my-tab>
+    <app-multiple-slot>
+        <h3 class="component-title" component-title>Fluid jumbotron</h3>
+        <div class="component-content" component-content>
+            <p>This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        </div>
+    </app-multiple-slot>
+</div>

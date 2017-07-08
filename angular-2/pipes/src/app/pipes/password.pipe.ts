@@ -5,9 +5,9 @@ import {Pipe, PipeTransform} from "@angular/core";
     name: "password"
 })
 export class PasswordPipe implements PipeTransform {
-    transform(value:string, active:boolean = true):string {
+    transform(value: string, active: boolean = true): string {
         if (active) {
-            let result:string = "";
+            let result: string = "";
 
             for (let i = 0; i < value.length; i++) {
                 result += "*";

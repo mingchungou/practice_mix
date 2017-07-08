@@ -1,0 +1,18 @@
+.time-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.time-content .time-pane {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 4rem;
+}

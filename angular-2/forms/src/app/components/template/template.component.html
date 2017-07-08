@@ -2,7 +2,7 @@
 <hr>
 <form novalidate #form="ngForm" (ngSubmit)="save(form)">
     <!-- Input text -->
-    <div class="form-group row" [ngClass]="{'has-danger': name.invalid}">
+    <div class="form-group row" [ngClass]="{'has-danger': name.invalid && name.touched}">
         <label class="col-md-2 col-form-label" for="name">Name</label>
         <div class="col-md-8">
             <input class="form-control"
@@ -16,21 +16,25 @@
                 pattern="[^()\/\\\[\]@#$%&?¡!¿{}<>]+"
                 [(ngModel)]="user.name"
                 #name="ngModel"
-                [ngClass]="{'form-control-danger': name.invalid}" />
-            <div class="form-control-feedback" *ngIf="name.errors?.required">
+                [ngClass]="{'form-control-danger': name.invalid && name.touched}" />
+            <div class="form-control-feedback"
+                *ngIf="name.errors?.required && name.touched">
                 This field is required
             </div>
-            <div class="form-control-feedback" *ngIf="name.errors?.minlength">
+            <div class="form-control-feedback"
+                *ngIf="name.errors?.minlength && name.touched">
                 Name should have at lease {{name.errors.minlength.requiredLength}} characters
             </div>
-            <div class="form-control-feedback" *ngIf="name.errors?.pattern">
+            <div class="form-control-feedback"
+                *ngIf="name.errors?.pattern && name.touched">
                 The name written is invalid
             </div>
         </div>
     </div>
 
     <!-- Input email -->
-    <div class="form-group row" [ngClass]="{'has-danger': email.invalid}">
+    <div class="form-group row"
+        [ngClass]="{'has-danger': email.invalid && email.touched}">
         <label class="col-md-2 col-form-label" for="email">Email</label>
         <div class="col-md-8">
             <input class="form-control"
@@ -42,18 +46,21 @@
                 pattern="[^()\/\\\[\]@#$%&?¡!¿{}<>]+@[a-zA-Z0-9]+(?:\.[a-zA-Z]{2,3}){1,2}"
                 [(ngModel)]="user.email"
                 #email="ngModel"
-                [ngClass]="{'form-control-danger': email.invalid}" />
-            <div class="form-control-feedback" *ngIf="email.errors?.required">
+                [ngClass]="{'form-control-danger': email.invalid && email.touched}" />
+            <div class="form-control-feedback"
+                *ngIf="email.errors?.required && email.touched">
                 This field is required
             </div>
-            <div class="form-control-feedback" *ngIf="email.errors?.pattern">
+            <div class="form-control-feedback"
+                *ngIf="email.errors?.pattern && email.touched">
                 The email written is invalid
             </div>
         </div>
     </div>
 
     <!-- Input date -->
-    <div class="form-group row" [ngClass]="{'has-danger': birth.invalid}">
+    <div class="form-group row"
+        [ngClass]="{'has-danger': birth.invalid && birth.touched}">
         <label class="col-md-2 col-form-label" for="birth">Birth</label>
         <div class="col-md-8">
             <input class="form-control"
@@ -64,14 +71,16 @@
                 required
                 [(ngModel)]="user.birth"
                 #birth="ngModel" />
-            <div class="form-control-feedback" *ngIf="birth.errors?.required">
+            <div class="form-control-feedback"
+                *ngIf="birth.errors?.required && birth.touched">
                 This field is required
             </div>
         </div>
     </div>
 
     <!-- Select -->
-    <div class="form-group row" [ngClass]="{'has-danger': country.invalid}">
+    <div class="form-group row"
+        [ngClass]="{'has-danger': country.invalid && country.touched}">
         <label class="col-md-2 col-form-label" for="country">Country</label>
         <div class="col-md-8">
             <select class="form-control"
@@ -85,7 +94,8 @@
                     {{item.country}}
                 </option>
             </select>
-            <div class="form-control-feedback" *ngIf="country.errors?.required">
+            <div class="form-control-feedback"
+                *ngIf="country.errors?.required && country.touched">
                 This field is required
             </div>
         </div>

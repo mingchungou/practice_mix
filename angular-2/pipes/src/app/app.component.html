@@ -26,41 +26,41 @@
                 </tr>
                 <tr>
                     <th scope="row">{{luffy}}</th>
-                    <td>slice:3</td> <!-- slice:N - remove only N characters 0 <= CH < N -->
-                    <td>{{luffy | slice:3}}</td>
+                    <td>slice: 3</td> <!-- slice:N - remove only N characters 0 <= CH < N -->
+                    <td>{{luffy | slice: 3}}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{luffy}}</th>
-                    <td>slice:2:7</td> <!-- slice:S:E - take only characters S <= CH < E -->
-                    <td>{{luffy | slice:2:7}}</td>
+                    <td>slice: 2 : 7</td> <!-- slice:S:E - take only characters S <= CH < E -->
+                    <td>{{luffy | slice: 2 : 7}}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{luffy}}</th>
-                    <td>slice:-3</td> <!-- slice:-N - take only N characters N < CH <= the end -->
-                    <td>{{luffy | slice:-3}}</td>
+                    <td>slice: -3</td> <!-- slice:-N - take only N characters N < CH <= the end -->
+                    <td>{{luffy | slice: -3}}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{myArray}}</th>
-                    <td>slice:1:3</td>
-                    <td>{{myArray | slice:1:3}}</td>
+                    <td>slice: 1 : 3</td>
+                    <td>{{myArray | slice: 1 : 3}}</td>
                 </tr>
                 <tr>
                     <th class="text-center" colspan="3">NUMBER</th>
                 </tr>
                 <tr>
                     <th scope="row">{{mySalary}}</th>
-                    <td>number:'.2-2'</td>
-                    <td>{{mySalary | number:'.2-2'}}</td>
+                    <td>number: '.2-2'</td>
+                    <td>{{mySalary | number: '.2-2'}}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{PI}}</th>
-                    <td>number:'1.0-0'</td>
-                    <td>{{PI | number:'1.0-0'}}</td>
+                    <td>number: '1.0-0'</td>
+                    <td>{{PI | number: '1.0-0'}}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{PI}}</th>
-                    <td>number:'1.0-2'</td>
-                    <td>{{PI | number:'1.0-2'}}</td>
+                    <td>number: '1.0-2'</td>
+                    <td>{{PI | number: '1.0-2'}}</td>
                 </tr>
                 <tr>
                     <th class="text-center" colspan="3">PERCENT</th>
@@ -72,8 +72,8 @@
                 </tr>
                 <tr>
                     <th scope="row">{{myPercent}}</th>
-                    <td>percent:'2.2-2'</td>
-                    <td>{{myPercent | percent:'2.2-2'}}</td>
+                    <td>percent: '2.2-2'</td>
+                    <td>{{myPercent | percent: '2.2-2'}}</td>
                 </tr>
                 <tr>
                     <th class="text-center" colspan="3">CURRENCY</th>
@@ -85,18 +85,18 @@
                 </tr>
                 <tr>
                     <th scope="row">{{mySalary}}</th>
-                    <td>currency:'TWD'</td>
-                    <td>{{mySalary | currency:'TWD'}}</td>
+                    <td>currency: 'TWD'</td>
+                    <td>{{mySalary | currency: 'TWD'}}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{mySalary}}</th>
-                    <td>currency:'TWD':true</td>
-                    <td>{{mySalary | currency:'TWD':true}}</td>
+                    <td>currency: 'TWD' : true</td>
+                    <td>{{mySalary | currency: 'TWD' : true}}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{mySalary}}</th>
-                    <td>currency:'TWD':true:'4.0-0'</td>
-                    <td>{{mySalary | currency:'TWD':true:'4.0-0'}}</td>
+                    <td>currency: 'TWD' : true : '4.0-0'</td>
+                    <td>{{mySalary | currency: 'TWD' : true : '4.0-0'}}</td>
                 </tr>
                 <tr>
                     <th class="text-center" colspan="3">ASYNC</th>
@@ -116,13 +116,13 @@
                 </tr>
                 <tr>
                     <th scope="row">{{myBirth}}</th>
-                    <td>date:'medium'</td>
-                    <td>{{myBirth | date:'medium'}}</td>
+                    <td>date: 'medium'</td>
+                    <td>{{myBirth | date: 'medium'}}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{myBirth}}</th>
-                    <td>date:'MMMM - dd'</td>
-                    <td>{{myBirth | date:'MMMM - dd'}}</td>
+                    <td>date: 'MMMM - dd'</td>
+                    <td>{{myBirth | date: 'MMMM - dd'}}</td>
                 </tr>
                 <tr>
                     <th class="text-center" colspan="3">CUSTOM PIPE - capitalize</th>
@@ -134,8 +134,8 @@
                 </tr>
                 <tr>
                     <th scope="row">{{myName}}</th>
-                    <td>capitalize:false</td>
-                    <td>{{myName | capitalize:false}}</td>
+                    <td>capitalize: false</td>
+                    <td>{{myName | capitalize: false}}</td>
                 </tr>
                 <tr>
                     <th class="text-center" colspan="3">CUSTOM PIPE - password</th>
@@ -143,21 +143,21 @@
                 <tr>
                     <th scope="row">{{myPassword}}</th>
                     <td>
-                        password:{{isActive}}
-                        <button class="btn btn-outline-primary btn-block"
+                        password: {{isActive}}
+                        <button class="btn btn-outline-primary btn-sm"
                             type="button"
                             (click)="isActive = !isActive">
                             {{isActive ? "Inactive" : "Active"}}
                         </button>
                     </td>
-                    <td>{{myPassword | password:isActive}}</td>
+                    <td>{{myPassword | password: isActive}}</td>
                 </tr>
             </tbody>
         </table>
 
         <h4 class="pt-3">Slice</h4>
         <ul>
-            <li *ngFor="let item of myArray | slice:2:20">{{item}}</li>
+            <li *ngFor="let item of myArray | slice: 2 : 20">{{item}}</li>
         </ul>
 
         <h4 class="pt-3">JSON</h4>
@@ -168,7 +168,7 @@
             height="315"
             frameborder="0"
             allowfullscreen
-            [src]="myVideo | securedom:'https://www.youtube.com/embed/'">
+            [src]="myVideo | securedom: 'https://www.youtube.com/embed/'">
         </iframe>
         <!-- Change "/watch?v=" to "/embed/" -->
     </div>

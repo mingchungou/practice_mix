@@ -1,19 +1,15 @@
 
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 
 @Component({
     selector: "app-ng-switch",
     templateUrl: "./ngSwitch.component.html"
 })
-export class NgSwitchComponent implements OnInit {
-    private alert:string = "success";
+export class NgSwitchComponent {
+    private alert: string = "success";
 
-    ngOnInit() {
-
-    };
-
-    private getAlertRandom():void {
-        let number:number = Math.floor((Math.random() * 4) + 1);
+    private getAlertRandom(): void {
+        let number: number = Math.floor((Math.random() * 4) + 1);
 
         switch(number) {
             case 1:

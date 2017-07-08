@@ -1,0 +1,44 @@
+.container .cursor-pointer {
+    cursor: pointer;
+}
+
+.container .btn:focus {
+    box-shadow: none;
+}
+
+.container .parent-content {
+    border: 1px solid #3b0b0b;
+    border-radius: 10px;
+    background-color: #f5a9a9;
+}
+
+.container .parent-content .child-content {
+    border: 1px solid #0b3b24;
+    border-radius: 10px;
+    background-color: #81f7be;
+}
+
+.container .hero-list-content .list-group .list-group-item app-hero-detail,
+.container .tabbable-content .list-group .list-group-item a {
+    flex-basis: 100%;
+}
+
+.container .hero-list-content .list-group .list-group-item .hero-detail .location-content,
+.container .hero-list-content .list-group .list-group-item .hero-detail .location-content .location-data {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.container .hero-list-content .list-group .list-group-item .hero-detail .location-content app-hero-editable,
+.container .hero-list-content .list-group .list-group-item .hero-detail .location-content .location-data :first-child {
+    flex: 1 1 auto;
+}
+
+.container .tabbable-content .list-group .list-group-item {
+    padding: 0;
+}
+
+.container .tabbable-content .list-group .list-group-item a {
+    padding: 0.75rem 1.25rem;
+}

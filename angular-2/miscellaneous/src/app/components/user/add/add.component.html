@@ -1,3 +1,9 @@
-<p>
-  add works!
-</p>
+<section class="mt-3">
+    <p>User ID: <span>{{userID}}</span></p>
+    <button class="btn btn-primary my-3" type="button" [routerLink]="['../edit']">
+        Go to Edit
+    </button>
+    <p>
+        {{hours | number: '2.0'}} : {{minutes | number: '2.0'}} : {{seconds | number: '2.0'}}
+    </p>
+</section>

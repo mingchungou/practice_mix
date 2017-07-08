@@ -1,3 +1,28 @@
-<p>
-    edit works!
-</p>
+<section class="mt-3">
+    <h3>Countdown via ChildView</h3>
+    <hr />
+    <div class="buttons text-right">
+        <!--<button class="btn btn-primary"
+            type="button"
+            (click)="countdownComponent.countDown()">
+            Start
+        </button>
+        <button class="btn btn-primary" type="button" (click)="countdownComponent.stop()">
+            Stop
+        </button>-->
+        <button class="btn btn-primary" type="button" (click)="timer.countDown()">
+            Start
+        </button>
+        <button class="btn btn-primary" type="button" (click)="timer.stop()">
+            Stop
+        </button>
+        <button class="btn btn-primary" type="button" (click)="navigate()">
+            Go to Detail
+        </button>
+    </div>
+    <div class="time-content mt-3">
+        <!--<span class="time-pane">{{countdownComponent.time}}</span>-->
+        <span class="time-pane">{{timer.time}}</span>
+        <app-countdown #timer></app-countdown>
+    </div>
+</section>

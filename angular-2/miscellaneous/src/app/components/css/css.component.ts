@@ -1,5 +1,5 @@
 
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 
 @Component({
     selector: "app-css",
@@ -15,8 +15,6 @@ import {Component, OnInit} from "@angular/core";
         }
     `]
 })
-export class CssComponent implements OnInit {
-    ngOnInit() {
+export class CssComponent {
 
-    };
 };
