@@ -1,13 +1,13 @@
 
-import {Component,
-    trigger,
+import {Component} from "@angular/core";
+import {trigger,
     state,
     style,
     transition,
     animate,
     group,
-    keyframes
-} from "@angular/core";
+    keyframes} from "@angular/animations";
+    //In Angular 4, animation stuff is loaded by animations.
 
 @Component({
     selector: "app-root",

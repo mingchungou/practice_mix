@@ -1,6 +1,6 @@
 <section>
-    <div class="container">
-        <h2>About ngIf in Angular 4</h2>
+    <div class="container my-3">
+        <h2>About ngIf else in Angular 4</h2>
         <div *ngIf="user; then display else insert"></div>
         <ng-template #display>
             Welcome {{user.name}}
@@ -12,5 +12,24 @@
                 Init User
             </button>
         </ng-template>
+        <hr class="my-3">
+
+        <h2>Renderer2 in Angular 4</h2>
+        <button class="btn btn-primary"
+            type="button"
+            (click)="changeColor(text)">
+            Change color
+        </button>
+        <p class="mt-3" #text>Hello World</p>
+        <hr class="my-3">
+
+        <h2>Email Validator in Angular 4</h2>
+        <form novalidate #form="ngForm">
+            <input class="form-control mb-2" type="email" name="email" required ngModel email />
+            <button class="btn btn-secondary" type="submit" [disabled]="form.invalid">
+                Send
+            </button>
+        </form>
+        <p class="mt-3">{{form.valid ? "VALID" : "INVALID"}}</p>
     </div>
 </section>

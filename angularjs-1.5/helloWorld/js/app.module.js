@@ -31,7 +31,7 @@ Note:
 - Advantages to use Angularjs
     - Two way data bindings: thanks for this all changes from views update to model and
     upside down in real time.
-- Rootscope is unique in each app and all scopes are inherited from this rootscope. rootscope
+- Rootscope is unique in each app and all scopes are inherited from this rootscope. Rootscope
 is created when Angularjs detects a ng-app.
 
 - ng-app - initialize Angularjs app.

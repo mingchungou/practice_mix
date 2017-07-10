@@ -10,14 +10,23 @@
     </head>
     <body>
         <section class="container my-3"
-            ng-init="name = 'Ming Chung'"
+            ng-init="name = 'Ming Chung'; $ctrl.nickname = 'Mugiwara';"
             ng-controller="mainController as $ctrl"
             ng-cloak>
             <h1>Hello World</h1>
             <p>{{$ctrl.luffy.name}} say hello to {{zoro.name}}</p>
+            <hr class="my-3" />
             <h2>Hello {{name}}</h2>
-            <button class="btn btn-info" type="button" ng-click="changeName()">Change Name</button>
+            <button class="btn btn-info" type="button" ng-click="changeName()">
+                Change Name
+            </button>
             <p class="message mt-3"></p>
+            <hr class="my-3" />
+            <h2>Hello {{$ctrl.nickname}}</h2>
+            <button class="btn btn-danger" type="button" ng-click="changeNick()">
+                Change Nickname
+            </button>
+            <p class="nick-message mt-3"></p>
         </section>
 
         <script src="../../lib/jquery-3.2.0.min.js"></script>

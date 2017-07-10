@@ -12,7 +12,7 @@ import {AppComponent} from "./app.component";
     ],
     imports: [
         BrowserModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule //This is new feature for Angular 4.
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -3,14 +3,14 @@
 
 /*
 Angular Controller
-- A controller allows us to implement the logic to block of html, like handling their events
-and logic.
+- A controller allows us to handle property and methods of a html block.
 - $scope is a binding between view and a controller, it contains properties and methods.
-- Dependency injection deals with how components get their dependencies.
+- Dependency injection deals with how the components get their dependencies.
 */
 
 app.controller("mainController", ["$scope", "$timeout", "$document",
     function($scope, $timeout, $document) {
+        var self = this;
         this.luffy = {
             name: "Monkey D. Luffy"
         };
@@ -27,8 +27,8 @@ app.controller("mainController", ["$scope", "$timeout", "$document",
 
         /*
         Angular $digest
-        - $digest goes through $scope properties and checks if any property has been changed. When
-        detecting something has been changed, launch the function registered in $watch.
+        - $digest goes through $scope properties and checks if any property has been changed.
+        When detecting something has been changed, launch the function registered in $watch.
         */
 
         /*setTimeout(function() {
@@ -60,7 +60,17 @@ app.controller("mainController", ["$scope", "$timeout", "$document",
             $scope.name = ($scope.name === "Ming Chung") ? "Ou Ming" : "Ming Chung";
         };
 
+        $scope.changeNick = function() {
+            self.nickname = (self.nickname === "Mugiwara") ? "Straw Hat" : "Mugiwara";
+        };
+
         $scope.$watch("name", function(newValue, oldValue) {
-            $document[0].querySelector(".message").innerHTML = "The name has been changed to " + newValue;
+            var newMessage = "The name has been changed to " + newValue;
+            $document[0].querySelector(".message").innerHTML = newMessage;
+        });
+
+        $scope.$watch("$ctrl.nickname", function(newValue, oldValue) {
+            var newMessage = "The nickname has been changed to " + newValue;
+            $document[0].querySelector(".nick-message").innerHTML = newMessage;
         });
     }]);

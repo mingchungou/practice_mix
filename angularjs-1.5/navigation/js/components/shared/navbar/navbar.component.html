@@ -12,10 +12,22 @@
         <a class="navbar-brand" href="#home">Navbar</a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+                <li class="nav-item" ng-class="{'active': $ctrl.isActive('/home')}">
+                    <a class="nav-link" ng-href="#home">Home</a>
+                </li>
+                <li class="nav-item" ng-class="{'active': $ctrl.isActive('/about')}">
+                    <a class="nav-link" ng-href="#about">About</a>
+                </li>
+                <li class="nav-item" ng-class="{'active': $ctrl.isActive('/service')}">
+                    <a class="nav-link" ng-href="#service">Service</a>
+                </li>
+                <li class="nav-item" ng-class="{'active': $ctrl.isActive('/contact')}">
+                    <a class="nav-link" ng-href="#contact">Contact</a>
+                </li>
                 <li class="nav-item"
-                    ng-repeat="item in $ctrl.optionList"
-                    ng-class="{'active':$ctrl.isActive(item.path)}">
-                    <a class="nav-link" ng-href="{{$ctrl.setPath(item)}}">{{item.name}}</a>
+                    ng-class="{'active': $ctrl.isActive('/protected')}"
+                    ng-if="$ctrl.checkAuthentication()">
+                    <a class="nav-link" ng-href="#protected">Protected</a>
                 </li>
             </ul>
         </div>

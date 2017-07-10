@@ -1,1 +1,11 @@
-<h1 class="mt-3">Service Page</h1>
+<h1 class="mt-3" ng-if="!$ctrl.serviceID">Service Page</h1>
+<h1 class="mt-3" ng-if="$ctrl.serviceID">Service {{$ctrl.serviceID}}</h1>
+<hr />
+<div class="buttons-content text-right">
+    <button class="btn btn-primary"
+        type="button"
+        ng-click="$ctrl.navigate()"
+        ng-if="!$ctrl.serviceID">
+        Go to Spotify Service
+    </button>
+</div>

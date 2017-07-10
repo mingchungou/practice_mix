@@ -29,11 +29,34 @@ app.config(["$routeProvider", "$locationProvider", "$httpProvider",
                 //Symbol to represent controller, can be treated as this.
                 //controllerAs: "$ctrl",
             })
+            .when("/service", {
+                template: "<app-service></app-service>"
+            })
             .when("/service/:id", {
                 template: "<app-service></app-service>"
             })
             .when("/contact", {
-                template: "<app-contact></app-contact>"
+                template: "<app-contact></app-contact>",
+                resolve: {
+                    //Manner to validate router path.
+                    delay: function($q, $timeout) {
+                        var delay = $q.defer();
+                        $timeout(delay.resolve, 3000);
+                        return delay.promise;
+                    }
+                }
+            })
+            .when("/protected", {
+                template: "<app-protected></app-protected>",
+                resolve: {
+                    //Manner to validate router path.
+                    check: function($location) {
+                        if (!localStorage.getItem("user-data")) {
+                            console.error("Don't have permission to access this page");
+                            $location.path("/home");
+                        }
+                    }
+                }
             })
             //Option for when requested path doesn't match with any previous options.
             .otherwise({

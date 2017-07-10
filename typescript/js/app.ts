@@ -200,8 +200,8 @@ console.log("Step 2");*/
 //Used to validate the type of object
 //Example 1
 interface Xmen {
-    name: string,
-    power: string
+    name: string;
+    power: string;
 };
 
 let performMission: Function = (xmen: Xmen): void => {

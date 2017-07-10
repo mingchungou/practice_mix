@@ -13,7 +13,7 @@
             ng-controller="mainController as $ctrl"
             ng-cloak>
             <header class="bg-inverse">
-                <app-navbar></app-navbar>
+                <app-navbar selected="$ctrl.currentPath"></app-navbar>
             </header>
             <div class="container" ng-view></div>
         </section>
@@ -29,6 +29,7 @@
         <script src="js/components/about/about.component.js"></script>
         <script src="js/components/service/service.component.js"></script>
         <script src="js/components/contact/contact.component.js"></script>
+        <script src="js/components/protected/protected.component.js"></script>
         <script src="js/components/shared/navbar/navbar.component.js"></script>
     </body>
 </html>

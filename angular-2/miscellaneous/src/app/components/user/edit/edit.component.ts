@@ -1,5 +1,5 @@
 
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import {Router, ActivatedRoute} from "@angular/router";
 
 //Loading components
@@ -9,16 +9,12 @@ import {CountdownComponent} from "../../countdown/countdown.component";
     selector: "app-edit",
     templateUrl: "./edit.component.html"
 })
-export class EditComponent implements OnInit {
+export class EditComponent {
     /*@ViewChild(CountdownComponent)
     private countdownComponent: CountdownComponent;*/
 
     constructor(private router: Router,
                 private activatedRoute: ActivatedRoute) {
-
-    };
-
-    ngOnInit() {
 
     };
 
