@@ -1,6 +1,6 @@
 
 * Grunt
-Its a toot to automate tasks in projects, like:
+Its a tool to automate tasks in projects, like:
 - Concatenate css/js files.
 - Minify css/js files.
 - Handle images.
@@ -11,12 +11,19 @@ Its a toot to automate tasks in projects, like:
 - Provide a server.
 
 
-* Having this installed
+* Having Grunt Cli installed
 /> npm install -g grunt-cli
 
-* Init grunt
+
+* Installing a dependency
+/> npm install LIB_NAME --save
+
+
+* Installing a dependency used only in development
+/> npm install LIB_NAME --save-dev
+
+
+* Install grunt workflow into a project
 /> npm init
 /> npm install grunt --save-dev
-
-* Create gruntfile.js file to config grunt
 /> touch Gruntfile.js

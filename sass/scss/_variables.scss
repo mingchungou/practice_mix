@@ -1,0 +1,32 @@
+
+/******************* Variables ******************/
+$red: #ff0000;
+$blue: #0000ff;
+$green: #008000;
+$black: #000000;
+$purple: #800080;
+$gray20: #333333;
+$gray40: #666666;
+$gray60: #999999;
+$gray: #808080;
+$orange: #ffa500;
+$pink: #ffc0cb;
+$whilte: #ffffff;
+$brown: #663300;
+$yellow: #ffff00;
+
+$arial-font: Arial, Helvetica, sans-serif;
+$arial-black-font: "Arial Black", Gadget, sans-serif;
+$comic-sans-font: "Comic Sans MS", cursive, sans-serif;
+$tahoma-font: Tahoma, Geneva, sans-serif;
+
+
+
+/******************* Placeholder selectors ******************/
+/*
+- Using placeholder select can avoid the generator includes the class inherited.
+- These are added by @extend
+*/
+%text-center {
+    text-align: center;
+}

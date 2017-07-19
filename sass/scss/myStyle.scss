@@ -1,17 +1,112 @@
 
 @import "./variables";
 
-/******************* Get quantify of specific element ******************/
+/******************* Parent selectors ******************/
+//& refers to parent element.
+@mixin parent-exist {
+    @if & {
+        &:hover {
+            background-color: #009500;
+        }
+    } @else {
+        & {
+            color: $red;
+        }
+    }
+}
+
+.parent-selector {
+    @extend %text-center;
+    a {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        background-color: #12afaf;
+        color: $whilte;
+        text-decoration: none;
+        transition: all 0.5s ease;
+        @include parent-exist;
+    }
+    .list {
+        display: flex;
+        margin: 1rem auto 0;
+        padding: 0;
+        width: 200px;
+        height: 100px;
+        list-style: none;
+        &-item-1,
+        &-item-2,
+        &-item-3,
+        &-item-4 {
+            flex: 1 1 0px;
+        }
+        &-item-1 {
+            background-color: $green;
+        }
+        &-item-2 {
+            background-color: $orange;
+        }
+        &-item-3 {
+            background-color: $yellow;
+        }
+        &-item-4 {
+            background-color: $blue;
+        }
+    }
+}
+
+a.btn-click {
+    .parent-selector & {
+        cursor: pointer;
+    }
+}
+
+
+
+/******************* Nested properties ******************/
+.nested-property {
+    @extend %text-center;
+    h1 {
+        margin: 1rem;
+        font: {
+            family: fantasy;
+            size: 2rem;
+            weight: bold;
+            style: italic;
+            variant: small-caps;
+        }
+    }
+    p {
+        font: italic 20px/24px fantasy {
+            weight: bold;
+        }
+    }
+    .bg-img {
+        margin: 0 auto;
+        width: 300px;
+        height: 150px;
+        background: {
+            image: url("http://thesassway.com/images/thesassway.svg");
+            position: center center;
+            size: 100%;
+            repeat: no-repeat;
+        }
+    }
+}
+
+
+
+/******************* Get quantify of specific element - Interpolation ******************/
 @mixin quantity-query($number, $comparison: "=") {
     $nth: "";
 
-    @if index(">", $comparison) {
+    @if index(">", $comparison) {  //Lower
         $nth: "-n + #{$number - 1}";
-    } @else if index(">=", $comparison) {
+    } @else if index(">=", $comparison) { //Lower or equal
         $nth: "-n + #{$number}";
-    } @else if index("<", $comparison) {
+    } @else if index("<", $comparison) { //Greater
         $nth: "n + #{$number + 1}";
-    } @else if index("<=", $comparison) {
+    } @else if index("<=", $comparison) { //Greater or equal
         $nth: "n + #{$number}";
     } @else if index("=", $comparison) {
         $nth: $number;
@@ -36,7 +131,7 @@
         flex: 1 1 100%;
     }
     .container {
-        flex: 2 1 0px;
+        flex: 1 1 0px;
         p {
             @include quantity-query(3, ">=") {
                 color: $red;
@@ -48,6 +143,188 @@
                 color: $green;
             }
         }
+    }
+}
+
+
+
+/******************* type-of ******************/
+@mixin check-type-of($value: ()) {
+    @if type-of($value) == string {
+        background-color: $black;
+    } @else if type-of($value) == number {
+        background-color: $red;
+    } @else if type-of($value) == bool {
+        background-color: $green;
+    } @else if type-of($value) == color {
+        background-color: $orange;
+    } @else if type-of($value) == list {
+        background-color: $blue;
+    } @else if type-of($value) == map {
+        background-color: $pink;
+    } @else {
+        @error "Can't identify type of value";
+    }
+}
+
+$data: ("item1" "item2" "item3");
+
+.typeOf {
+    @extend %text-center;
+    .container {
+        margin: 0 auto;
+        width: 200px;
+        height: 200px;
+        @include check-type-of($data);
+    }
+}
+
+
+
+/******************* List ******************/
+$pirate-flags: (
+    ("https://t7.rbxcdn.com/e08a3d0f27802983eaa249084e315d00", 100px)
+    ("https://s-media-cache-ak0.pinimg.com/originals/e3/a9/f4/e3a9f43b794fcad0cfadb61ec6535c52.png", 100px)
+    ("https://s-media-cache-ak0.pinimg.com/originals/0a/08/cc/0a08cc265c9352cb52eb9f80e363721b.jpg", 100px)
+    ("http://icons.iconarchive.com/icons/crountch/one-piece-jolly-roger/256/Buggy-icon.png", 100px)
+);
+
+.list {
+    @extend %text-center;
+    .flag {
+        display: flex;
+        justify-content: center;
+        @for $i from 1 through length($pirate-flags) {
+            &-#{$i} {
+                $aux: nth($pirate-flags, $i);
+                width: #{nth($aux, 2)};
+                height: #{nth($aux, 2)};
+                background: {
+                    image: url(#{nth($aux, 1)});
+                    repeat: no-repeat;
+                    size: 100% 100%;
+                    position: center center;
+                }
+            }
+        }
+    }
+}
+
+
+
+/******************* Map ******************/
+//map-has-key and map-get
+$media-types: (
+    phone: "(max-width: 480px)",
+    tablet-portrait: "(min-width: 480px) and (max-width: 767px)",
+    tablet-landscape-desktop: "(min-width: 768px) and (max-width: 979px)",
+    desktop: "(min-width: 979px) and (max-width: 1200px)",
+    large-desktop: "(min-width: 1200px)",
+    non-retina: "screen and (-webkit-max-device-pixel-ratio: 1)",
+    retina: "screen and (-webkit-min-device-pixel-ratio: 2)"
+);
+
+@mixin respond-to($media: phone) {
+    @if not map-has-key($media-types, $media) {
+        @error "#{$media} is not known media types";
+    } @else {
+        @media #{map-get($media-types, $media)} {
+            @content;
+        }
+    }
+}
+
+.map {
+    width: 100%;
+    height: 200px;
+    @extend %text-center;
+    @include respond-to() {
+        background-color: $purple;
+    }
+    @include respond-to(tablet-portrait) {
+        background-color: $pink;
+    }
+    @include respond-to(tablet-landscape-desktop) {
+        background-color: $orange;
+    }
+    @include respond-to(desktop) {
+        background-color: $red;
+    }
+    @include respond-to(large-desktop) {
+        background-color: $gray;
+    }
+}
+
+
+//map-merge
+//Example 1
+@function extend($obj, $ext-obj) {
+    @return map-merge($obj, $ext-obj);
+}
+
+@mixin copy($configuration) {
+    @if type-of($configuration) != map {
+        @error "Incorrect parameter";
+    } @else if length($configuration) == 0 {
+        @error "Empty parameter";
+    } @else {
+        @each $property, $value in $configuration {
+            #{$property}: #{$value};
+        }
+    }
+}
+
+$default-title-styles: (
+    font-family: $arial-font,
+    font-size: 1.5rem,
+    font-weight: bold,
+    font-style: normal,
+    font-variant: normal
+);
+
+$custom-title-styles: (
+    font-family: $comic-sans-font,
+    font-style: italic
+);
+
+.map {
+    h1 {
+        @include copy(extend($default-title-styles, $custom-title-styles));
+    }
+}
+
+//Example 2
+/*@mixin addAttrDynamically($family: $arial-black-font, $size: 1.5rem, $weight: bold, $style: null, $variant: null) {
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+    font-style: $style;
+    font-variant: $variant;
+}
+
+.map {
+    h1 {
+        @include addAttrDynamically((
+            family: $tahoma-font,
+            style: italic
+        )...); //Adding three points are indicating that it can accept incomplete parameters
+    }
+}*/
+
+
+
+/******************* Functions ******************/
+//By learning more functions: http://sass-lang.com/documentation/Sass/Script/Functions.html
+.functions {
+    @extend %text-center;
+    .container {
+        margin: 0 auto;
+        width: 120px;
+        height: 120px;
+        //background-color: opacify(rgba(0, 128, 0, 0.4), 0.2); //Increase opacity
+        //background-color: transparentize(rgba(0, 128, 0, 1), 0.2); //Decrease opacity
+        //background-color: darken($green, 20); //Make color darker
+        background-color: lighten($green, 50); //Make color lighter
     }
 }
 
@@ -81,137 +358,20 @@
 
 
 
-/******************* map-has-key and map-get ******************/
-$media-types: (
-    phone: "(max-width: 480px)",
-    tablet-portrait: "(max-width: 767px)",
-    tablet-landscape-desktop: "(min-width: 768px) and (max-width: 979px)",
-    large-desktop: "(min-width: 1200px)",
-    non-retina: "screen and (-webkit-max-device-pixel-ratio: 1)",
-    retina: "screen and (-webkit-min-device-pixel-ratio: 2)"
-);
-
-@mixin respond-to($media: phone) {
-    @if not map-has-key($media-types, $media) {
-        @error "#{$media} is not known media types";
-    } @else {
-        @media #{map-get($media-types, $media)} {
-            @content;
-        }
-    }
-}
-
-.mapHasGet {
-    width: 100%;
-    height: 200px;
-    @extend %text-center;
-    @include respond-to(non-retina) {
-        background-color: $purple;
-    }
-}
-
-
-
-/******************* map-merge ******************/
-@function extend($obj, $ext-obj) {
-    @return map-merge($obj, $ext-obj);
-}
-
-@mixin copy($configuration) {
-    @if type-of($configuration) != list and type-of($configuration) != map {
-        @error "Incorrect parameter";
-    } @else if length($configuration) == 0 {
-        @error "Empty parameter";
-    } @else {
-        @each $property, $value in $configuration {
-            #{$property}: #{$value};
-        }
-    }
-}
-
-$default-object: (
-    width: 0px,
-    height: 0px,
-    background-color: null,
-    border: null
-);
-
-$object: (
-    width: 300px,
-    height: 300px,
-    background-color: $green
-);
-
-$merge: extend($default-object, $object);
-
-.mapMerge {
-    @extend %text-center;
-    @include copy($merge);
-}
-
-/*@mixin addAttrDynamically($width: 0px, $height: 0px, $background-color: null, $border: null) {
-    width: $width;
-    height: $height;
-    background-color: $background-color;
-    border: $border;
-}
-
-.mapMerge {
-    @extend %text-center;
-    @include addAttrDynamically((
-        width: 300px,
-        height: 300px,
-        background-color: $gray20
-    )...); //Adding three points are indicating that it can accept incomplete parameters
-}*/
-
-
-
-/******************* type-of ******************/
-@mixin check-type-of($value: ()) {
-    @if type-of($value) == string {
-        background-color: $black;
-    } @else if type-of($value) == number {
-        background-color: $red;
-    } @else if type-of($value) == bool {
-        background-color: $green;
-    } @else if type-of($value) == color {
-        background-color: $orange;
-    } @else if type-of($value) == list {
-        background-color: $blue;
-    } @else if type-of($value) == map {
-        background-color: $pink;
-    } @else {
-        @error "Can't identify type of value";
-    }
-}
-
-$data: ("item1" "item2" "item3");
-
-.typeOf {
-    @extend %text-center;
-    .container {
-        width: 200px;
-        height: 200px;
-        @include check-type-of($data);
-    }
-}
-
-
-
 /******************* @each ******************/
 $configuration: (
+    display: flex,
+    justify-content: center,
     margin: 0,
     padding: 0,
-    list-style: none,
-    background-color: $green
+    list-style: none
 );
 
-$icons: (
-    car: "\f1b9",
-    battery-empty: "\f244",
-    bed: "\f236",
-    bicycle: "\f206"
+$team-logo: (
+    real-madrid: "http://i.imgur.com/RtAnQrB.png",
+    juventus: "https://vignette2.wikia.nocookie.net/logopedia/images/5/50/600px-Juventusstemma.png/revision/latest?cb=20120107135132",
+    bayern-munich: "https://vignette3.wikia.nocookie.net/logopedia/images/4/47/FC_Bayern_Munich.png/revision/latest?cb=20160531131327",
+    manchester-united: "https://vignette2.wikia.nocookie.net/fifa/images/2/26/Manchester_United_logo.png/revision/latest?cb=20120420192747"
 );
 
 $cube-attr-list: (
@@ -224,58 +384,30 @@ $cube-attr-list: (
     @extend %text-center;
     ul {
         @include copy($configuration);
-        @each $name, $icon in $icons {
-            .#{$name}:before {
-                content: $icon;
+
+        li {
+            width: 100px;
+            height: 100px;
+        }
+
+        @each $name, $url in $team-logo {
+            .#{$name} {
+                background: url(#{$url}) center center no-repeat {
+                    size: 100% 100%;
+                }
             }
         }
     }
     .colorCollector {
         display: flex;
         margin-top: 1.5rem;
-        @each $name in $cube-attr-list {
-            .cube-#{nth($name, 1)} {
-                flex: #{nth($name, 3)};
-                height: #{nth($name, 2)};
-                background-color: #{nth($name, 4)};
+        @each $item in $cube-attr-list {
+            .cube-#{nth($item, 1)} {
+                flex: #{nth($item, 3)};
+                height: #{nth($item, 2)};
+                background-color: #{nth($item, 4)};
             }
         }
-    }
-}
-
-
-
-/******************* Placeholder selectors ******************/
-//Using placeholder select can avoid the generator includes the class inherited.
-
-%animal {
-    width: 100%;
-    height: 60px;
-    font-size: 1rem;
-    line-height: 60px;
-}
-
-/*@media (max-width: 576px) {
-    %animal {
-        width: 100%;
-        height: 60px;
-        font-size: 1rem;
-        line-height: 60px;
-    }
-}*/
-
-.placeholder {
-    @extend %text-center;
-    .cat,
-    .dog {
-        @extend %animal;
-        color: $whilte;
-    }
-    .cat {
-        background-color: $black;
-    }
-    .dog {
-        background-color: $gray;
     }
 }
 
@@ -284,15 +416,13 @@ $cube-attr-list: (
 /******************* Loop for and while ******************/
 $class-slug: for !default;
 $class-collection: (
-    ((1 1 0px), 60px, $red),
-    ((1 1 0px), 60px, $green),
-    ((1 1 0px), 60px, $purple),
+    ((1 1 0px), 60px, $red)
+    ((1 1 0px), 60px, $green)
+    ((1 1 0px), 60px, $purple)
     ((1 1 0px), 60px, $brown)
 );
 
 @mixin run-for() {
-    $aux: null;
-
     @for $i from 1 through length($class-collection) {
         .#{$class-slug}-#{$i} {
             $aux: nth($class-collection, $i);
@@ -305,8 +435,6 @@ $class-collection: (
 
 @mixin run-while() {
     $counter: 1;
-    $aux: null;
-
     @while $counter <= length($class-collection) {
         .#{$class-slug}-#{$counter} {
             $aux: nth($class-collection, $counter);
@@ -334,29 +462,19 @@ $class-collection: (
 
 
 /******************* Interesting stuff in mixin ******************/
-@mixin large-text {
-    color: $blue;
-    font: {
-        family: Arial;
-        size: 2rem;
-        weight: bold;
-    }
-}
-
 @mixin box-shadow($shadows...) {
     box-shadow: $shadows;
 }
 
 .mixin {
     h1 {
-        @include large-text;
         @extend %text-center;
     }
     .container {
         width: 200px;
         height: 200px;
         border: 3px solid $red;
-        @include box-shadow(0px 4px 5px $gray40, 6px 6px 10px $gray60);
+        @include box-shadow(0px 4px 5px $orange, 6px 6px 10px $red, 10px 10px 10px $purple);
         background-color: $yellow
     }
 }
@@ -374,5 +492,4 @@ one selector.
 selector.
 - Can't use @extend inside media query selectors.
 - One advantage that sass provides is allowing write styles in a structured and friendly way.
-- & refers to parent element.
 */
