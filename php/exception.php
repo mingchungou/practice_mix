@@ -20,11 +20,17 @@
     /******************** Creating custom exception *****************/
     class customException extends Exception {
         public function errorMessage() {
-            return "Error on line " . $this->getLine() . " in " . $this->getFile() . ": <b>" . $this->getMessage() . "</b> is not a valid E-Mail address";
+            return "Error on line " .
+                $this->getLine() .
+                " in " .
+                $this->getFile() .
+                ": <b>" .
+                $this->getMessage() .
+                "</b> is not a valid E-Mail address";
         }
     }
 
-    $email = "ming@";
+    $email = "ming@gmail.com";
 
     /*try {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -32,6 +38,7 @@
         }
 
         checkNum(3);
+        echo "If you see this, everything is fine";
     } catch (customException $err) {
         echo $err->errorMessage();
     } catch (Exception $err) {
@@ -60,7 +67,6 @@
         echo "<b>Exception message: </b>" . $exception->getMessage() . "<br />";
     }
 
-    set_exception_handler("myException");
-
-    throw new Exception("Uncaught Exception occurred");
+    /*set_exception_handler("myException");
+    throw new Exception("Uncaught Exception occurred");*/
 ?>

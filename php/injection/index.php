@@ -1,4 +1,9 @@
 <?php
+    /**
+     * Function for adding two numbers
+     * @param {number} $num_1
+     * @param {number} $num_2
+     */
     function sum($num_1, $num_2) {
         return $num_1 + $num_2;
     }

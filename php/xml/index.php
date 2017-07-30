@@ -55,15 +55,20 @@
 
 
     /******************* Xml custom parser ********************/
-    /*$parser = xml_parser_create();
+    $parser = xml_parser_create();
 
-    //Function to use at the start of an element
-    //Either element name or attribute name is in uppercase
+    /**
+     * Function to use at the start of an element, either element name or attribute name is
+     * in uppercase.
+     * @param {string} $parser
+     * @param {string} $element_name
+     * @param {string} $element_attrs
+     */
     function start($parser, $element_name, $element_attrs) {
         $tag = strtolower($element_name);
 
         if ($tag !== "bookstore" && $tag !== "book") {
-            echo strtolower($tag);
+            echo $tag;
 
             if (isset($element_attrs["LANG"])) {
                 echo " (lang => " . $element_attrs["LANG"] . ")";
@@ -73,7 +78,11 @@
         }
     }
 
-    //Function to use at the end of an element
+    /**
+     * Function to use at the end of an element.
+     * @param {string} $parser
+     * @param {string} $data
+     */
     function stop($parser, $data) {
         echo "<br />";
     }
@@ -81,7 +90,11 @@
     //Set custom element handler
     xml_set_element_handler($parser, "start", "stop");
 
-    //Function to use when finding character data
+    /**
+     * Function to use when finding character data.
+     * @param {string} $parser
+     * @param {string} $data
+     */
     function char($parser, $data) {
         echo $data;
     }
@@ -96,7 +109,7 @@
     }
 
     //Free the xml parser
-    xml_parser_free($parser);*/
+    xml_parser_free($parser);
 
 
 

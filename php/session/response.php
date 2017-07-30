@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="../../css/bootstrap.min.css"  />
     </head>
     <body>
-        <a href="close.php">Close session</a>
+        <a class="btn btn-danger" href="close.php">Close session</a>
 
         <script src="../../lib/jquery-3.2.0.min.js"></script>
         <script src="../../lib/tether.min.js"></script>

@@ -33,7 +33,7 @@
         </style>
     </head>
     <body>
-        <div class="container">
+        <div class="container my-3">
             <form>
                 <div class="row">
                     <label class="col-3" for="name">Name:</label>
@@ -52,7 +52,9 @@
         <script src="../../../lib/tether.min.js"></script>
         <script src="../../../lib/bootstrap.min.js"></script>
         <script type="text/javascript">
-            //Function for loading all names from xml response
+            /**
+             * Function for loading all names from xml response.
+             */
             /*(function() {
                 var xhttp = new XMLHttpRequest();
 
@@ -75,7 +77,10 @@
                 xhttp.send();
             })();*/
 
-            //Function for bringing all possible names based on written by user
+            /**
+             * Function for bringing all possible names based on written by user.
+             * @param {string} str
+             */
             var search = function(str) {
                 if (!str) {
                     emptyList();
@@ -108,7 +113,9 @@
                 }
             };
 
-            //Function for clearing possible name list
+            /**
+             * Function for clearing possible name list.
+             */
             var emptyList = function() {
                 var possibleList = document.getElementById("possible-list");
 

@@ -1,5 +1,5 @@
 <?php
-    define("IPAddress", "192.168.1.9");
+    define("IPAddress", "192.168.1.12");
 
     class tableRows extends RecursiveIteratorIterator {
         function __construct($it) { //$it is the array iterator
@@ -31,13 +31,13 @@
         /******************* Query ********************/
         /*$result = $connection->query("select * from todo");
         foreach($result as $row) {
-            echo $row["id"] . "<br />";
-            echo $row["activity"] . "<br />";
-            echo $row["priority"] . "<br />";
-            echo $row["fromX"] . "<br />";
-            echo $row["created"] . "<br />";
-            echo $row["updated"] . "<br />";
-            echo $row["status"] . "<br />";
+            echo "id: " . $row["id"] . "<br />";
+            echo "activity: " . $row["activity"] . "<br />";
+            echo "priority: " . $row["priority"] . "<br />";
+            echo "fromX: " . $row["fromX"] . "<br />";
+            echo "created: " . $row["created"] . "<br />";
+            echo "updated: " . $row["updated"] . "<br />";
+            echo "status: " . $row["status"] . "<br /><br />";
         }*/
 
 
@@ -47,13 +47,19 @@
         $statement = $connection->prepare("select * from todo where id = :id");
         $statement->execute(array(":id" => $id));
         $result = $statement->fetch();
-        print_r($result);*/
+        echo "id: " . $result["id"] . "<br />";
+        echo "activity: " . $result["activity"] . "<br />";
+        echo "priority: " . $result["priority"] . "<br />";
+        echo "fromX: " . $result["fromX"] . "<br />";
+        echo "created: " . $result["created"] . "<br />";
+        echo "updated: " . $result["updated"] . "<br />";
+        echo "status: " . $result["status"] . "<br />";*/
 
 
         //Using bindParam
         /*$statement = $connection->prepare("insert into user (name, password) values (:name, :password)");
-        $statement->bindParam(":name", $name);
-        $statement->bindParam(":password", $password);
+        $statement->bindParam(":name", $name, PDO::PARAM_STR, 255);
+        $statement->bindParam(":password", $password, PDO::PARAM_STR, 16);
 
         $name = "carmen lila";
         $password = "98765";
@@ -69,27 +75,45 @@
         $statement->execute();
         $result = $statement->fetchAll();
         foreach($result as $row) {
-            echo $row["id"] . "<br />";
-            echo $row["activity"] . "<br />";
-            echo $row["priority"] . "<br />";
-            echo $row["fromX"] . "<br />";
-            echo $row["created"] . "<br />";
-            echo $row["updated"] . "<br />";
-            echo $row["status"] . "<br />";
+            echo "id: " . $row["id"] . "<br />";
+            echo "activity: " . $row["activity"] . "<br />";
+            echo "priority: " . $row["priority"] . "<br />";
+            echo "fromX: " . $row["fromX"] . "<br />";
+            echo "created: " . $row["created"] . "<br />";
+            echo "updated: " . $row["updated"] . "<br />";
+            echo "status: " . $row["status"] . "<br /><br />";
         }*/
 
 
         //fetch just brings a row, so if having several rows will need to execute several times fetch
         /*$statement = $connection->prepare("select * from todo");
         $statement->execute();
-        while($row = $statement->fetch()) {
-            echo $row["id"] . "<br />";
-            echo $row["activity"] . "<br />";
-            echo $row["priority"] . "<br />";
-            echo $row["fromX"] . "<br />";
-            echo $row["created"] . "<br />";
-            echo $row["updated"] . "<br />";
-            echo $row["status"] . "<br />";
+        while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+            echo "id: " . $row["id"] . "<br />";
+            echo "activity: " . $row["activity"] . "<br />";
+            echo "priority: " . $row["priority"] . "<br />";
+            echo "fromX: " . $row["fromX"] . "<br />";
+            echo "created: " . $row["created"] . "<br />";
+            echo "updated: " . $row["updated"] . "<br />";
+            echo "status: " . $row["status"] . "<br /><br />";
+        }
+        while($row = $statement->fetch(PDO::FETCH_NUM)) {
+            echo "id: " . $row[0] . "<br />";
+            echo "activity: " . $row[1] . "<br />";
+            echo "priority: " . $row[2] . "<br />";
+            echo "fromX: " . $row[3] . "<br />";
+            echo "created: " . $row[4] . "<br />";
+            echo "updated: " . $row[5] . "<br />";
+            echo "status: " . $row[6] . "<br /><br />";
+        }
+        while($row = $statement->fetch(PDO::FETCH_OBJ)) {
+            echo "id: " . $row->id . "<br />";
+            echo "activity: " . $row->activity . "<br />";
+            echo "priority: " . $row->priority . "<br />";
+            echo "fromX: " . $row->fromX . "<br />";
+            echo "created: " . $row->created . "<br />";
+            echo "updated: " . $row->updated . "<br />";
+            echo "status: " . $row->status . "<br /><br />";
         }*/
 
 
@@ -127,4 +151,8 @@
 
     //Close the connection, it is not necessary
     //$connection = null;
+
+
+
+    //Learn more: http://php.net/manual/es/book.pdo.php
 ?>

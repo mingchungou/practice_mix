@@ -8,7 +8,7 @@
 
 
     //Bring all datas from the file but as string
-    #echo gettype(file_get_contents("document.txt"));
+    #echo file_get_contents("document.txt");
 
 
     //Set data to file

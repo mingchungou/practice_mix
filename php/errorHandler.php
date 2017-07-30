@@ -1,5 +1,12 @@
 <?php
-    //set custom error handler
+    /**
+     * Set custom error handler.
+     * @param {number} $errNumber
+     * @param {string} $errMessage
+     * @param {string} $errFile
+     * @param {number} $errLine
+     * @param {array} $errContext
+     */
     function customError($errNumber, $errMessage, $errFile, $errLine, $errContext) {
         echo "<b>Error number: </b>[$errNumber]<br />";
         echo "<b>Error message: </b>$errMessage<br />";

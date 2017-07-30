@@ -1,4 +1,9 @@
 <?php
+    /**
+     * Function for handling errors.
+     * @param {number} $code
+     * @param {string} $message
+     */
     function errorHandler($code, $message) {
         if (function_exists("http_response_code")) {
             http_response_code($code);

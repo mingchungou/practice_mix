@@ -27,11 +27,12 @@
         <section>
             <select name="todo" onchange="showTodo(this.value)">
                 <option value="">Select an activity</option>
-                <option value="1">Study</option>
                 <option value="2">Go running</option>
                 <option value="3">Having interview</option>
                 <option value="4">Go shopping</option>
                 <option value="6">Play guitar</option>
+                <option value="7">What videos</option>
+                <option value="8">Translate task</option>
             </select>
             <br />
             <br />
@@ -39,8 +40,10 @@
         </section>
 
         <script type="text/javascript">
-            //Function for loading all todos
-            /*(function(str) {
+            /**
+             * Function for loading all todos
+             */
+            /*(function() {
                 var xhttp = new XMLHttpRequest();
 
                 xhttp.onreadystatechange = function() {
@@ -53,7 +56,10 @@
                 xhttp.send();
             })();*/
 
-            //Function for requesting the specific todo by id
+            /**
+             * Function for requesting the specific todo by id.
+             * @param {string} option
+             */
             function showTodo(option) {
                 if (option) {
                     var xhttp = new XMLHttpRequest();
@@ -69,7 +75,7 @@
                 } else {
                     document.getElementById("todo-item").childNodes[0].remove();
                 }
-            }
+            };
         </script>
     </body>
 </html>
